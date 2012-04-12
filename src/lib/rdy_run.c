@@ -72,11 +72,11 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 		break;
 
 	case RDYRUN_GREEN:
-		ulValue |= MSK_sta_netx_rdy;
+		ulValue |= MSK_sta_netx_run;
 		break;
 
 	case RDYRUN_YELLOW:
-		ulValue |= MSK_sta_netx_run;
+		ulValue |= MSK_sta_netx_rdy;
 		break;
 	}
 	ptNetxControlledGlobalRegisterBlock1Area->ulSta_netx = ulValue;
