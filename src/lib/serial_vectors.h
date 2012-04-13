@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2012 by Christoph Thelen                                *
+ *   Copyright (C) 2008 by Christoph Thelen                                *
  *   doc_bacardi@users.sourceforge.net                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,13 +22,31 @@
 #ifndef __SERIAL_VECTORS_H__
 #define __SERIAL_VECTORS_H__
 
-#include "uart.h"
+typedef unsigned char (*PFN_SERIAL_GET_T) (void);
+typedef void (*PFN_SERIAL_PUT_T) (unsigned int iChar);
+typedef unsigned int (*PFN_SERIAL_PEEK_T) (void);
+typedef void (*PFN_SERIAL_FLUSH_T) (void);
 
+#define SERIAL_GET() tSerialVectors.fn.fnGet()
+#define SERIAL_PUT(c) tSerialVectors.fn.fnPut(c)
+#define SERIAL_PEEK() tSerialVectors.fn.fnPeek()
+#define SERIAL_FLUSH() tSerialVectors.fn.fnFlush()
 
-#define SERIAL_GET() uart_get(0)
-#define SERIAL_PUT(c) uart_put(0,c)
-#define SERIAL_PEEK() uart_peek(0)
-#define SERIAL_FLUSH() uart_flush(0)
+typedef struct
+{
+	PFN_SERIAL_GET_T fnGet;
+	PFN_SERIAL_PUT_T fnPut;
+	PFN_SERIAL_PEEK_T fnPeek;
+	PFN_SERIAL_FLUSH_T fnFlush;
+} SERIAL_COMM_FN_T;
+
+typedef union
+{
+	SERIAL_COMM_FN_T fn;
+	unsigned long aul[4];
+} SERIAL_COMM_UI_FN_T;
+
+extern SERIAL_COMM_UI_FN_T tSerialVectors;
 
 #endif	/* __SERIAL_VECTORS_H__ */
 
