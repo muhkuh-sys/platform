@@ -18,21 +18,8 @@ sources = """
 # Create the default environment for all CPUs.
 #
 
-env_netx500_default = env_default.CreateCompilerEnv('500', ['cpu=arm926ej-s'])
-env_netx500_default.Replace(BOOTBLOCK_CHIPTYPE = 500)
-env_netx500_default.Append(CPPPATH = ['src', 'src/lib'])
 
-env_netx56_default = env_default.CreateCompilerEnv('56', ['cpu=arm966e-s'])
-env_netx56_default.Replace(BOOTBLOCK_CHIPTYPE = 56)
-env_netx56_default.Append(CPPPATH = ['src', 'src/lib'])
 
-env_netx50_default = env_default.CreateCompilerEnv('50', ['cpu=arm966e-s'])
-env_netx50_default.Replace(BOOTBLOCK_CHIPTYPE = 50)
-env_netx50_default.Append(CPPPATH = ['src', 'src/lib'])
-
-env_netx10_default = env_default.CreateCompilerEnv('10', ['cpu=arm966e-s'])
-env_netx10_default.Replace(BOOTBLOCK_CHIPTYPE = 10)
-env_netx10_default.Append(CPPPATH = ['src', 'src/lib'])
 
 
 #----------------------------------------------------------------------------
@@ -40,19 +27,31 @@ env_netx10_default.Append(CPPPATH = ['src', 'src/lib'])
 # Build the library for all targets.
 #
 
-env_netx500 = env_netx500_default.Clone()
+env_netx500 = env_default.CreateCompilerEnv('500', ['cpu=arm926ej-s'])
+env_netx500.Replace(BOOTBLOCK_CHIPTYPE = 500)
+env_netx500.Append(CPPPATH = ['src', 'src/lib'])
+env_netx500.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 src_netx500 = env_netx500.SetBuildPath('targets/netx500', 'src', sources)
 platform_lib_netx500 = env_netx500.StaticLibrary('targets/platform_netx500', src_netx500)
 
-env_netx56  = env_netx56_default.Clone()
+env_netx56  = env_default.CreateCompilerEnv('56', ['cpu=arm966e-s'])
+env_netx56.Replace(BOOTBLOCK_CHIPTYPE = 56)
+env_netx56.Append(CPPPATH = ['src', 'src/lib'])
+env_netx56.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 src_netx56  = env_netx56.SetBuildPath('targets/netx56', 'src', sources)
 platform_lib_netx56  = env_netx56.StaticLibrary('targets/platform_netx56', src_netx56)
 
-env_netx50  = env_netx50_default.Clone()
+env_netx50  = env_default.CreateCompilerEnv('50', ['cpu=arm966e-s'])
+env_netx50.Replace(BOOTBLOCK_CHIPTYPE = 50)
+env_netx50.Append(CPPPATH = ['src', 'src/lib'])
+env_netx50.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 src_netx50  = env_netx50.SetBuildPath('targets/netx50', 'src', sources)
 platform_lib_netx50  = env_netx50.StaticLibrary('targets/platform_netx50', src_netx50)
 
-env_netx10  = env_netx10_default.Clone()
+env_netx10  = env_default.CreateCompilerEnv('10', ['cpu=arm966e-s'])
+env_netx10.Replace(BOOTBLOCK_CHIPTYPE = 10)
+env_netx10.Append(CPPPATH = ['src', 'src/lib'])
+env_netx10.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 src_netx10  = env_netx10.SetBuildPath('targets/netx10', 'src', sources)
 platform_lib_netx10  = env_netx10.StaticLibrary('targets/platform_netx10', src_netx10)
 
