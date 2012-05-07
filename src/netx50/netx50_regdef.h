@@ -38712,9 +38712,8 @@ typedef struct NX50_XPEC_AREA_Ttag
   volatile unsigned long aulUrtx[4];
   volatile unsigned long  ulXpu_hold_pc;
   volatile unsigned long aulReserved0[4031];
-  volatile unsigned long  ulPram_start;
-  volatile unsigned long aulReserved1[2047];
-  volatile unsigned long  ulDram_start;
+  volatile unsigned long aulPram[2048];
+  volatile unsigned long aulDram[2048];
 } NX50_XPEC_AREA_T;
 
 typedef struct NX50_XMAC_AREA_Ttag
@@ -38796,17 +38795,15 @@ typedef struct NX50_XMAC_AREA_Ttag
 
 typedef struct NX50_POINTER_FIFO_AREA_Ttag
 {
-  volatile unsigned long  ulPfifo_base;
-  volatile unsigned long aulReserved0[31];
-  volatile unsigned long  ulPfifo_border_base;
-  volatile unsigned long aulReserved1[31];
+  volatile unsigned long aulPfifo[32];
+  volatile unsigned long aulPfifo_border[32];
   volatile unsigned long  ulPfifo_reset;
   volatile unsigned long  ulPfifo_full;
   volatile unsigned long  ulPfifo_empty;
   volatile unsigned long  ulPfifo_overflow;
   volatile unsigned long  ulPfifo_underrun;
   volatile unsigned long aulReserved2[27];
-  volatile unsigned long  ulPfifo_fill_level_base;
+  volatile unsigned long aulPfifo_fill_level[32];
 } NX50_POINTER_FIFO_AREA_T;
 
 typedef struct NX50_XPEC_IRQ_REGISTERS_AREA_Ttag
