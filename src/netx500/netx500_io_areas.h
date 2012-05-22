@@ -48,8 +48,18 @@
 #define __NETX500_IO_AREAS_H__
 
 
+typedef struct
+{
+	volatile unsigned long ulSdram_general_ctrl;
+	volatile unsigned long ulSdram_timing_ctrl;
+	volatile unsigned long ulSdram_mr;
+	volatile unsigned long ulSdram_emr2;
+} NX500_EXT_SDRAM_CTRL_AREA_T;
+
+
 #define NX500_DEF_ptAsicCtrlArea NX500_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX500_ASIC_CTRL_AREA_T * const)Addr_NX500_asic_ctrl;
 #define NX500_DEF_ptExtAsyncmemCtrlArea NX500_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX500_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX500_ext_asyncmem_ctrl;
+#define NX500_DEF_ptExtSdramCtrlArea NX500_EXT_SDRAM_CTRL_AREA_T * const ptExtSdramCtrlArea = (NX500_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX500_ext_sdram_ctrl;
 #define NX500_DEF_ptExtmemPriorityCtrlArea NX500_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrlArea = (NX500_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX500_extmem_priority_ctrl;
 #define NX500_DEF_ptWatchdogArea NX500_WATCHDOG_AREA_T * const ptWatchdogArea = (NX500_WATCHDOG_AREA_T * const)Addr_NX500_watchdog;
 #define NX500_DEF_ptGpioArea NX500_GPIO_AREA_T * const ptGpioArea = (NX500_GPIO_AREA_T * const)Addr_NX500_gpio;

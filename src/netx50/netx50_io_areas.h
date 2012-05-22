@@ -18,11 +18,13 @@ typedef struct
 {
 	volatile unsigned long ulSdram_general_ctrl;
 	volatile unsigned long ulSdram_timing_ctrl;
+	volatile unsigned long ulSdram_mr;
+	volatile unsigned long ulSdram_emr2;
 } NX50_SDRAM_AREA_T;
 
 
 #define NX50_DEF_ptAsicCtrlArea NX50_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX50_ASIC_CTRL_AREA_T * const)Addr_NX50_asic_ctrl;
-#define NX50_DEF_ptSdramArea NX50_SDRAM_AREA_T * const ptSdramArea = (NX50_SDRAM_AREA_T * const)Addr_NX50_ext_sdram_ctrl;
+#define NX50_DEF_ptExtSdramCtrlArea NX50_SDRAM_AREA_T * const ptExtSdramCtrlArea = (NX50_SDRAM_AREA_T * const)Addr_NX50_ext_sdram_ctrl;
 #define NX50_DEF_ptExtAsyncmemCtrlArea NX50_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX50_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX50_ext_asyncmem_ctrl;
 #define NX50_DEF_ptExtmemPriorityCtrlArea NX50_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrlArea = (NX50_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX50_extmem_priority_ctrl;
 #define NX50_DEF_ptWatchdogArea NX50_WATCHDOG_AREA_T * const ptWatchdogArea = (NX50_WATCHDOG_AREA_T * const)Addr_NX50_watchdog;
