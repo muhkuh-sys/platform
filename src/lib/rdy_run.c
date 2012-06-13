@@ -101,11 +101,11 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	case RDYRUN_OFF:
 		break;
 
-	case RDYRUN_GREEN:
+	case RDYRUN_YELLOW:
 		ulSCLNew |= MSK_sta_netx_run;
 		break;
 
-	case RDYRUN_YELLOW:
+	case RDYRUN_GREEN:
 		ulSDANew |= MSK_sta_netx_rdy;
 		break;
 	}
@@ -228,8 +228,8 @@ static const RDYRUN_T atLEDState[4] =
 {
 	RDYRUN_OFF,		/* 0: off */
 	RDYRUN_OFF,		/* 1: off */
-	RDYRUN_GREEN,		/* 2: green */
-	RDYRUN_YELLOW		/* 3: yellow */
+	RDYRUN_YELLOW,		/* 2: yellow */
+	RDYRUN_GREEN		/* 3: green */
 };
 
 
