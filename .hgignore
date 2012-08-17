@@ -1,0 +1,12 @@
+# Switch to regexp syntax to get rooted patterns.
+syntax: regexp
+
+# Ignore all files in the targets folder.
+^targets/
+
+
+# Switch to glob syntax to get shell style patterns.
+syntax: glob
+
+# Ignore all backup files.
+*~
