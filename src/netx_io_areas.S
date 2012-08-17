@@ -29,6 +29,10 @@
 #       define HOST NX500
 #       define HOSTNAME "netx500"
 #       include "netx500/netx500_regdef.s"
+#elif ASIC_TYP==56
+#       define HOST NX56
+#       define HOSTNAME "netx56"
+#       include "netx56/netx56_regdef.s"
 #elif ASIC_TYP==50
 #       define HOST NX50
 #       define HOSTNAME "netx50"
