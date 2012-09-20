@@ -171,11 +171,11 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 		break;
 
 	case RDYRUN_GREEN:
-		ulSCLNew |= HOSTMSK(rdy_run_cfg_RDY_DRV);
+		ulSDANew |= HOSTMSK(rdy_run_cfg_RUN_DRV);
 		break;
 
 	case RDYRUN_YELLOW:
-		ulSDANew |= HOSTMSK(rdy_run_cfg_RUN_DRV);
+		ulSCLNew |= HOSTMSK(rdy_run_cfg_RDY_DRV);
 		break;
 	}
 
