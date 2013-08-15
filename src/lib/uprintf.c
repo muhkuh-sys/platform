@@ -236,162 +236,164 @@ void uprintf(const char *pcFmt, ...)
 	int iArgument;
 	CONSOLE_LINEFEED_T tLinefeedMode;
 
-
-	/* get the linefeed mode */
-	tLinefeedMode = CONSOLE_LINEFEED_CRLF;
-
-	/* Get initial pointer to first argument */
-	va_start(ptArgument, pcFmt);
-
-	/* Is it a NULL Pointer ? */
-	if( pcFmt==NULL )
-	{
-		/* replace the argument with the default string */
-		pcFmt = "NULL\n";
-	}
-
-	/* loop over all chars in the format string */
-	do
-	{
-		/* get the next char */
-		cChar = *(pcFmt++);
-
-		/* is this the end of the format string? */
-		if( cChar!=0 )
+	if( (tSerialVectors.fn.fnPut!=NULL) && (tSerialVectors.fn.fnFlush!=NULL)  )
+	{		
+		/* get the linefeed mode */
+		tLinefeedMode = CONSOLE_LINEFEED_CRLF;
+	
+		/* Get initial pointer to first argument */
+		va_start(ptArgument, pcFmt);
+	
+		/* Is it a NULL Pointer ? */
+		if( pcFmt==NULL )
 		{
-			/* no -> process the char */
-
-			/* is this an escape char? */
-			if( cChar=='%' )
-			{
-				/* yes -> process the escape sequence */
-
-				/* set default values for escape sequences */
-				cFillUpChar = ' ';
-				sizMinimumSize = 0;
-
-				do
-				{
-					cChar = *(pcFmt++);
-					if( cChar=='%' )
-					{
-						/* it is just a '%' */
-						SERIAL_PUT(cChar);
-						break;
-					}
-					else if( cChar=='0' )
-					{
-						cFillUpChar = '0';
-					}
-					else if( cChar>'0' && cChar<='9' )
-					{
-						/* no digit found yet */
-						iDigitCnt = 1;
-						/* the number started one char before */
-						pcNumEnd = pcFmt;
-						/* count all digits */
-						do
-						{
-							cChar = *pcFmt;
-							if( cChar>='0' && cChar<='9' )
-							{
-								++pcFmt;
-							}
-							else
-							{
-								break;
-							}
-						} while(1);
-
-						/* loop over all digits and add them to the */
-						uiValue = 0;
-						iDigitCnt = 0;
-						pcNumCnt = pcFmt;
-						while( pcNumCnt>=pcNumEnd )
-						{
-							--pcNumCnt;
-							uiCnt = (*pcNumCnt) & 0x0fU;
-							while( uiCnt>0 )
-							{
-								uiValue += aulUprintfDecTab[iDigitCnt];
-								--uiCnt;
-							}
-							++iDigitCnt;
-						}
-						sizMinimumSize = (size_t)uiValue;
-					}
-					else if( cChar=='x' )
-					{
-						/* show hexadecimal number */
-						ulArgument = va_arg((ptArgument), unsigned long);
-						uprintf_hex(ulArgument, sizMinimumSize, cFillUpChar);
-						break;
-					}
-					else if( cChar=='d' )
-					{
-						/* show decimal number */
-						ulArgument = va_arg((ptArgument), unsigned long);
-						uprintf_dec(ulArgument, sizMinimumSize, cFillUpChar);
-						break;
-					}
-					else if( cChar=='b' )
-					{
-						/* show binary number */
-						ulArgument = va_arg((ptArgument), unsigned long);
-						uprintf_bin(ulArgument, sizMinimumSize, cFillUpChar);
-						break;
-					}
-					else if( cChar=='s' )
-					{
-						/* show string */
-						pcArgument = va_arg((ptArgument), const char *);
-						uprintf_str(pcArgument, sizMinimumSize, cFillUpChar);
-						break;
-					}
-					else if( cChar=='c' )
-					{
-						/* show char */
-						iArgument = va_arg((ptArgument), int);
-						SERIAL_PUT((char)iArgument);
-						break;
-					}
-					else
-					{
-						SERIAL_PUT('*');
-						SERIAL_PUT('*');
-						SERIAL_PUT('*');
-						break;
-					}
-				} while( cChar!=0 );
-			}
-			else if( cChar=='\n' )
-			{
-				/* print linefeed */
-				switch(tLinefeedMode)
-				{
-				case CONSOLE_LINEFEED_LF:
-					break;
-
-				case CONSOLE_LINEFEED_CR:
-					cChar = '\r';
-					break;
-
-				default:
-				case CONSOLE_LINEFEED_CRLF:
-					SERIAL_PUT('\r');
-					break;
-				}
-				SERIAL_PUT(cChar);
-				SERIAL_FLUSH();
-			}
-			else
-			{
-				SERIAL_PUT(cChar);
-			}
+			/* replace the argument with the default string */
+			pcFmt = "NULL\n";
 		}
-	} while( cChar!=0 );
-
-	va_end(ptArgument);
+	
+		/* loop over all chars in the format string */
+		do
+		{
+			/* get the next char */
+			cChar = *(pcFmt++);
+	
+			/* is this the end of the format string? */
+			if( cChar!=0 )
+			{
+				/* no -> process the char */
+	
+				/* is this an escape char? */
+				if( cChar=='%' )
+				{
+					/* yes -> process the escape sequence */
+	
+					/* set default values for escape sequences */
+					cFillUpChar = ' ';
+					sizMinimumSize = 0;
+	
+					do
+					{
+						cChar = *(pcFmt++);
+						if( cChar=='%' )
+						{
+							/* it is just a '%' */
+							SERIAL_PUT(cChar);
+							break;
+						}
+						else if( cChar=='0' )
+						{
+							cFillUpChar = '0';
+						}
+						else if( cChar>'0' && cChar<='9' )
+						{
+							/* no digit found yet */
+							iDigitCnt = 1;
+							/* the number started one char before */
+							pcNumEnd = pcFmt;
+							/* count all digits */
+							do
+							{
+								cChar = *pcFmt;
+								if( cChar>='0' && cChar<='9' )
+								{
+									++pcFmt;
+								}
+								else
+								{
+									break;
+								}
+							} while(1);
+	
+							/* loop over all digits and add them to the */
+							uiValue = 0;
+							iDigitCnt = 0;
+							pcNumCnt = pcFmt;
+							while( pcNumCnt>=pcNumEnd )
+							{
+								--pcNumCnt;
+								uiCnt = (*pcNumCnt) & 0x0fU;
+								while( uiCnt>0 )
+								{
+									uiValue += aulUprintfDecTab[iDigitCnt];
+									--uiCnt;
+								}
+								++iDigitCnt;
+							}
+							sizMinimumSize = (size_t)uiValue;
+						}
+						else if( cChar=='x' )
+						{
+							/* show hexadecimal number */
+							ulArgument = va_arg((ptArgument), unsigned long);
+							uprintf_hex(ulArgument, sizMinimumSize, cFillUpChar);
+							break;
+						}
+						else if( cChar=='d' )
+						{
+							/* show decimal number */
+							ulArgument = va_arg((ptArgument), unsigned long);
+							uprintf_dec(ulArgument, sizMinimumSize, cFillUpChar);
+							break;
+						}
+						else if( cChar=='b' )
+						{
+							/* show binary number */
+							ulArgument = va_arg((ptArgument), unsigned long);
+							uprintf_bin(ulArgument, sizMinimumSize, cFillUpChar);
+							break;
+						}
+						else if( cChar=='s' )
+						{
+							/* show string */
+							pcArgument = va_arg((ptArgument), const char *);
+							uprintf_str(pcArgument, sizMinimumSize, cFillUpChar);
+							break;
+						}
+						else if( cChar=='c' )
+						{
+							/* show char */
+							iArgument = va_arg((ptArgument), int);
+							SERIAL_PUT((char)iArgument);
+							break;
+						}
+						else
+						{
+							SERIAL_PUT('*');
+							SERIAL_PUT('*');
+							SERIAL_PUT('*');
+							break;
+						}
+					} while( cChar!=0 );
+				}
+				else if( cChar=='\n' )
+				{
+					/* print linefeed */
+					switch(tLinefeedMode)
+					{
+					case CONSOLE_LINEFEED_LF:
+						break;
+	
+					case CONSOLE_LINEFEED_CR:
+						cChar = '\r';
+						break;
+	
+					default:
+					case CONSOLE_LINEFEED_CRLF:
+						SERIAL_PUT('\r');
+						break;
+					}
+					SERIAL_PUT(cChar);
+					SERIAL_FLUSH();
+				}
+				else
+				{
+					SERIAL_PUT(cChar);
+				}
+			}
+		} while( cChar!=0 );
+	
+		va_end(ptArgument);
+	}
 }
 
 
