@@ -41,6 +41,10 @@
 #       define HOST NX10
 #       define HOSTNAME "netx10"
 #       include "netx10/netx10_io_areas.h"
+#elif ASIC_TYP==6
+#       define HOST NX6
+#       define HOSTNAME "netx6"
+#       include "netx6/netx6_io_areas.h"
 #else
 #       error "no host define set!"
 #endif
