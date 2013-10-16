@@ -33,6 +33,11 @@ typedef struct
 	volatile unsigned long ulInt_phy_ctrl_enhanced_link_detection;
 } NX6_INT_PHY_AREA_T;
 
+typedef struct
+{
+	volatile unsigned long aulEnumRam[16];
+} NX6_USB_DEV_ENUM_RAM_T;
+
 
 NX6_ARM_BOOT_VECTOR_AREA_T * const ptArmBootVectorArea;
 
@@ -130,6 +135,8 @@ NX6_USB_DEV_CTRL_AREA_T * const ptUsbDevCtrlArea;
 NX6_USB_DEV_FIFO_CTRL_AREA_T * const ptUsbDevFifoCtrlArea;
 
 NX6_USB_DEV_FIFO_AREA_T * const ptUsbDevFifoArea;
+
+NX6_USB_DEV_ENUM_RAM_T * const ptUsbDevEnumRam;
 
 NX6_CANCTRL_AREA_T * const ptCanctrlArea;
 
