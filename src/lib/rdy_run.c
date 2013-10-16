@@ -150,7 +150,7 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	ulValue = ulSCLNew | ulSDANew;
 	ptNetxControlledGlobalRegisterBlock1Area->ulSta_netx = ulValue;
 }
-#elif ASIC_TYP==10 || ASIC_TYP==56
+#elif ASIC_TYP==10 || ASIC_TYP==56 || ASIC_TYP==6
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	HOSTDEF(ptAsicCtrlArea)

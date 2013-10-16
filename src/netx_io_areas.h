@@ -49,13 +49,25 @@
 #       error "no host define set!"
 #endif
 
-#define HOSTDEF(a)  CONCAT(HOST,DEF,a)
-#define HOSTADR(a)  CONCAT(Adr,HOST,a)
-#define HOSTADDR(a) CONCAT(Addr,HOST,a)
-#define HOSTMSK(a)  CONCAT(MSK,HOST,a)
-#define HOSTSRT(a)  CONCAT(SRT,HOST,a)
-#define HOSTADEF(a) CONCAT(HOST,a,AREA_T)
-#define HOSTDFLT(a) CONCAT(DFLT_VAL,HOST,a)
-#define HOSTBFW(a)  CONCAT(BFW,HOST,a)
+/* Only netX6 is special. The XPIC CPU uses global pointers more efficiently. */
+#if ASIC_TYP==6
+#       define HOSTDEF(a)
+#       define HOSTADR(a)  CONCAT(Adr,HOST,a)
+#       define HOSTADDR(a) CONCAT(Addr,HOST,a)
+#       define HOSTMSK(a)  CONCAT(MSK,HOST,a)
+#       define HOSTSRT(a)  CONCAT(SRT,HOST,a)
+#       define HOSTADEF(a) CONCAT(HOST,a,AREA_T)
+#       define HOSTDFLT(a) CONCAT(DFLT_VAL,HOST,a)
+#       define HOSTBFW(a)  CONCAT(BFW,HOST,a)
+#else
+#       define HOSTDEF(a)  CONCAT(HOST,DEF,a)
+#       define HOSTADR(a)  CONCAT(Adr,HOST,a)
+#       define HOSTADDR(a) CONCAT(Addr,HOST,a)
+#       define HOSTMSK(a)  CONCAT(MSK,HOST,a)
+#       define HOSTSRT(a)  CONCAT(SRT,HOST,a)
+#       define HOSTADEF(a) CONCAT(HOST,a,AREA_T)
+#       define HOSTDFLT(a) CONCAT(DFLT_VAL,HOST,a)
+#       define HOSTBFW(a)  CONCAT(BFW,HOST,a)
+#endif
 
 #endif  /* __NETX_IO_AREAS_H__ */

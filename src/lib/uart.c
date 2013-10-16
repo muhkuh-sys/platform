@@ -28,7 +28,7 @@
 typedef struct
 {
 	HOSTADEF(UART) * const ptArea;
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56
+#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
 	MMIO_CFG_T tMmioRx;
 	MMIO_CFG_T tMmioTx;
 	MMIO_CFG_T tMmioRts;
@@ -103,6 +103,30 @@ static const UART_INSTANCE_T atUartInstances[] =
 		MMIO_CFG_uart2_rtsn,
 		MMIO_CFG_uart2_ctsn
 	}
+#elif ASIC_TYP==6
+	{
+		(NX6_UART_AREA_T * const)Addr_NX6_uart0,
+		MMIO_CFG_uart0_rxd,
+		MMIO_CFG_uart0_txd,
+		MMIO_CFG_uart0_rtsn,
+		MMIO_CFG_uart0_ctsn
+	},
+
+	{
+		(NX6_UART_AREA_T * const)Addr_NX6_uart1,
+		MMIO_CFG_uart1_rxd,
+		MMIO_CFG_uart1_txd,
+		MMIO_CFG_uart1_rtsn,
+		MMIO_CFG_uart1_ctsn
+	},
+
+	{
+		(NX6_UART_AREA_T * const)Addr_NX6_uart2,
+		MMIO_CFG_uart2_rxd,
+		MMIO_CFG_uart2_txd,
+		MMIO_CFG_uart2_rtsn,
+		MMIO_CFG_uart2_ctsn
+	}
 #elif ASIC_TYP==500 || ASIC_TYP==100
 	{
 		(NX500_UART_AREA_T * const)Addr_NX500_uart0
@@ -124,7 +148,7 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 	unsigned long ulValue;
 	HOSTADEF(UART) *ptUartArea;
 	int iResult;
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56
+#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
 	HOSTDEF(ptAsicCtrlArea)
 	HOSTDEF(ptMmioCtrlArea)
 #elif ASIC_TYP==100 || ASIC_TYP==500
@@ -166,7 +190,7 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 		/* enable the uart */
 		ptUartArea->ulUartcr = HOSTMSK(uartcr_uartEN);
 
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56
+#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
 		/* setup the MMIO pins */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_rx_mmio] = atUartInstances[uiUartUnit].tMmioRx;
@@ -176,7 +200,7 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 		ulValue = HOSTMSK(uartdrvout_DRVTX);
 		ptUartArea->ulUartdrvout = ulValue;
 
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56
+#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
 		/* setup the MMIO pins */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_tx_mmio] = atUartInstances[uiUartUnit].tMmioTx;
