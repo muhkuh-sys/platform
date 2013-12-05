@@ -12,10 +12,20 @@
 
 #include "netx4000_regdef.h"
 
-#define NX56_DEF_ptArmBootVectorArea NX56_ARM_BOOT_VECTOR_AREA_T * const ptArmBootVectorArea = (NX56_ARM_BOOT_VECTOR_AREA_T * const)Addr_NX56_arm_boot_vector;
+
+typedef struct
+{
+	volatile unsigned long  ulSdram_general_ctrl;
+	volatile unsigned long  ulSdram_timing_ctrl;
+	volatile unsigned long  ulSdram_mr;
+} NX4000_SDRAM_AREA_T;
+
+
+#define NX4000_DEF_ptHifSdramArea NX4000_SDRAM_AREA_T * const ptHifSdramArea = (NX4000_SDRAM_AREA_T * const)Addr_NX4000_hif_sdram;
+#define NX4000_DEF_ptMemSdramArea NX4000_SDRAM_AREA_T * const ptMemSdramArea = (NX4000_SDRAM_AREA_T * const)Addr_NX4000_mem_sdram;
 
 #define NX4000_DEF_ptXpecArea NX4000_XPEC_AREA_T * const ptXpecArea = (NX4000_XPEC_AREA_T * const);
-
+/*
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_rpu0_ram;
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_tpu0_ram;
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_rpu1_ram;
@@ -24,7 +34,7 @@
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_tpu0_ram;
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_rpu1_ram;
 #define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_tpu1_ram;
-
+*/
 #define NX4000_DEF_ptXc0PointerFifoArea NX4000_POINTER_FIFO_AREA_T * const ptXc0PointerFifoArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc0_pointer_fifo;
 #define NX4000_DEF_ptXc1PointerFifoArea NX4000_POINTER_FIFO_AREA_T * const ptXc1PointerFifoArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc1_pointer_fifo;
 #define NX4000_DEF_ptXc0PointerFifoMotionArea NX4000_POINTER_FIFO_AREA_T * const ptXc0PointerFifoMotionArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc0_pointer_fifo_motion;
