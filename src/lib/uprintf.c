@@ -328,7 +328,7 @@ void uprintf(const char *pcFmt, ...)
 							uprintf_hex(ulArgument, sizMinimumSize, cFillUpChar);
 							break;
 						}
-						else if( cChar=='d' )
+						else if( cChar=='d' || cChar=='u' )
 						{
 							/* show decimal number */
 							ulArgument = va_arg((ptArgument), unsigned long);
