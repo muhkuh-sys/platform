@@ -30325,17 +30325,15 @@ typedef struct NX500_XMAC_AREA_Ttag
 
 typedef struct NX500_POINTER_FIFO_AREA_Ttag
 {
-  volatile unsigned long  ulPfifo_base;
-  volatile unsigned long aulReserved0[31];
-  volatile unsigned long  ulPfifo_border_base;
-  volatile unsigned long aulReserved1[31];
+  volatile unsigned long aulPfifo[32];
+  volatile unsigned long aulPfifo_border[32];
   volatile unsigned long  ulPfifo_reset;
   volatile unsigned long  ulPfifo_full;
   volatile unsigned long  ulPfifo_empty;
   volatile unsigned long  ulPfifo_overflow;
   volatile unsigned long  ulPfifo_underrun;
   volatile unsigned long aulReserved2[27];
-  volatile unsigned long  ulPfifo_fill_level_base;
+  volatile unsigned long aulPfifo_fill_level[32];
 } NX500_POINTER_FIFO_AREA_T;
 
 typedef struct NX500_XPEC_IRQ_REGISTERS_AREA_Ttag
@@ -30386,7 +30384,7 @@ typedef struct NX500_XPEC_AREA_Ttag
   volatile unsigned long aulUrtx[4];
   volatile unsigned long  ulXpu_hold_pc;
   volatile unsigned long aulReserved0[1983];
-  volatile unsigned long  ulRam_start;
+  volatile unsigned long aulRam[2048];
 } NX500_XPEC_AREA_T;
 
 typedef struct NX500_XC_EXTBUS_SEL_AREA_Ttag
