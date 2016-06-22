@@ -45,6 +45,10 @@
 #       define HOST NX6
 #       define HOSTNAME "netx6"
 #       include "netx6/netx6_regdef.s"
+#elif ASIC_TYP==4000
+#       define HOST NX4000
+#       define HOSTNAME "netx4000"
+#       include "netx4000/netx4000_regdef.S"
 #else
 #       error "no host define set!"
 #endif
