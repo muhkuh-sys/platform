@@ -13,16 +13,38 @@
 #include "netx4000_regdef.h"
 
 
-typedef struct
+typedef struct NX4000_S_RAP_UART_AREA_Ttag
 {
-	volatile unsigned long  ulSdram_general_ctrl;
-	volatile unsigned long  ulSdram_timing_ctrl;
-	volatile unsigned long  ulSdram_mr;
-} NX4000_SDRAM_AREA_T;
+	volatile unsigned short  usRAP_UART_UARTDR __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTRSR __attribute__ ((aligned (4)));
+	volatile unsigned long  aulReserved008[4];
+	volatile unsigned short  usRAP_UART_UARTFR __attribute__ ((aligned (4)));
+	volatile unsigned long  aulReserved01c[1];
+	volatile unsigned short  usRAP_UART_UARTILPR __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTIBRD __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTFBRD __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTLCR_H __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTCR __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTIFLS __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTIMSC __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTRIS __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTMIS __attribute__ ((aligned (4)));
+	volatile unsigned short  uslAP_UART_UARTICR __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTDMACR __attribute__ ((aligned (4)));
+	volatile unsigned long  aulReserved04c[13];
+	volatile unsigned short  usRAP_UART_UARTTCR __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTITIP __attribute__ ((aligned (4)));
+	volatile unsigned short  uslAP_UART_UARTITOP __attribute__ ((aligned (4)));
+	volatile unsigned short  usRAP_UART_UARTTDR __attribute__ ((aligned (4)));
+	volatile unsigned long  aulReserved090[980];
+	volatile unsigned long  aulRAP_UART_UARTPeriphID[4];
+	volatile unsigned long  aulRAP_UART_UARTPcellID[4];
+} NX4000_S_RAP_UART_AREA_T;
 
 
-#define NX4000_DEF_ptHifSdramArea NX4000_SDRAM_AREA_T * const ptHifSdramArea = (NX4000_SDRAM_AREA_T * const)Addr_NX4000_hif_sdram;
-#define NX4000_DEF_ptMemSdramArea NX4000_SDRAM_AREA_T * const ptMemSdramArea = (NX4000_SDRAM_AREA_T * const)Addr_NX4000_mem_sdram;
+
+#define NX4000_DEF_ptHifSdramArea NX4000_EXT_SDRAM_CTRL_AREA_T * const ptHifSdramArea = (NX4000_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000_hif_sdram_ctrl;
+#define NX4000_DEF_ptMemSdramArea NX4000_EXT_SDRAM_CTRL_AREA_T * const ptMemSdramArea = (NX4000_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000_ext_sdram_ctrl;
 
 #define NX4000_DEF_ptXpecArea NX4000_XPEC_AREA_T * const ptXpecArea = (NX4000_XPEC_AREA_T * const);
 /*
@@ -111,6 +133,8 @@ typedef struct
 #define NX4000_DEF_ptLvds2mii1Area NX4000_LVDS2MII_AREA_T * const ptLvds2mii1Area = (NX4000_LVDS2MII_AREA_T * const)Addr_NX4000_lvds2mii1;
 
 #define NX4000_DEF_ptDpmArea NX4000_DPM_AREA_T * const ptDpmArea = (NX4000_DPM_AREA_T * const)Addr_NX4000_dpm;
+#define NX4000_DEF_ptIdpm0Area NX4000_IDPM_AREA_T * const ptIdpm0Area = (NX4000_IDPM_AREA_T * const)Addr_NX4000_idpm0;
+#define NX4000_DEF_ptIdpm1Area NX4000_IDPM_AREA_T * const ptIdpm1Area = (NX4000_IDPM_AREA_T * const)Addr_NX4000_idpm1;
 
 #define NX4000_DEF_ptCryptArea NX4000_CRYPT_AREA_T * const ptCryptArea = (NX4000_CRYPT_AREA_T * const)Addr_NX4000_crypt;
 
@@ -132,7 +156,10 @@ typedef struct
 
 #define NX4000_DEF_ptArmTimerArea NX4000_ARM_TIMER_AREA_T * const ptArmTimerArea = (NX4000_ARM_TIMER_AREA_T * const)Addr_NX4000_arm_timer;
 
-#define NX4000_DEF_ptXpicArea NX4000_XPIC_AREA_T * const ptXpicArea = (NX4000_XPIC_AREA_T * const);
+#define NX4000_DEF_ptXpic0Area NX4000_XPIC_AREA_T * const ptXpic0Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic0_regs;
+#define NX4000_DEF_ptXpic1Area NX4000_XPIC_AREA_T * const ptXpic1Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic1_regs;
+#define NX4000_DEF_ptXpic2Area NX4000_XPIC_AREA_T * const ptXpic2Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic2_regs;
+#define NX4000_DEF_ptXpic3Area NX4000_XPIC_AREA_T * const ptXpic3Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic3_regs;
 
 #define NX4000_DEF_ptXpic0DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic0DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic0_debug;
 #define NX4000_DEF_ptXpic1DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic1DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic1_debug;
@@ -165,7 +192,7 @@ typedef struct
 #define NX4000_DEF_ptIoLinkIrqArea NX4000_IO_LINK_IRQ_AREA_T * const ptIoLinkIrqArea = (NX4000_IO_LINK_IRQ_AREA_T * const)Addr_NX4000_io_link_irq;
 
 #define NX4000_DEF_ptSpiArea NX4000_SPI_AREA_T * const ptSpiArea = (NX4000_SPI_AREA_T * const)Addr_NX4000_spi;
-#define NX4000_DEF_ptSpiMotionArea NX4000_SPI_AREA_T * const ptSpiMotionArea = (NX4000_SPI_AREA_T * const)Addr_NX4000_spi_motion;
+#define NX4000_DEF_ptSpiXpic3Area NX4000_SPI_AREA_T * const ptSpiXpic3Area = (NX4000_SPI_AREA_T * const)Addr_NX4000_spi_xpic3;
 
 #define NX4000_DEF_ptMpwmArea NX4000_MPWM_AREA_T * const ptMpwmArea = (NX4000_MPWM_AREA_T * const)Addr_NX4000_mpwm;
 
@@ -204,6 +231,25 @@ typedef struct
 #define NX4000_DEF_ptXcExtbusSelArea NX4000_XC_EXTBUS_SEL_AREA_T * const ptXcExtbusSelArea = (NX4000_XC_EXTBUS_SEL_AREA_T * const);
 #define NX4000_DEF_ptExtmemPioCtrlArea NX4000_EXTMEM_PIO_CTRL_AREA_T * const ptExtmemPioCtrlArea = (NX4000_EXTMEM_PIO_CTRL_AREA_T * const);
 
+
+
+/* RAP part */
+
+#define NX4000_DEF_ptPL353Area NX4000_PL353_AREA_T * const ptPL353Area = (NX4000_PL353_AREA_T * const)Addr_NX4000_PL353;
+#define NX4000_DEF_ptSQI0Area NX4000_SQI_AREA_T * const ptSQI0Area = (NX4000_SQI_AREA_T * const)Addr_NX4000_SQI0;
+#define NX4000_DEF_ptSQI1Area NX4000_SQI_AREA_T * const ptSQI1Area = (NX4000_SQI_AREA_T * const)Addr_NX4000_SQI1;
+#define NX4000_DEF_ptPCIEArea NX4000_PCIE_AREA_T * const ptPCIEArea = (NX4000_PCIE_AREA_T * const)Addr_NX4000_PCIE;
+
+#define NX4000_DEF_ptRAPI2C0Area NX4000_I2C_AREA_T * const ptRAPI2C0Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C0;
+#define NX4000_DEF_ptRAPI2C1Area NX4000_I2C_AREA_T * const ptRAPI2C1Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C1;
+#define NX4000_DEF_ptRAPI2C2Area NX4000_I2C_AREA_T * const ptRAPI2C2Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C2;
+#define NX4000_DEF_ptRAPI2C3Area NX4000_I2C_AREA_T * const ptRAPI2C3Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C3;
+#define NX4000_DEF_ptRAPI2C4Area NX4000_I2C_AREA_T * const ptRAPI2C4Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C4;
+#define NX4000_DEF_ptRAPI2C5Area NX4000_I2C_AREA_T * const ptRAPI2C5Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C5;
+
+#define NX4000_DEF_ptRAPSysctrlArea NX4000_RAP_SYSCTRL_AREA_T * const ptRAPSysctrlArea = (NX4000_RAP_SYSCTRL_AREA_T * const)Addr_NX4000_RAP_SYSCTRL;
+
+#define NX4000_DEF_ptRAPSDIOArea NX4000_SDIO_AREA_T * const ptRAPSDIOArea = (NX4000_SDIO_AREA_T * const)Addr_NX4000_SDIO;
 
 
 /* Howto generate:
@@ -309,85 +355,89 @@ typedef enum
 	MMIO_CFG_UART2_RTSN            = 0x55,
 	MMIO_CFG_UART2_RXD             = 0x56,
 	MMIO_CFG_UART2_TXD             = 0x57,
-	MMIO_CFG_CAN_RX                = 0x58,
-	MMIO_CFG_CAN_TX                = 0x59,
-	MMIO_CFG_PWM_FAILURE_N         = 0x5a,
-	MMIO_CFG_POS_ENC0_A            = 0x5b,
-	MMIO_CFG_POS_ENC0_B            = 0x5c,
-	MMIO_CFG_POS_ENC0_N            = 0x5d,
-	MMIO_CFG_POS_ENC1_A            = 0x5e,
-	MMIO_CFG_POS_ENC1_B            = 0x5f,
-	MMIO_CFG_POS_ENC1_N            = 0x60,
-	MMIO_CFG_POS_MP0               = 0x61,
-	MMIO_CFG_POS_MP1               = 0x62,
-	MMIO_CFG_XC0_SAMPLE0           = 0x63,
-	MMIO_CFG_XC0_SAMPLE1           = 0x64,
-	MMIO_CFG_XC0_TRIGGER0          = 0x65,
-	MMIO_CFG_XC0_TRIGGER1          = 0x66,
-	MMIO_CFG_XC1_SAMPLE0           = 0x67,
-	MMIO_CFG_XC1_SAMPLE1           = 0x68,
-	MMIO_CFG_XC1_TRIGGER0          = 0x69,
-	MMIO_CFG_XC1_TRIGGER1          = 0x6a,
-	MMIO_CFG_MII_MDC               = 0x6b,
-	MMIO_CFG_MII_MDIO              = 0x6c,
-	MMIO_CFG_XM10_MII_MDC          = 0x6d,
-	MMIO_CFG_XM10_MII_MDIO         = 0x6e,
-	MMIO_CFG_XM11_MII_MDC          = 0x6f,
-	MMIO_CFG_XM11_MII_MDIO         = 0x70,
-	MMIO_CFG_XM10_MII_IRQ          = 0x71,
-	MMIO_CFG_XM11_MII_IRQ          = 0x72,
-	MMIO_CFG_PHY0_LED_PHY_CTRL_LNK = 0x73,
-	MMIO_CFG_PHY0_LED_PHY_CTRL_ACT = 0x74,
-	MMIO_CFG_PHY0_LED_SPD          = 0x75,
-	MMIO_CFG_PHY0_LED_DPX          = 0x76,
-	MMIO_CFG_PHY1_LED_PHY_CTRL_LNK = 0x77,
-	MMIO_CFG_PHY1_LED_PHY_CTRL_ACT = 0x78,
-	MMIO_CFG_PHY1_LED_SPD          = 0x79,
-	MMIO_CFG_PHY1_LED_DPX          = 0x7a,
-	MMIO_CFG_PHY2_LED_PHY_CTRL_LNK = 0x7b,
-	MMIO_CFG_PHY2_LED_PHY_CTRL_ACT = 0x7c,
-	MMIO_CFG_PHY2_LED_LNK          = 0x7d,
-	MMIO_CFG_PHY2_LED_ACT          = 0x7e,
-	MMIO_CFG_PHY2_LED_SPD          = 0x7f,
-	MMIO_CFG_PHY2_LED_DPX          = 0x80,
-	MMIO_CFG_PHY3_LED_PHY_CTRL_LNK = 0x81,
-	MMIO_CFG_PHY3_LED_PHY_CTRL_ACT = 0x82,
-	MMIO_CFG_PHY3_LED_LNK          = 0x83,
-	MMIO_CFG_PHY3_LED_ACT          = 0x84,
-	MMIO_CFG_PHY3_LED_SPD          = 0x85,
-	MMIO_CFG_PHY3_LED_DPX          = 0x86,
-	MMIO_CFG_XM00_IO0              = 0x87,
-	MMIO_CFG_XM00_IO1              = 0x88,
-	MMIO_CFG_XM00_IO2              = 0x89,
-	MMIO_CFG_XM00_IO3              = 0x8a,
-	MMIO_CFG_XM00_IO4              = 0x8b,
-	MMIO_CFG_XM00_IO5              = 0x8c,
-	MMIO_CFG_XM00_RX               = 0x8d,
-	MMIO_CFG_XM00_TX_OUT           = 0x8e,
-	MMIO_CFG_XM01_IO0              = 0x8f,
-	MMIO_CFG_XM01_IO1              = 0x90,
-	MMIO_CFG_XM01_IO2              = 0x91,
-	MMIO_CFG_XM01_IO3              = 0x92,
-	MMIO_CFG_XM01_IO4              = 0x93,
-	MMIO_CFG_XM01_IO5              = 0x94,
-	MMIO_CFG_XM01_RX               = 0x95,
-	MMIO_CFG_XM01_TX_OUT           = 0x96,
-	MMIO_CFG_XM10_IO0              = 0x97,
-	MMIO_CFG_XM10_IO1              = 0x98,
-	MMIO_CFG_XM10_IO2              = 0x99,
-	MMIO_CFG_XM10_IO3              = 0x9a,
-	MMIO_CFG_XM10_IO4              = 0x9b,
-	MMIO_CFG_XM10_IO5              = 0x9c,
-	MMIO_CFG_XM10_RX               = 0x9d,
-	MMIO_CFG_XM10_TX_OUT           = 0x9e,
-	MMIO_CFG_XM11_IO0              = 0x9f,
-	MMIO_CFG_XM11_IO1              = 0xa0,
-	MMIO_CFG_XM11_IO2              = 0xa1,
-	MMIO_CFG_XM11_IO3              = 0xa2,
-	MMIO_CFG_XM11_IO4              = 0xa3,
-	MMIO_CFG_XM11_IO5              = 0xa4,
-	MMIO_CFG_XM11_RX               = 0xa5,
-	MMIO_CFG_XM11_TX_OUT           = 0xa6,
+	MMIO_CFG_UART_XPIC3_CTSN       = 0x58,
+	MMIO_CFG_UART_XPIC3_RTSN       = 0x59,
+	MMIO_CFG_UART_XPIC3_RXD        = 0x5a,
+	MMIO_CFG_UART_XPIC3_TXD        = 0x5b,
+	MMIO_CFG_CAN_RX                = 0x5c,
+	MMIO_CFG_CAN_TX                = 0x5d,
+	MMIO_CFG_PWM_FAILURE_N         = 0x5e,
+	MMIO_CFG_POS_ENC0_A            = 0x5f,
+	MMIO_CFG_POS_ENC0_B            = 0x60,
+	MMIO_CFG_POS_ENC0_N            = 0x61,
+	MMIO_CFG_POS_ENC1_A            = 0x62,
+	MMIO_CFG_POS_ENC1_B            = 0x63,
+	MMIO_CFG_POS_ENC1_N            = 0x64,
+	MMIO_CFG_POS_MP0               = 0x65,
+	MMIO_CFG_POS_MP1               = 0x66,
+	MMIO_CFG_XC0_SAMPLE0           = 0x67,
+	MMIO_CFG_XC0_SAMPLE1           = 0x68,
+	MMIO_CFG_XC0_TRIGGER0          = 0x69,
+	MMIO_CFG_XC0_TRIGGER1          = 0x6a,
+	MMIO_CFG_XC1_SAMPLE0           = 0x6b,
+	MMIO_CFG_XC1_SAMPLE1           = 0x6c,
+	MMIO_CFG_XC1_TRIGGER0          = 0x6d,
+	MMIO_CFG_XC1_TRIGGER1          = 0x6e,
+	MMIO_CFG_MII_MDC               = 0x6f,
+	MMIO_CFG_MII_MDIO              = 0x70,
+	MMIO_CFG_XM10_MII_MDC          = 0x71,
+	MMIO_CFG_XM10_MII_MDIO         = 0x72,
+	MMIO_CFG_XM11_MII_MDC          = 0x73,
+	MMIO_CFG_XM11_MII_MDIO         = 0x74,
+	MMIO_CFG_XM10_MII_IRQ          = 0x75,
+	MMIO_CFG_XM11_MII_IRQ          = 0x76,
+	MMIO_CFG_PHY0_LED_PHY_CTRL_LNK = 0x77,
+	MMIO_CFG_PHY0_LED_PHY_CTRL_ACT = 0x78,
+	MMIO_CFG_PHY0_LED_SPD          = 0x79,
+	MMIO_CFG_PHY0_LED_DPX          = 0x7a,
+	MMIO_CFG_PHY1_LED_PHY_CTRL_LNK = 0x7b,
+	MMIO_CFG_PHY1_LED_PHY_CTRL_ACT = 0x7c,
+	MMIO_CFG_PHY1_LED_SPD          = 0x7d,
+	MMIO_CFG_PHY1_LED_DPX          = 0x7e,
+	MMIO_CFG_PHY2_LED_PHY_CTRL_LNK = 0x7f,
+	MMIO_CFG_PHY2_LED_PHY_CTRL_ACT = 0x80,
+	MMIO_CFG_PHY2_LED_LNK          = 0x81,
+	MMIO_CFG_PHY2_LED_ACT          = 0x82,
+	MMIO_CFG_PHY2_LED_SPD          = 0x83,
+	MMIO_CFG_PHY2_LED_DPX          = 0x84,
+	MMIO_CFG_PHY3_LED_PHY_CTRL_LNK = 0x85,
+	MMIO_CFG_PHY3_LED_PHY_CTRL_ACT = 0x86,
+	MMIO_CFG_PHY3_LED_LNK          = 0x87,
+	MMIO_CFG_PHY3_LED_ACT          = 0x88,
+	MMIO_CFG_PHY3_LED_SPD          = 0x89,
+	MMIO_CFG_PHY3_LED_DPX          = 0x8a,
+	MMIO_CFG_XM00_IO0              = 0x8b,
+	MMIO_CFG_XM00_IO1              = 0x8c,
+	MMIO_CFG_XM00_IO2              = 0x8d,
+	MMIO_CFG_XM00_IO3              = 0x8e,
+	MMIO_CFG_XM00_IO4              = 0x8f,
+	MMIO_CFG_XM00_IO5              = 0x90,
+	MMIO_CFG_XM00_RX               = 0x91,
+	MMIO_CFG_XM00_TX_OUT           = 0x92,
+	MMIO_CFG_XM01_IO0              = 0x93,
+	MMIO_CFG_XM01_IO1              = 0x94,
+	MMIO_CFG_XM01_IO2              = 0x95,
+	MMIO_CFG_XM01_IO3              = 0x96,
+	MMIO_CFG_XM01_IO4              = 0x97,
+	MMIO_CFG_XM01_IO5              = 0x98,
+	MMIO_CFG_XM01_RX               = 0x99,
+	MMIO_CFG_XM01_TX_OUT           = 0x9a,
+	MMIO_CFG_XM10_IO0              = 0x9b,
+	MMIO_CFG_XM10_IO1              = 0x9c,
+	MMIO_CFG_XM10_IO2              = 0x9d,
+	MMIO_CFG_XM10_IO3              = 0x9e,
+	MMIO_CFG_XM10_IO4              = 0x9f,
+	MMIO_CFG_XM10_IO5              = 0xa0,
+	MMIO_CFG_XM10_RX               = 0xa1,
+	MMIO_CFG_XM10_TX_OUT           = 0xa2,
+	MMIO_CFG_XM11_IO0              = 0xa3,
+	MMIO_CFG_XM11_IO1              = 0xa4,
+	MMIO_CFG_XM11_IO2              = 0xa5,
+	MMIO_CFG_XM11_IO3              = 0xa6,
+	MMIO_CFG_XM11_IO4              = 0xa7,
+	MMIO_CFG_XM11_IO5              = 0xa8,
+	MMIO_CFG_XM11_RX               = 0xa9,
+	MMIO_CFG_XM11_TX_OUT           = 0xaa,
 	MMIO_CFG_PIO                   = 0xff
 } MMIO_CFG_T;
 
