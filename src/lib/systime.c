@@ -21,42 +21,69 @@
 
 #include "systime.h"
 
-#define DEV_FREQUENCY 100000000
+#if ASIC_TYP==4000
+#       define DEV_FREQUENCY 100000000
+#else
+#       define DEV_FREQUENCY 400000000
+#endif
 
 
 void systime_init(void)
 {
-	HOSTDEF(ptSystimeArea)
+#if ASIC_TYP==4000
+	HOSTDEF(ptSystimeUcArea);
+
+	/* Set the systime border to 1ms. */
+	ptSystimeUcArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
+	ptSystimeUcArea->ulSystime_count_value = 10U<<28U;
+#else
+	HOSTDEF(ptSystimeArea);
 
 
-	/* set systime border to 1ms */
+	/* Set the systime border to 1ms. */
 	ptSystimeArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeArea->ulSystime_count_value = 10U<<28U;
 
-#if ASIC_TYP==50
-	/* disable systime compare */
+#       if ASIC_TYP==50
+	/* Disable systime compare. */
 	ptSystimeArea->ulSystime_s_compare_enable = 0;
 
-	/* reset any pending systime irqs */
+	/* Reset any pending systime IRQs. */
 	ptSystimeArea->ulSystime_s_compare_irq = 1;
+#       endif
 #endif
 }
 
 
+
 unsigned long systime_get_ms(void)
 {
+#if ASIC_TYP==4000
+	HOSTDEF(ptSystimeUcArea);
+
+	return ptSystimeUcArea->ulSystime_s;
+#else
 	HOSTDEF(ptSystimeArea)
 
 
 	return ptSystimeArea->ulSystime_s;
+#endif
 }
 
 
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 {
+#if ASIC_TYP==4000
+	HOSTDEF(ptSystimeUcArea)
+	unsigned long ulDiff;
+
+
+	/* get the time difference */
+	ulDiff = ptSystimeUcArea->ulSystime_s - ulStart;
+
+	return (ulDiff>=ulDuration);
+#else
 	HOSTDEF(ptSystimeArea)
-
-
 	unsigned long ulDiff;
 
 
@@ -64,5 +91,6 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 	ulDiff = ptSystimeArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
+#endif
 }
 

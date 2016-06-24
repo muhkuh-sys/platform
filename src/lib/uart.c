@@ -28,7 +28,7 @@
 typedef struct
 {
 	HOSTADEF(UART) * const ptArea;
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
 	MMIO_CFG_T tMmioRx;
 	MMIO_CFG_T tMmioTx;
 	MMIO_CFG_T tMmioRts;
@@ -139,6 +139,30 @@ static const UART_INSTANCE_T atUartInstances[] =
 	{
 		(NX500_UART_AREA_T * const)Addr_NX500_uart2
 	}
+#elif ASIC_TYP==4000
+	{
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart0,
+		MMIO_CFG_UART0_RXD,
+		MMIO_CFG_UART0_TXD,
+		MMIO_CFG_UART0_RTSN,
+		MMIO_CFG_UART0_CTSN
+	},
+
+	{
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart1,
+		MMIO_CFG_UART1_RXD,
+		MMIO_CFG_UART1_TXD,
+		MMIO_CFG_UART1_RTSN,
+		MMIO_CFG_UART1_CTSN
+	},
+
+	{
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart2,
+		MMIO_CFG_UART2_RXD,
+		MMIO_CFG_UART2_TXD,
+		MMIO_CFG_UART2_RTSN,
+		MMIO_CFG_UART2_CTSN
+	}
 #endif
 };
 
@@ -148,60 +172,60 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 	unsigned long ulValue;
 	HOSTADEF(UART) *ptUartArea;
 	int iResult;
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
-	HOSTDEF(ptAsicCtrlArea)
-	HOSTDEF(ptMmioCtrlArea)
+#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+	HOSTDEF(ptAsicCtrlArea);
+	HOSTDEF(ptMmioCtrlArea);
 #elif ASIC_TYP==100 || ASIC_TYP==500
-	HOSTDEF(ptGpioArea)
+	HOSTDEF(ptGpioArea);
 	unsigned int uiIdx;
 #endif
 
 
-	/* expect error */
+	/* Be pessimistic... */
 	iResult = -1;
 
 	if( uiUartUnit<ARRAYSIZE(atUartInstances) )
 	{
-		/* get the uart area */
+		/* Get the UART area. */
 		ptUartArea = atUartInstances[uiUartUnit].ptArea;
 
-		/* disable uart */
+		/* Disable the UART. */
 		ptUartArea->ulUartcr = 0;
 
-		/* use baudrate mode 2 */
+		/* Use baud rate mode 2. */
 		ptUartArea->ulUartcr_2 = HOSTMSK(uartcr_2_Baud_Rate_Mode);
 
-		/* set the baudrate */
+		/* Set the baud rate. */
 		ulValue = ptCfg->us_baud_div;
 		ptUartArea->ulUartlcr_l = ulValue & 0xffU;
 		ptUartArea->ulUartlcr_m = ulValue >> 8;
 
-		/* set uart to 8N1, fifo enabled */
+		/* Set the UART to 8N1, FIFO enabled. */
 		ulValue  = HOSTMSK(uartlcr_h_WLEN);
 		ulValue |= HOSTMSK(uartlcr_h_FEN);
 		ptUartArea->ulUartlcr_h = ulValue;
 
-		/* disable all drivers */
+		/* Disable all drivers. */
 		ptUartArea->ulUartdrvout = ulValue;
 
-		/* disable rts/cts mode */
+		/* Disable RTS/CTS mode. */
 		ptUartArea->ulUartrts = 0;
 
-		/* enable the uart */
+		/* Enable the UART. */
 		ptUartArea->ulUartcr = HOSTMSK(uartcr_uartEN);
 
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
-		/* setup the MMIO pins */
+#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+		/* Setup the MMIO pins. */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_rx_mmio] = atUartInstances[uiUartUnit].tMmioRx;
 #endif
 
-		/* enable the drivers */
+		/* Enable the drivers. */
 		ulValue = HOSTMSK(uartdrvout_DRVTX);
 		ptUartArea->ulUartdrvout = ulValue;
 
-#if ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
-		/* setup the MMIO pins */
+#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+		/* Setup the MMIO pins. */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_tx_mmio] = atUartInstances[uiUartUnit].tMmioTx;
 #elif ASIC_TYP==100 || ASIC_TYP==500
