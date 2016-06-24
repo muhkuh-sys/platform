@@ -108,8 +108,8 @@ typedef struct NX4000_S_RAP_UART_AREA_Ttag
 
 #define NX4000_DEF_ptSystime0Area NX4000_SYSTIME_AREA_T * const ptSystime0Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime0;
 #define NX4000_DEF_ptSystime1Area NX4000_SYSTIME_AREA_T * const ptSystime1Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime1;
-#define NX4000_DEF_ptSystimeUc0Area NX4000_SYSTIME_AREA_T * const ptSystimeUc0Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_uc0;
-#define NX4000_DEF_ptSystimeUc1Area NX4000_SYSTIME_AREA_T * const ptSystimeUc1Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_uc1;
+#define NX4000_DEF_ptSystimeUcArea NX4000_SYSTIME_AREA_T * const ptSystimeUcArea = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_uc;
+#define NX4000_DEF_ptSystimeRapArea NX4000_SYSTIME_AREA_T * const ptSystimeRapArea = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_rap;
 
 #define NX4000_DEF_ptWatchdogArea NX4000_WATCHDOG_AREA_T * const ptWatchdogArea = (NX4000_WATCHDOG_AREA_T * const)Addr_NX4000_watchdog;
 
