@@ -23,6 +23,15 @@ sources_netx6 = """
 # Build the library for all targets.
 #
 
+if 4000 in PLATFORM_LIB_CFG_BUILDS:
+	Import('env_netx4000_default')
+	env_netx4000 = env_netx4000_default.Clone()
+	env_netx4000.Append(CPPPATH = ['src', 'src/lib'])
+	env_netx4000.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	src_netx4000 = env_netx4000.SetBuildPath('targets/netx4000', 'src', sources)
+	platform_lib_netx4000 = env_netx4000.StaticLibrary('targets/platform_netx4000', src_netx4000)
+	Export('platform_lib_netx4000')
+
 if 500 in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx500_default')
 	env_netx500 = env_netx500_default.Clone()
