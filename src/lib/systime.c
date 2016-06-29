@@ -21,12 +21,11 @@
 
 #include "systime.h"
 
-#if ASIC_TYP==4000
-#       define DEV_FREQUENCY 100000000
-#else
-#       define DEV_FREQUENCY 400000000
-#endif
+/* ASIC */
+#define DEV_FREQUENCY 100000000
 
+/* For netx 4000 FPGA */
+//#define DEV_FREQUENCY 10000000
 
 void systime_init(void)
 {
