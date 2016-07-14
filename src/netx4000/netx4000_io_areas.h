@@ -231,6 +231,8 @@ typedef struct NX4000_S_RAP_UART_AREA_Ttag
 #define NX4000_DEF_ptXcExtbusSelArea NX4000_XC_EXTBUS_SEL_AREA_T * const ptXcExtbusSelArea = (NX4000_XC_EXTBUS_SEL_AREA_T * const);
 #define NX4000_DEF_ptExtmemPioCtrlArea NX4000_EXTMEM_PIO_CTRL_AREA_T * const ptExtmemPioCtrlArea = (NX4000_EXTMEM_PIO_CTRL_AREA_T * const);
 
+#define NX4000_DEF_ptDdrCtrlArea NX4000_DDR_CTRL_AREA_T * const ptDdrCtrlArea = (NX4000_DDR_CTRL_AREA_T * const)Addr_NX4000_DDR_CTRL;
+#define NX4000_DEF_ptDdrPhyArea NX4000_DDR_PHY_AREA_T * const ptDdrPhyArea = (NX4000_DDR_PHY_AREA_T * const)Addr_NX4000_DDR_PHY;
 
 
 /* RAP part */
