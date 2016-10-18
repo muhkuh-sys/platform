@@ -31,4 +31,6 @@ unsigned long systime_get_ms(void);
 
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration);
 
-#endif	/* __SYSTIME_H__ */
+void systime_delay_ms(unsigned long ulDuration);
+
+#endif  /* __SYSTIME_H__ */

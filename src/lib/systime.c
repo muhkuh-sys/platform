@@ -93,3 +93,17 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 #endif
 }
 
+
+
+void systime_delay_ms(unsigned long ulDuration)
+{
+	unsigned long ulStart;
+	int iElapsed;
+
+
+	ulStart = systime_get_ms();
+	do
+	{
+		iElapsed = systime_elapsed(ulStart, ulDuration);
+	} while( iElapsed==0 );
+}
