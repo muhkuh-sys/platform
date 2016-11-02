@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-Import('PLATFORM_LIB_CFG_BUILDS')
-
-
 #----------------------------------------------------------------------------
 # This is the list of sources. The elements must be separated with whitespace
 # (i.e. spaces, tabs, newlines). The amount of whitespace does not matter.
@@ -20,68 +17,69 @@ sources_netx6 = """
 
 #----------------------------------------------------------------------------
 #
-# Build the library for all targets.
+# Build the library for all available environments.
 #
+Import('atEnv')
 
-if '4000_RELAXED' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx4000_relaxed_default')
-	env_netx4000_relaxed = env_netx4000_relaxed_default.Clone()
-	env_netx4000_relaxed.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx4000_relaxed.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx4000_relaxed = env_netx4000_relaxed.SetBuildPath('targets/netx4000_relaxed', 'src', sources)
-	platform_lib_netx4000_relaxed = env_netx4000_relaxed.StaticLibrary('targets/platform_netx4000_relaxed', src_netx4000_relaxed)
-	env_netx4000_relaxed_default.Replace(PLATFORM_LIBRARY = platform_lib_netx4000_relaxed)
+if hasattr(atEnv, 'NETX4000_RELAXED') == True:
+	tEnvDefault = atEnv.NETX4000_RELAXED
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc = tEnv.SetBuildPath('targets/netx4000_relaxed', 'src', sources)
+	tLib = tEnv.StaticLibrary('targets/platform_netx4000_relaxed', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '500' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx500_default')
-	env_netx500 = env_netx500_default.Clone()
-	env_netx500.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx500.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx500 = env_netx500.SetBuildPath('targets/netx500', 'src', sources)
-	platform_lib_netx500 = env_netx500.StaticLibrary('targets/platform_netx500', src_netx500)
-	env_netx500_default.Replace(PLATFORM_LIBRARY = platform_lib_netx500)
+if hasattr(atEnv, 'NETX500') == True:
+	tEnvDefault = atEnv.NETX500
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc = tEnv.SetBuildPath('targets/netx500', 'src', sources)
+	tLib = tEnv.StaticLibrary('targets/platform_netx500', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '90_MPW' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx90_mpw_default')
-	env_netx90_mpw = env_netx90_mpw_default.Clone()
-	env_netx90_mpw.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx90_mpw.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx90_mpw = env_netx90_mpw.SetBuildPath('targets/netx90_mpw', 'src', sources)
-	platform_lib_netx90_mpw = env_netx90_mpw.StaticLibrary('targets/platform_netx90_mpw', src_netx90_mpw)
-	env_netx90_mpw_default.Replace(PLATFORM_LIBRARY = platform_lib_netx90_mpw)
+if hasattr(atEnv, 'NETX90_MPW') == True:
+	tEnvDefault = atEnv.NETX90_MPW
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc = tEnv.SetBuildPath('targets/netx90_mpw', 'src', sources)
+	tLib = tEnv.StaticLibrary('targets/platform_netx90_mpw', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '56' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx56_default')
-	env_netx56  = env_netx56_default.Clone()
-	env_netx56.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx56.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx56  = env_netx56.SetBuildPath('targets/netx56', 'src', sources)
-	platform_lib_netx56  = env_netx56.StaticLibrary('targets/platform_netx56', src_netx56)
-	env_netx56_default.Replace(PLATFORM_LIBRARY = platform_lib_netx56)
+if hasattr(atEnv, 'NETX56') == True:
+	tEnvDefault = atEnv.NETX56
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc  = tEnv.SetBuildPath('targets/netx56', 'src', sources)
+	tLib  = tEnv.StaticLibrary('targets/platform_netx56', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '50' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx50_default')
-	env_netx50  = env_netx50_default.Clone()
-	env_netx50.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx50.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx50  = env_netx50.SetBuildPath('targets/netx50', 'src', sources)
-	platform_lib_netx50  = env_netx50.StaticLibrary('targets/platform_netx50', src_netx50)
-	env_netx50_default.Replace(PLATFORM_LIBRARY = platform_lib_netx50)
+if hasattr(atEnv, 'NETX50') == True:
+	tEnvDefault = atEnv.NETX50
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc  = tEnv.SetBuildPath('targets/netx50', 'src', sources)
+	tLib  = tEnv.StaticLibrary('targets/platform_netx50', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '10' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx10_default')
-	env_netx10  = env_netx10_default.Clone()
-	env_netx10.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx10.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx10  = env_netx10.SetBuildPath('targets/netx10', 'src', sources)
-	platform_lib_netx10  = env_netx10.StaticLibrary('targets/platform_netx10', src_netx10)
-	env_netx10_default.Replace(PLATFORM_LIBRARY = platform_lib_netx10)
+if hasattr(atEnv, 'NETX10') == True:
+	tEnvDefault = atEnv.NETX10
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc  = tEnv.SetBuildPath('targets/netx10', 'src', sources)
+	tLib  = tEnv.StaticLibrary('targets/platform_netx10', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if '6' in PLATFORM_LIB_CFG_BUILDS:
-	Import('env_netx6_default')
-	env_netx6  = env_netx6_default.Clone()
-	env_netx6.Append(CPPPATH = ['src', 'src/lib'])
-	env_netx6.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	src_netx6  = env_netx6.SetBuildPath('targets/netx6', 'src', sources + sources_netx6)
-	platform_lib_netx6  = env_netx6.StaticLibrary('targets/platform_netx6', src_netx6)
-	env_netx6_default.Replace(PLATFORM_LIBRARY = platform_lib_netx6)
+if hasattr(atEnv, 'NETX6') == True:
+	tEnvDefault = atEnv.NETX6
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc  = tEnv.SetBuildPath('targets/netx6', 'src', sources + sources_netx6)
+	tLib  = tEnv.StaticLibrary('targets/platform_netx6', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
