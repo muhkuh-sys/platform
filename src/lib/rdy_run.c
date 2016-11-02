@@ -24,7 +24,7 @@
 #include "systime.h"
 
 
-#if ASIC_TYP==500 || ASIC_TYP==100 || ASIC_TYP==50
+#if ASIC_TYP==ASIC_TYP_NETX500 || ASIC_TYP==ASIC_TYP_NETX50
 //-------------------------------------
 // some defines for the mysterious HIF registers
 // taken from the "netX Program Reference Guide Rev0.3", page 16
@@ -56,7 +56,7 @@
 
 /*-------------------------------------*/
 
-#if ASIC_TYP==500 || ASIC_TYP==100
+#if ASIC_TYP==ASIC_TYP_NETX500
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	HOSTDEF(ptNetxControlledGlobalRegisterBlock1Area);
@@ -83,7 +83,7 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	}
 	ptNetxControlledGlobalRegisterBlock1Area->ulSta_netx = ulValue;
 }
-#elif ASIC_TYP==50
+#elif ASIC_TYP==ASIC_TYP_NETX50
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	HOSTDEF(ptNetxControlledGlobalRegisterBlock1Area);
@@ -152,7 +152,7 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	ulValue = ulSCLNew | ulSDANew;
 	ptNetxControlledGlobalRegisterBlock1Area->ulSta_netx = ulValue;
 }
-#elif ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==56 || ASIC_TYP==6
+#elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	HOSTDEF(ptAsicCtrlArea)
@@ -187,22 +187,22 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	/* Set SCL to low. This allows modifications of the SDA line without
 	 * the risk of generating a start condition.
 	 * The signals look like this:
-	 * 
+	 *
 	 * Off:      __     _____
-	 * RDY (SCL) __|___|     
+	 * RDY (SCL) __|___|
 	 *           ____ _______
-	 * RUN (SDA) ____|        
+	 * RUN (SDA) ____|
 	 *
 	 * Green:    __
 	 * RDY (SCL) __|_________
 	 *           ____ _______
 	 * RUN (SDA) ____|
-	 * 
+	 *
 	 * Yellow:   __         _
 	 * RDY (SCL) __|_______|
 	 *           ____
 	 * RUN (SDA) ____|_______
-	 * 
+	 *
 	 */
 	ulValue = HOSTMSK(rdy_run_cfg_RDY_DRV) | ulSDAOld;
 	ptAsicCtrlArea->ulRdy_run_cfg = ulValue;
@@ -219,6 +219,33 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 
 	/* Output the new SCL part. Now the new value is complete. */
 	ulValue = ulSCLNew | ulSDANew;
+	ptAsicCtrlArea->ulRdy_run_cfg = ulValue;
+}
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+void rdy_run_setLEDs(RDYRUN_T tState)
+{
+	HOSTDEF(ptAsicCtrlArea);
+	unsigned long ulValue;
+
+
+	/* Initialize the new SCL and SDA parts. */
+	ulValue = 0;
+
+	/* Add the active LED. */
+	switch(tState)
+	{
+	case RDYRUN_OFF:
+		break;
+
+	case RDYRUN_GREEN:
+		ulValue |= HOSTMSK(rdy_run_cfg_RUN_DRV);
+		break;
+
+	case RDYRUN_YELLOW:
+		ulValue |= HOSTMSK(rdy_run_cfg_RDY_DRV);
+		break;
+	}
+
 	ptAsicCtrlArea->ulRdy_run_cfg = ulValue;
 }
 #endif

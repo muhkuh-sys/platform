@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 
+#include "asic_types.h"
+
 #ifndef __UART_H__
 #define __UART_H__
 
@@ -45,10 +47,12 @@ typedef enum
 
 typedef struct
 {
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
 	unsigned char uc_rx_mmio;
 	unsigned char uc_tx_mmio;
 	unsigned char uc_rts_mmio;
 	unsigned char uc_cts_mmio;
+#endif
 	unsigned short us_baud_div;
 } UART_CONFIGURATION_T;
 

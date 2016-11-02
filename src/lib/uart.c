@@ -19,16 +19,42 @@
  ***************************************************************************/
 
 #include "uart.h"
-
 #include "netx_io_areas.h"
 
 #define ARRAYSIZE(a) (sizeof(a)/sizeof(a[0]))
 
 
-typedef struct
+/* The structure UART_INSTANCE_STRUCT defines the base address of all
+ * available UART instances. For the platforms which do not have the HBOOT
+ * format as their main boot image format, it also contains the MMIO
+ * settings for the UART pins. On platforms using the HBOOT format the MMIO
+ * pins will be configured with an HBOOT option chunk.
+ *
+ * The following list gives an overview of the netX family and their main
+ * boot image format:
+ *
+ * netX500/100 : ABOOT
+ *               -> MMIO configuration here in this source
+ *
+ * netX50      : ABOOT
+ *               -> MMIO configuration here in this source
+ *
+ * netX10      : ABOOT (HBOOT is supported, but not the main format)
+ *               -> MMIO configuration here in this source
+ *
+ * netX51/52   : ABOOT (HBOOT is supported, but not the main format)
+ *               -> MMIO configuration here in this source
+ *
+ * netX4000    : HBOOT
+ *               -> MMIO configuration in a HBOOT chunk
+ *
+ * netX90      : HBOOT
+ *               -> MMIO configuration in a HBOOT chunk
+ */
+typedef struct UART_INSTANCE_STRUCT
 {
 	HOSTADEF(UART) * const ptArea;
-#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
 	MMIO_CFG_T tMmioRx;
 	MMIO_CFG_T tMmioTx;
 	MMIO_CFG_T tMmioRts;
@@ -39,7 +65,7 @@ typedef struct
 
 static const UART_INSTANCE_T atUartInstances[] =
 {
-#if ASIC_TYP==10
+#if ASIC_TYP==ASIC_TYP_NETX10
 	{
 		(NX10_UART_AREA_T * const)Addr_NX10_uart0,
 		MMIO_CFG_uart0_rxd,
@@ -55,7 +81,8 @@ static const UART_INSTANCE_T atUartInstances[] =
 		MMIO_CFG_uart1_rtsn,
 		MMIO_CFG_uart1_ctsn
 	}
-#elif ASIC_TYP==50
+
+#elif ASIC_TYP==ASIC_TYP_NETX50
 	{
 		(NX50_UART_AREA_T * const)Addr_NX50_uart0,
 		MMIO_CFG_uart0_rxd,
@@ -79,7 +106,8 @@ static const UART_INSTANCE_T atUartInstances[] =
 		MMIO_CFG_uart2_rts,
 		MMIO_CFG_uart2_cts
 	}
-#elif ASIC_TYP==56
+
+#elif ASIC_TYP==ASIC_TYP_NETX56
 	{
 		(NX56_UART_AREA_T * const)Addr_NX56_uart0,
 		MMIO_CFG_uart0_rxd,
@@ -103,7 +131,8 @@ static const UART_INSTANCE_T atUartInstances[] =
 		MMIO_CFG_uart2_rtsn,
 		MMIO_CFG_uart2_ctsn
 	}
-#elif ASIC_TYP==6
+
+#elif ASIC_TYP==ASIC_TYP_NETX6
 	{
 		(NX6_UART_AREA_T * const)Addr_NX6_uart0,
 		MMIO_CFG_uart0_rxd,
@@ -127,7 +156,8 @@ static const UART_INSTANCE_T atUartInstances[] =
 		MMIO_CFG_uart2_rtsn,
 		MMIO_CFG_uart2_ctsn
 	}
-#elif ASIC_TYP==500 || ASIC_TYP==100
+
+#elif ASIC_TYP==ASIC_TYP_NETX500
 	{
 		(NX500_UART_AREA_T * const)Addr_NX500_uart0
 	},
@@ -139,30 +169,36 @@ static const UART_INSTANCE_T atUartInstances[] =
 	{
 		(NX500_UART_AREA_T * const)Addr_NX500_uart2
 	}
-#elif ASIC_TYP==4000
+
+#elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 	{
-		(NX4000_UART_AREA_T * const)Addr_NX4000_uart0,
-		MMIO_CFG_UART0_RXD,
-		MMIO_CFG_UART0_TXD,
-		MMIO_CFG_UART0_RTSN,
-		MMIO_CFG_UART0_CTSN
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart0
 	},
 
 	{
-		(NX4000_UART_AREA_T * const)Addr_NX4000_uart1,
-		MMIO_CFG_UART1_RXD,
-		MMIO_CFG_UART1_TXD,
-		MMIO_CFG_UART1_RTSN,
-		MMIO_CFG_UART1_CTSN
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart1
 	},
 
 	{
-		(NX4000_UART_AREA_T * const)Addr_NX4000_uart2,
-		MMIO_CFG_UART2_RXD,
-		MMIO_CFG_UART2_TXD,
-		MMIO_CFG_UART2_RTSN,
-		MMIO_CFG_UART2_CTSN
+		(NX4000_UART_AREA_T * const)Addr_NX4000_uart2
 	}
+
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+	{
+		(NX90_UART_AREA_T * const)Addr_NX90_uart_com
+	},
+
+	{
+		(NX90_UART_AREA_T * const)Addr_NX90_uart_app
+	},
+
+	{
+		(NX90_UART_AREA_T * const)Addr_NX90_uart_xpic_app
+	}
+
+#else
+#       error "Unsupported ASIC_TYPE!"
+
 #endif
 };
 
@@ -172,10 +208,10 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 	unsigned long ulValue;
 	HOSTADEF(UART) *ptUartArea;
 	int iResult;
-#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
 	HOSTDEF(ptAsicCtrlArea);
 	HOSTDEF(ptMmioCtrlArea);
-#elif ASIC_TYP==100 || ASIC_TYP==500
+#elif ASIC_TYP==ASIC_TYP_NETX500
 	HOSTDEF(ptGpioArea);
 	unsigned int uiIdx;
 #endif
@@ -214,8 +250,8 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 		/* Enable the UART. */
 		ptUartArea->ulUartcr = HOSTMSK(uartcr_uartEN);
 
-#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
-		/* Setup the MMIO pins. */
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
+		/* Setup the MMIO configuration for the RX pin. */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_rx_mmio] = atUartInstances[uiUartUnit].tMmioRx;
 #endif
@@ -224,11 +260,11 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 		ulValue = HOSTMSK(uartdrvout_DRVTX);
 		ptUartArea->ulUartdrvout = ulValue;
 
-#if ASIC_TYP==4000 || ASIC_TYP==10 || ASIC_TYP==50 || ASIC_TYP==56 || ASIC_TYP==6
-		/* Setup the MMIO pins. */
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
+		/* Setup the MMIO configuration for the TX pin. */
 		ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
 		ptMmioCtrlArea->aulMmio_cfg[ptCfg->uc_tx_mmio] = atUartInstances[uiUartUnit].tMmioTx;
-#elif ASIC_TYP==100 || ASIC_TYP==500
+#elif ASIC_TYP==ASIC_TYP_NETX500
 		uiIdx = uiUartUnit << 2;
 		ptGpioArea->aulGpio_cfg[uiIdx+0] = 2;
 		ptGpioArea->aulGpio_cfg[uiIdx+1] = 2;
@@ -251,10 +287,10 @@ void uart_put(unsigned int uiUartUnit, unsigned char ucChar)
 
 	if( uiUartUnit<ARRAYSIZE(atUartInstances) )
 	{
-		/* get the uart area */
+		/* Get the UART area. */
 		ptUartArea = atUartInstances[uiUartUnit].ptArea;
 
-		/* Wait until there is space in the FIFO */
+		/* Wait until there is space in the FIFO. */
 		do
 		{
 			ulVal  = ptUartArea->ulUartfr;
@@ -274,7 +310,7 @@ void uart_flush(unsigned int uiUartUnit)
 
 	if( uiUartUnit<ARRAYSIZE(atUartInstances) )
 	{
-		/* get the uart area */
+		/* Get the UART area. */
 		ptUartArea = atUartInstances[uiUartUnit].ptArea;
 
 		do
@@ -295,17 +331,17 @@ unsigned int uart_get(unsigned int uiUartUnit)
 
 	if( uiUartUnit<ARRAYSIZE(atUartInstances) )
 	{
-		/* get the uart area */
+		/* Get the UART area. */
 		ptUartArea = atUartInstances[uiUartUnit].ptArea;
 
-		/* wait for data in the fifo */
+		/* Wait for data in the FIFO. */
 		do
 		{
 			ulVal  = ptUartArea->ulUartfr;
 			ulVal &= HOSTMSK(uartfr_RXFE);
 		} while( ulVal!=0 );
 
-		/* Get the received byte */
+		/* Get the received byte. */
 		uiData = (unsigned int)ptUartArea->ulUartdr;
 	}
 	else
@@ -344,7 +380,7 @@ unsigned int uart_peek(unsigned int uiUartUnit)
 void uart_close(unsigned int uiUartUnit)
 {
 	HOSTADEF(UART) *ptUartArea;
-#if ASIC_TYP==100 || ASIC_TYP==500
+#if ASIC_TYP==ASIC_TYP_NETX500
 	HOSTDEF(ptGpioArea)
 	unsigned int uiIdx;
 #endif
@@ -355,7 +391,7 @@ void uart_close(unsigned int uiUartUnit)
 		/* Flush the buffer. */
 		uart_flush(uiUartUnit);
 
-#if ASIC_TYP==100 || ASIC_TYP==500
+#if ASIC_TYP==ASIC_TYP_NETX500
 		uiIdx = uiUartUnit << 2;
 		ptGpioArea->aulGpio_cfg[uiIdx+0] = 2;
 		ptGpioArea->aulGpio_cfg[uiIdx+1] = 2;

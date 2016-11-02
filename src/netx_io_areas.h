@@ -19,42 +19,48 @@
  ***************************************************************************/
 
 
+#include "asic_types.h"
+
 #ifndef __NETX_IO_AREAS_H__
 #define __NETX_IO_AREAS_H__
 
 #define DO_CONCAT(a,b,c) a##_##b##_##c
 #define CONCAT(a,b,c) DO_CONCAT(a,b,c)
 
-#if ASIC_TYP==500
+#if ASIC_TYP==ASIC_TYP_NETX500
 #       define HOST NX500
 #       define HOSTNAME "netx500"
 #       include "netx500/netx500_io_areas.h"
-#elif ASIC_TYP==50
+#elif ASIC_TYP==ASIC_TYP_NETX50
 #       define HOST NX50
 #       define HOSTNAME "netx50"
 #       include "netx50/netx50_io_areas.h"
-#elif ASIC_TYP==56
+#elif ASIC_TYP==ASIC_TYP_NETX56
 #       define HOST NX56
 #       define HOSTNAME "netx56"
 #       include "netx56/netx56_io_areas.h"
-#elif ASIC_TYP==10
+#elif ASIC_TYP==ASIC_TYP_NETX10
 #       define HOST NX10
 #       define HOSTNAME "netx10"
 #       include "netx10/netx10_io_areas.h"
-#elif ASIC_TYP==6
+#elif ASIC_TYP==ASIC_TYP_NETX6
 #       define HOST NX6
 #       define HOSTNAME "netx6"
 #       include "netx6/netx6_io_areas.h"
-#elif ASIC_TYP==4000
+#elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 #       define HOST NX4000
-#       define HOSTNAME "netx4000"
-#       include "netx4000/netx4000_io_areas.h"
+#       define HOSTNAME "netx4000_relaxed"
+#       include "netx4000_relaxed/netx4000_io_areas.h"
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+#       define HOST NX90
+#       define HOSTNAME "netx90_mpw"
+#       include "netx90_mpw/netx90_io_areas.h"
 #else
 #       error "no host define set!"
 #endif
 
 /* Only netX6 is special. The XPIC CPU uses global pointers more efficiently. */
-#if ASIC_TYP==6
+#if ASIC_TYP==ASIC_TYP_NETX6
 #       define HOSTDEF(a)
 #       define HOSTADR(a)  CONCAT(Adr,HOST,a)
 #       define HOSTADDR(a) CONCAT(Addr,HOST,a)

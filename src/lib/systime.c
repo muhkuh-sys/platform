@@ -29,12 +29,18 @@
 
 void systime_init(void)
 {
-#if ASIC_TYP==4000
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 	HOSTDEF(ptSystimeUcArea);
 
 	/* Set the systime border to 1ms. */
 	ptSystimeUcArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeUcArea->ulSystime_count_value = 10U<<28U;
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+	HOSTDEF(ptSystimeUcComArea);
+
+	/* Set the systime border to 1ms. */
+	ptSystimeUcComArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
+	ptSystimeUcComArea->ulSystime_count_value = 10U<<28U;
 #else
 	HOSTDEF(ptSystimeArea);
 
@@ -43,7 +49,7 @@ void systime_init(void)
 	ptSystimeArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeArea->ulSystime_count_value = 10U<<28U;
 
-#       if ASIC_TYP==50
+#       if ASIC_TYP==ASIC_TYP_NETX50
 	/* Disable systime compare. */
 	ptSystimeArea->ulSystime_s_compare_enable = 0;
 
@@ -57,10 +63,14 @@ void systime_init(void)
 
 unsigned long systime_get_ms(void)
 {
-#if ASIC_TYP==4000
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 	HOSTDEF(ptSystimeUcArea);
 
 	return ptSystimeUcArea->ulSystime_s;
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+	HOSTDEF(ptSystimeUcComArea);
+
+	return ptSystimeUcComArea->ulSystime_s;
 #else
 	HOSTDEF(ptSystimeArea)
 
@@ -72,13 +82,23 @@ unsigned long systime_get_ms(void)
 
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 {
-#if ASIC_TYP==4000
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 	HOSTDEF(ptSystimeUcArea)
 	unsigned long ulDiff;
 
 
 	/* get the time difference */
 	ulDiff = ptSystimeUcArea->ulSystime_s - ulStart;
+
+	return (ulDiff>=ulDuration);
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+	HOSTDEF(ptSystimeUcComArea);
+
+	unsigned long ulDiff;
+
+
+	/* get the time difference */
+	ulDiff = ptSystimeUcComArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
 #else
