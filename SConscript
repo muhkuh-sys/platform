@@ -30,7 +30,7 @@ if '4000_RELAXED' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx4000_relaxed.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx4000_relaxed = env_netx4000_relaxed.SetBuildPath('targets/netx4000_relaxed', 'src', sources)
 	platform_lib_netx4000_relaxed = env_netx4000_relaxed.StaticLibrary('targets/platform_netx4000_relaxed', src_netx4000_relaxed)
-	Export('platform_lib_netx4000_relaxed')
+	env_netx4000_relaxed_default.Replace(PLATFORM_LIBRARY = platform_lib_netx4000_relaxed)
 
 if '500' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx500_default')
@@ -39,7 +39,7 @@ if '500' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx500.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx500 = env_netx500.SetBuildPath('targets/netx500', 'src', sources)
 	platform_lib_netx500 = env_netx500.StaticLibrary('targets/platform_netx500', src_netx500)
-	Export('platform_lib_netx500')
+	env_netx500_default.Replace(PLATFORM_LIBRARY = platform_lib_netx500)
 
 if '90_MPW' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx90_mpw_default')
@@ -48,7 +48,7 @@ if '90_MPW' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx90_mpw.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx90_mpw = env_netx90_mpw.SetBuildPath('targets/netx90_mpw', 'src', sources)
 	platform_lib_netx90_mpw = env_netx90_mpw.StaticLibrary('targets/platform_netx90_mpw', src_netx90_mpw)
-	Export('platform_lib_netx90_mpw')
+	env_netx90_mpw_default.Replace(PLATFORM_LIBRARY = platform_lib_netx90_mpw)
 
 if '56' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx56_default')
@@ -57,7 +57,7 @@ if '56' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx56.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx56  = env_netx56.SetBuildPath('targets/netx56', 'src', sources)
 	platform_lib_netx56  = env_netx56.StaticLibrary('targets/platform_netx56', src_netx56)
-	Export('platform_lib_netx56')
+	env_netx56_default.Replace(PLATFORM_LIBRARY = platform_lib_netx56)
 
 if '50' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx50_default')
@@ -66,7 +66,7 @@ if '50' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx50.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx50  = env_netx50.SetBuildPath('targets/netx50', 'src', sources)
 	platform_lib_netx50  = env_netx50.StaticLibrary('targets/platform_netx50', src_netx50)
-	Export('platform_lib_netx50')
+	env_netx50_default.Replace(PLATFORM_LIBRARY = platform_lib_netx50)
 
 if '10' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx10_default')
@@ -75,7 +75,7 @@ if '10' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx10.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx10  = env_netx10.SetBuildPath('targets/netx10', 'src', sources)
 	platform_lib_netx10  = env_netx10.StaticLibrary('targets/platform_netx10', src_netx10)
-	Export('platform_lib_netx10')
+	env_netx10_default.Replace(PLATFORM_LIBRARY = platform_lib_netx10)
 
 if '6' in PLATFORM_LIB_CFG_BUILDS:
 	Import('env_netx6_default')
@@ -84,5 +84,4 @@ if '6' in PLATFORM_LIB_CFG_BUILDS:
 	env_netx6.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
 	src_netx6  = env_netx6.SetBuildPath('targets/netx6', 'src', sources + sources_netx6)
 	platform_lib_netx6  = env_netx6.StaticLibrary('targets/platform_netx6', src_netx6)
-	Export('platform_lib_netx6')
-
+	env_netx6_default.Replace(PLATFORM_LIBRARY = platform_lib_netx6)
