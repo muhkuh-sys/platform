@@ -7,6 +7,7 @@ sources = """
 	src/lib/rdy_run.c
 	src/lib/systime.c
 	src/lib/uart.c
+	src/lib/uart_standalone.c
 	src/lib/uprintf.c
 """
 
@@ -14,6 +15,9 @@ sources_netx6 = """
 	src/netx6/netx6_io_areas.c
 """
 
+sources_netx4000 = """
+	src/lib/rap_uart.c
+"""
 
 #----------------------------------------------------------------------------
 #
@@ -26,7 +30,7 @@ if hasattr(atEnv, 'NETX4000_RELAXED') == True:
 	tEnv = tEnvDefault.Clone()
 	tEnv.Append(CPPPATH = ['src', 'src/lib'])
 	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	tSrc = tEnv.SetBuildPath('targets/netx4000_relaxed', 'src', sources)
+	tSrc = tEnv.SetBuildPath('targets/netx4000_relaxed', 'src', sources + sources_netx4000)
 	tLib = tEnv.StaticLibrary('targets/platform_netx4000_relaxed', tSrc)
 	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
