@@ -180,9 +180,6 @@ static const SERIAL_COMM_UI_FN_T tSerialVectors_RapUart =
 
 /*-------------------------------------------------------------------------*/
 
-SERIAL_COMM_UI_FN_T tSerialVectors;
-
-
 void uart_standalone_initialize(void)
 {
 	const UART_CONFIGURATION_T *ptUartCfg;
