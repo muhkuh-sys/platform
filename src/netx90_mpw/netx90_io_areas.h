@@ -123,7 +123,7 @@
 
 #define NX90_DEF_ptMmioCtrlArea NX90_MMIO_CTRL_AREA_T * const ptMmioCtrlArea = (NX90_MMIO_CTRL_AREA_T * const)Addr_NX90_mmio_ctrl;
 #define NX90_DEF_ptGlobalBufManArea NX90_GLOBAL_BUF_MAN_AREA_T * const ptGlobalBufManArea = (NX90_GLOBAL_BUF_MAN_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptHifIoCtrlArea NX90_HIF_IO_CTRL_AREA_T * const ptHifIoCtrlArea = (NX90_HIF_IO_CTRL_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptHifIoCtrlArea NX90_HIF_IO_CTRL_AREA_T * const ptHifIoCtrlArea = (NX90_HIF_IO_CTRL_AREA_T * const)Addr_NX90_hif_io_ctrl;
 #define NX90_DEF_ptExtAsyncmemCtrlArea NX90_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX90_EXT_ASYNCMEM_CTRL_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptExtSdramCtrlArea NX90_EXT_SDRAM_CTRL_AREA_T * const ptExtSdramCtrlArea = (NX90_EXT_SDRAM_CTRL_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptExtmemPriorityCtrlArea NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrlArea = (NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const)Adr_NX90_;
