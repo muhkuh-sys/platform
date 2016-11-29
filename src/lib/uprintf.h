@@ -26,14 +26,6 @@
 #include <stddef.h>
 
 
-typedef enum
-{
-	CONSOLE_LINEFEED_LF,    /* for Unix, Linux, Amiga, BeOS and MacOS X */
-	CONSOLE_LINEFEED_CR,    /* for Apple II, old MacOS, OS-9 and C64 */
-	CONSOLE_LINEFEED_CRLF   /* for Dos, Windows, CP/M, OS/2, and Symbian */
-} CONSOLE_LINEFEED_T;
-
-
 void uprintf(const char *pcFmt, ...);
 void hexdump(const unsigned char *pcData, size_t sizData);
 

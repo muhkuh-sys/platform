@@ -26,6 +26,13 @@
 
 #include "serial_vectors.h"
 
+/* This is the list of available line feed modes. */
+#define CONSOLE_LINEFEED_LF    0  /* for Unix, Linux, Amiga, BeOS and MacOS X */
+#define CONSOLE_LINEFEED_CR    1  /* for Apple II, old MacOS, OS-9 and C64 */
+#define CONSOLE_LINEFEED_CRLF  2  /* for DOS, Windows, CP/M, OS/2, and Symbian */
+
+/* Select one of the available line feed modes here. */
+#define CONSOLE_LINEFEED CONSOLE_LINEFEED_CRLF
 
 static void uprintf_hex(unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
 {
@@ -234,13 +241,10 @@ void uprintf(const char *pcFmt, ...)
 	unsigned long ulArgument;
 	const char *pcArgument;
 	int iArgument;
-	CONSOLE_LINEFEED_T tLinefeedMode;
+
 
 	if( (tSerialVectors.fn.fnPut!=NULL) && (tSerialVectors.fn.fnFlush!=NULL)  )
 	{		
-		/* get the linefeed mode */
-		tLinefeedMode = CONSOLE_LINEFEED_CRLF;
-	
 		/* Get initial pointer to first argument */
 		va_start(ptArgument, pcFmt);
 	
@@ -367,21 +371,16 @@ void uprintf(const char *pcFmt, ...)
 				}
 				else if( cChar=='\n' )
 				{
-					/* print linefeed */
-					switch(tLinefeedMode)
-					{
-					case CONSOLE_LINEFEED_LF:
-						break;
-	
-					case CONSOLE_LINEFEED_CR:
-						cChar = '\r';
-						break;
-	
-					default:
-					case CONSOLE_LINEFEED_CRLF:
-						SERIAL_PUT('\r');
-						break;
-					}
+					/* Print line feed. */
+#if CONSOLE_LINEFEED==CONSOLE_LINEFEED_LF
+					/* Nothing to do for LF line feed. */
+#elif CONSOLE_LINEFEED==CONSOLE_LINEFEED_CR
+					cChar = '\r';
+#elif CONSOLE_LINEFEED==CONSOLE_LINEFEED_CRLF
+					SERIAL_PUT('\r');
+#else
+#       error "Invalid line feed mode!"
+#endif
 					SERIAL_PUT(cChar);
 					SERIAL_FLUSH();
 				}
