@@ -36,7 +36,8 @@
 #define NX90_DEF_ptI2cAppArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c_app;
 #define NX90_DEF_ptI2cXpicAppArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c_xpic_app;
 
-#define NX90_DEF_ptMledCtrlArea NX90_MLED_CTRL_AREA_T * const ptMledCtrlArea = (NX90_MLED_CTRL_AREA_T * const)Addr_NX90_mled_ctrl_com;
+#define NX90_DEF_ptMledCtrlComArea NX90_MLED_CTRL_AREA_T * const ptMledCtrlComArea = (NX90_MLED_CTRL_AREA_T * const)Addr_NX90_mled_ctrl_com;
+#define NX90_DEF_ptMledCtrlAppArea NX90_MLED_CTRL_AREA_T * const ptMledCtrlAppArea = (NX90_MLED_CTRL_AREA_T * const)Addr_NX90_mled_ctrl_app;
 
 #define NX90_DEF_ptEccCtrlComArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_com;
 #define NX90_DEF_ptEccCtrlAppArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_app;
@@ -135,7 +136,6 @@
 #define NX90_DEF_ptMiimuArea NX90_MIIMU_AREA_T * const ptMiimuArea = (NX90_MIIMU_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEthArea NX90_ETH_AREA_T * const ptEthArea = (NX90_ETH_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptDmacMuxArea NX90_DMAC_MUX_AREA_T * const ptDmacMuxArea = (NX90_DMAC_MUX_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptMledCtrlAppArea NX90_MLED_CTRL_APP_AREA_T * const ptMledCtrlAppArea = (NX90_MLED_CTRL_APP_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptGpioAppArea NX90_GPIO_APP_AREA_T * const ptGpioAppArea = (NX90_GPIO_APP_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEndatArea NX90_ENDAT_AREA_T * const ptEndatArea = (NX90_ENDAT_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEndatCtrlArea NX90_ENDAT_CTRL_AREA_T * const ptEndatCtrlArea = (NX90_ENDAT_CTRL_AREA_T * const)Adr_NX90_;
