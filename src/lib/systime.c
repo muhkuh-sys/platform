@@ -41,6 +41,12 @@ void systime_init(void)
 	/* Set the systime border to 1ms. */
 	ptSystimeUcComArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeUcComArea->ulSystime_count_value = 10U<<28U;
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+	HOSTDEF(ptSystimeAppArea);
+
+	/* Set the systime border to 1ms. */
+	ptSystimeAppArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
+	ptSystimeAppArea->ulSystime_count_value = 10U<<28U;
 #else
 	HOSTDEF(ptSystimeArea);
 
@@ -71,6 +77,10 @@ unsigned long systime_get_ms(void)
 	HOSTDEF(ptSystimeUcComArea);
 
 	return ptSystimeUcComArea->ulSystime_s;
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+	HOSTDEF(ptSystimeAppArea);
+
+	return ptSystimeAppArea->ulSystime_s;
 #else
 	HOSTDEF(ptSystimeArea)
 
@@ -99,6 +109,16 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 
 	/* get the time difference */
 	ulDiff = ptSystimeUcComArea->ulSystime_s - ulStart;
+
+	return (ulDiff>=ulDuration);
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+	HOSTDEF(ptSystimeAppArea);
+
+	unsigned long ulDiff;
+
+
+	/* get the time difference */
+	ulDiff = ptSystimeAppArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
 #else

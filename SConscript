@@ -48,8 +48,17 @@ if hasattr(atEnv, 'NETX90_MPW') == True:
 	tEnv = tEnvDefault.Clone()
 	tEnv.Append(CPPPATH = ['src', 'src/lib'])
 	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	tSrc = tEnv.SetBuildPath('targets/netx90_mpw', 'src', sources)
-	tLib = tEnv.StaticLibrary('targets/platform_netx90_mpw', tSrc)
+	tSrc = tEnv.SetBuildPath('targets/netx90_mpw_com', 'src', sources)
+	tLib = tEnv.StaticLibrary('targets/platform_netx90_mpw_com', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
+
+if hasattr(atEnv, 'NETX90_MPW_APP') == True:
+	tEnvDefault = atEnv.NETX90_MPW_APP
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc = tEnv.SetBuildPath('targets/netx90_mpw_app', 'src', sources)
+	tLib = tEnv.StaticLibrary('targets/platform_netx90_mpw_app', tSrc)
 	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
 if hasattr(atEnv, 'NETX56') == True:

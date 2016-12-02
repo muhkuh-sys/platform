@@ -221,7 +221,7 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	ulValue = ulSCLNew | ulSDANew;
 	ptAsicCtrlArea->ulRdy_run_cfg = ulValue;
 }
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW || ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	HOSTDEF(ptAsicCtrlArea);

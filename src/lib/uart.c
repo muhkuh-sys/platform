@@ -186,8 +186,9 @@ static const UART_INSTANCE_T atUartInstances[] =
 #elif ASIC_TYP==ASIC_TYP_NETX90_MPW
 	{
 		(NX90_UART_AREA_T * const)Addr_NX90_uart_com
-	},
+	}
 
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
 	{
 		(NX90_UART_AREA_T * const)Addr_NX90_uart_app
 	},

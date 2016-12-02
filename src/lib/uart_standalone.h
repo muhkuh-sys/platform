@@ -1,9 +1,12 @@
 #include "asic_types.h"
+#include "serial_vectors.h"
 
 
 #ifndef __UART_STANDALONE_H__
 #define __UART_STANDALONE_H__
 
+
+#define UART_STANDALONE_DEFINE_GLOBALS SERIAL_COMM_UI_FN_T tSerialVectors;
 
 void uart_standalone_initialize(void);
 
