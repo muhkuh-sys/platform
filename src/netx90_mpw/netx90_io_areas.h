@@ -118,7 +118,7 @@
 #define NX90_DEF_ptSrArea NX90_SR_AREA_T * const ptSrArea = (NX90_SR_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptXcStatcfgSharedArea NX90_XC_STATCFG_SHARED_AREA_T * const ptXcStatcfgSharedArea = (NX90_XC_STATCFG_SHARED_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptNfifoArea NX90_NFIFO_AREA_T * const ptNfifoArea = (NX90_NFIFO_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptPadCtrlArea NX90_PAD_CTRL_AREA_T * const ptPadCtrlArea = (NX90_PAD_CTRL_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptPadCtrlArea NX90_PAD_CTRL_AREA_T * const ptPadCtrlArea = (NX90_PAD_CTRL_AREA_T * const)Addr_NX90_pad_ctrl;
 
 #define NX90_DEF_ptAsicCtrlArea NX90_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX90_ASIC_CTRL_AREA_T * const)Addr_NX90_asic_ctrl;
 
