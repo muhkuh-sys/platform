@@ -3,6 +3,9 @@
 /* please see the regdef.html file for detailed register description */
 /*********************************************************************/
 
+#include <stdint.h>
+
+
 #ifndef __NX56_REGDEF_H__
 #define __NX56_REGDEF_H__
 
@@ -57598,818 +57601,818 @@ typedef union {
 
 typedef struct NX56_ARM_BOOT_VECTOR_AREA_Ttag
 {
-  volatile unsigned long  ulArm_boot_vector;
+  volatile uint32_t  ulArm_boot_vector;
 } NX56_ARM_BOOT_VECTOR_AREA_T;
 
 typedef struct NX56_SR_AREA_Ttag
 {
-  volatile unsigned long aulSr_sr[16];
-  volatile unsigned long aulSr_statcfg[2];
-  volatile unsigned long  ulSr_stat_bits_shared;
+  volatile uint32_t aulSr_sr[16];
+  volatile uint32_t aulSr_statcfg[2];
+  volatile uint32_t  ulSr_stat_bits_shared;
 } NX56_SR_AREA_T;
 
 typedef struct NX56_CORDIC_AREA_Ttag
 {
-  volatile unsigned long  ulCordic_ctrl;
-  volatile unsigned long  ulCordic_x_reg;
-  volatile unsigned long  ulCordic_y_reg;
-  volatile unsigned long  ulCordic_z_reg;
+  volatile uint32_t  ulCordic_ctrl;
+  volatile uint32_t  ulCordic_x_reg;
+  volatile uint32_t  ulCordic_y_reg;
+  volatile uint32_t  ulCordic_z_reg;
 } NX56_CORDIC_AREA_T;
 
 typedef struct NX56_GPIO_AREA_Ttag
 {
-  volatile unsigned long aulGpio_cfg[32];
-  volatile unsigned long aulGpio_tc[32];
-  volatile unsigned long aulGpio_counter_ctrl[5];
-  volatile unsigned long aulGpio_counter_max[5];
-  volatile unsigned long aulGpio_counter_cnt[5];
-  volatile unsigned long  ulGpio_line;
-  volatile unsigned long  ulGpio_in;
-  volatile unsigned long  ulGpio_irq_raw;
-  volatile unsigned long  ulGpio_irq_masked;
-  volatile unsigned long  ulGpio_irq_mask_set;
-  volatile unsigned long  ulGpio_irq_mask_rst;
-  volatile unsigned long  ulCnt_irq_raw;
-  volatile unsigned long  ulCnt_irq_masked;
-  volatile unsigned long  ulCnt_irq_mask_set;
-  volatile unsigned long  ulCnt_irq_mask_rst;
+  volatile uint32_t aulGpio_cfg[32];
+  volatile uint32_t aulGpio_tc[32];
+  volatile uint32_t aulGpio_counter_ctrl[5];
+  volatile uint32_t aulGpio_counter_max[5];
+  volatile uint32_t aulGpio_counter_cnt[5];
+  volatile uint32_t  ulGpio_line;
+  volatile uint32_t  ulGpio_in;
+  volatile uint32_t  ulGpio_irq_raw;
+  volatile uint32_t  ulGpio_irq_masked;
+  volatile uint32_t  ulGpio_irq_mask_set;
+  volatile uint32_t  ulGpio_irq_mask_rst;
+  volatile uint32_t  ulCnt_irq_raw;
+  volatile uint32_t  ulCnt_irq_masked;
+  volatile uint32_t  ulCnt_irq_mask_set;
+  volatile uint32_t  ulCnt_irq_mask_rst;
 } NX56_GPIO_AREA_T;
 
 typedef struct NX56_XLINK_AREA_Ttag
 {
-  volatile unsigned long  ulXlink_cfg;
-  volatile unsigned long  ulXlink_tx;
-  volatile unsigned long  ulXlink_rx;
-  volatile unsigned long  ulXlink_stat;
+  volatile uint32_t  ulXlink_cfg;
+  volatile uint32_t  ulXlink_tx;
+  volatile uint32_t  ulXlink_rx;
+  volatile uint32_t  ulXlink_stat;
 } NX56_XLINK_AREA_T;
 
 typedef struct NX56_IO_LINK_IRQ_AREA_Ttag
 {
-  volatile unsigned long  ulIo_link_irq_raw;
-  volatile unsigned long  ulIo_link_irq_masked;
-  volatile unsigned long  ulIo_link_irq_msk_set;
-  volatile unsigned long  ulIo_link_irq_msk_reset;
-  volatile unsigned long  ulIo_link_irq_enable;
+  volatile uint32_t  ulIo_link_irq_raw;
+  volatile uint32_t  ulIo_link_irq_masked;
+  volatile uint32_t  ulIo_link_irq_msk_set;
+  volatile uint32_t  ulIo_link_irq_msk_reset;
+  volatile uint32_t  ulIo_link_irq_enable;
 } NX56_IO_LINK_IRQ_AREA_T;
 
 typedef struct NX56_SPI_AREA_Ttag
 {
-  volatile unsigned long aulSpi_cr[2];
-  volatile unsigned long  ulSpi_dr;
-  volatile unsigned long  ulSpi_sr;
-  volatile unsigned long  ulSpi_cpsr;
-  volatile unsigned long  ulSpi_imsc;
-  volatile unsigned long  ulSpi_ris;
-  volatile unsigned long  ulSpi_mis;
-  volatile unsigned long  ulSpi_icr;
-  volatile unsigned long  ulSpi_irq_cpu_sel;
-  volatile unsigned long  ulSpi_dmacr;
-  volatile unsigned long aulReserved0[1];
-  volatile unsigned long  ulSpi_data_register;
-  volatile unsigned long  ulSpi_status_register;
-  volatile unsigned long  ulSpi_control_register;
-  volatile unsigned long  ulSpi_interrupt_control_register;
+  volatile uint32_t aulSpi_cr[2];
+  volatile uint32_t  ulSpi_dr;
+  volatile uint32_t  ulSpi_sr;
+  volatile uint32_t  ulSpi_cpsr;
+  volatile uint32_t  ulSpi_imsc;
+  volatile uint32_t  ulSpi_ris;
+  volatile uint32_t  ulSpi_mis;
+  volatile uint32_t  ulSpi_icr;
+  volatile uint32_t  ulSpi_irq_cpu_sel;
+  volatile uint32_t  ulSpi_dmacr;
+  volatile uint32_t aulReserved0[1];
+  volatile uint32_t  ulSpi_data_register;
+  volatile uint32_t  ulSpi_status_register;
+  volatile uint32_t  ulSpi_control_register;
+  volatile uint32_t  ulSpi_interrupt_control_register;
 } NX56_SPI_AREA_T;
 
 typedef struct NX56_XPIC_TIMER_AREA_Ttag
 {
-  volatile unsigned long aulXpic_timer_config_timer[3];
-  volatile unsigned long aulXpic_timer_preload_timer[3];
-  volatile unsigned long aulXpic_timer_timer[3];
-  volatile unsigned long  ulXpic_timer_irq_raw;
-  volatile unsigned long  ulXpic_timer_irq_masked;
-  volatile unsigned long  ulXpic_timer_irq_msk_set;
-  volatile unsigned long  ulXpic_timer_irq_msk_reset;
-  volatile unsigned long  ulXpic_timer_systime_s;
-  volatile unsigned long  ulXpic_timer_systime_ns;
-  volatile unsigned long  ulXpic_timer_compare_systime_s_value;
-  volatile unsigned long  ulXpic_timer_systime_uc_s;
-  volatile unsigned long  ulXpic_timer_systime_uc_ns;
-  volatile unsigned long  ulXpic_timer_compare_systime_uc_s_value;
+  volatile uint32_t aulXpic_timer_config_timer[3];
+  volatile uint32_t aulXpic_timer_preload_timer[3];
+  volatile uint32_t aulXpic_timer_timer[3];
+  volatile uint32_t  ulXpic_timer_irq_raw;
+  volatile uint32_t  ulXpic_timer_irq_masked;
+  volatile uint32_t  ulXpic_timer_irq_msk_set;
+  volatile uint32_t  ulXpic_timer_irq_msk_reset;
+  volatile uint32_t  ulXpic_timer_systime_s;
+  volatile uint32_t  ulXpic_timer_systime_ns;
+  volatile uint32_t  ulXpic_timer_compare_systime_s_value;
+  volatile uint32_t  ulXpic_timer_systime_uc_s;
+  volatile uint32_t  ulXpic_timer_systime_uc_ns;
+  volatile uint32_t  ulXpic_timer_compare_systime_uc_s_value;
 } NX56_XPIC_TIMER_AREA_T;
 
 typedef struct NX56_XPIC_VIC_AREA_Ttag
 {
-  volatile unsigned long  ulXpic_vic_config;
-  volatile unsigned long aulXpic_vic_raw_intr[2];
-  volatile unsigned long aulXpic_vic_softint_set[2];
-  volatile unsigned long aulXpic_vic_softint_reset[2];
-  volatile unsigned long  ulXpic_vic_fiq_addr;
-  volatile unsigned long  ulXpic_vic_irq_addr;
-  volatile unsigned long  ulXpic_vic_vector_addr;
-  volatile unsigned long  ulXpic_vic_table_base_addr;
-  volatile unsigned long  ulXpic_vic_fiq_vect_config;
-  volatile unsigned long aulXpic_vic_vect_config[16];
-  volatile unsigned long aulXpic_vic_default[2];
-  volatile unsigned long aulXpic_vic_fiq_default[2];
+  volatile uint32_t  ulXpic_vic_config;
+  volatile uint32_t aulXpic_vic_raw_intr[2];
+  volatile uint32_t aulXpic_vic_softint_set[2];
+  volatile uint32_t aulXpic_vic_softint_reset[2];
+  volatile uint32_t  ulXpic_vic_fiq_addr;
+  volatile uint32_t  ulXpic_vic_irq_addr;
+  volatile uint32_t  ulXpic_vic_vector_addr;
+  volatile uint32_t  ulXpic_vic_table_base_addr;
+  volatile uint32_t  ulXpic_vic_fiq_vect_config;
+  volatile uint32_t aulXpic_vic_vect_config[16];
+  volatile uint32_t aulXpic_vic_default[2];
+  volatile uint32_t aulXpic_vic_fiq_default[2];
 } NX56_XPIC_VIC_AREA_T;
 
 typedef struct NX56_XPIC_WDG_AREA_Ttag
 {
-  volatile unsigned long  ulXpic_wdg_trig;
-  volatile unsigned long  ulXpic_wdg_counter;
-  volatile unsigned long  ulXpic_wdg_xpic_irq_timeout;
-  volatile unsigned long  ulXpic_wdg_arm_irq_timeout;
-  volatile unsigned long  ulXpic_wdg_irq_raw;
-  volatile unsigned long  ulXpic_wdg_irq_masked;
-  volatile unsigned long  ulXpic_wdg_irq_msk_set;
-  volatile unsigned long  ulXpic_wdg_irq_msk_reset;
+  volatile uint32_t  ulXpic_wdg_trig;
+  volatile uint32_t  ulXpic_wdg_counter;
+  volatile uint32_t  ulXpic_wdg_xpic_irq_timeout;
+  volatile uint32_t  ulXpic_wdg_arm_irq_timeout;
+  volatile uint32_t  ulXpic_wdg_irq_raw;
+  volatile uint32_t  ulXpic_wdg_irq_masked;
+  volatile uint32_t  ulXpic_wdg_irq_msk_set;
+  volatile uint32_t  ulXpic_wdg_irq_msk_reset;
 } NX56_XPIC_WDG_AREA_T;
 
 typedef struct NX56_XPEC_AREA_Ttag
 {
-  volatile unsigned long aulXpec_r[8];
-  volatile unsigned long  ulXpec_stat_bits_shared;
-  volatile unsigned long  ulRange_urtx_count;
-  volatile unsigned long  ulRange45;
-  volatile unsigned long  ulRange67;
-  volatile unsigned long aulTimer[4];
-  volatile unsigned long  ulUrx_count;
-  volatile unsigned long  ulUtx_count;
-  volatile unsigned long  ulXpec_pc;
-  volatile unsigned long  ulZero;
-  volatile unsigned long  ulXpec_config;
-  volatile unsigned long  ulEc_maska;
-  volatile unsigned long  ulEc_maskb;
-  volatile unsigned long aulEc_mask[10];
-  volatile unsigned long  ulTimer4;
-  volatile unsigned long  ulTimer5;
-  volatile unsigned long  ulIrq;
-  volatile unsigned long  ulXpec_systime_ns;
-  volatile unsigned long  ulFifo_data;
-  volatile unsigned long  ulXpec_systime_s;
-  volatile unsigned long  ulDatach_data;
-  volatile unsigned long aulXpec_sr[16];
-  volatile unsigned long aulStatcfg[2];
-  volatile unsigned long  ulDatach_wr_cfg;
-  volatile unsigned long  ulDatach_rd_cfg;
-  volatile unsigned long aulUrtx[2];
-  volatile unsigned long  ulSysch_data;
-  volatile unsigned long  ulSysch_addr;
+  volatile uint32_t aulXpec_r[8];
+  volatile uint32_t  ulXpec_stat_bits_shared;
+  volatile uint32_t  ulRange_urtx_count;
+  volatile uint32_t  ulRange45;
+  volatile uint32_t  ulRange67;
+  volatile uint32_t aulTimer[4];
+  volatile uint32_t  ulUrx_count;
+  volatile uint32_t  ulUtx_count;
+  volatile uint32_t  ulXpec_pc;
+  volatile uint32_t  ulZero;
+  volatile uint32_t  ulXpec_config;
+  volatile uint32_t  ulEc_maska;
+  volatile uint32_t  ulEc_maskb;
+  volatile uint32_t aulEc_mask[10];
+  volatile uint32_t  ulTimer4;
+  volatile uint32_t  ulTimer5;
+  volatile uint32_t  ulIrq;
+  volatile uint32_t  ulXpec_systime_ns;
+  volatile uint32_t  ulFifo_data;
+  volatile uint32_t  ulXpec_systime_s;
+  volatile uint32_t  ulDatach_data;
+  volatile uint32_t aulXpec_sr[16];
+  volatile uint32_t aulStatcfg[2];
+  volatile uint32_t  ulDatach_wr_cfg;
+  volatile uint32_t  ulDatach_rd_cfg;
+  volatile uint32_t aulUrtx[2];
+  volatile uint32_t  ulSysch_data;
+  volatile uint32_t  ulSysch_addr;
 } NX56_XPEC_AREA_T;
 
 typedef struct NX56_XMAC_AREA_Ttag
 {
-  volatile unsigned long aulXmac_sr[16];
-  volatile unsigned long  ulXmac_status_shared0;
-  volatile unsigned long  ulXmac_config_shared0;
-  volatile unsigned long  ulXmac_io_oe_shared0;
-  volatile unsigned long  ulXmac_status_shared1;
-  volatile unsigned long  ulXmac_config_shared1;
-  volatile unsigned long  ulXmac_io_oe_shared1;
-  volatile unsigned long aulReserved0[6];
-  volatile unsigned long aulXmac_urx_utx[2];
-  volatile unsigned long aulReserved1[2];
-  volatile unsigned long  ulXmac_urx;
-  volatile unsigned long  ulXmac_utx;
-  volatile unsigned long  ulXmac_rx;
-  volatile unsigned long  ulXmac_other_rx;
-  volatile unsigned long  ulXmac_rx_hw;
-  volatile unsigned long  ulXmac_rx_hw_count;
-  volatile unsigned long  ulXmac_tx;
-  volatile unsigned long  ulXmac_tx_hw;
-  volatile unsigned long  ulXmac_tx_hw_count;
-  volatile unsigned long  ulXmac_tx_sent;
-  volatile unsigned long  ulXmac_rpu_pc;
-  volatile unsigned long  ulXmac_rpu_jmp_latch;
-  volatile unsigned long  ulXmac_tpu_pc;
-  volatile unsigned long  ulXmac_tpu_jmp_latch;
-  volatile unsigned long aulXmac_wr[10];
-  volatile unsigned long  ulXmac_sys_time;
-  volatile unsigned long  ulXmac_sys_time_upper;
-  volatile unsigned long  ulXmac_sys_time_uc;
-  volatile unsigned long  ulXmac_sys_time_uc_upper;
-  volatile unsigned long aulXmac_cmp_status[5];
-  volatile unsigned long  ulXmac_alu_flags;
-  volatile unsigned long  ulXmac_status_int;
-  volatile unsigned long  ulXmac_stat_bits;
-  volatile unsigned long  ulXmac_stat_bits_shared_lower;
-  volatile unsigned long  ulXmac_stat_bits_shared_upper;
-  volatile unsigned long  ulXmac_status_mii;
-  volatile unsigned long  ulXmac_status_mii2;
-  volatile unsigned long  ulXmac_other_status_mii2;
-  volatile unsigned long  ulXmac_config_mii;
-  volatile unsigned long  ulXmac_config_rx_nibble_fifo;
-  volatile unsigned long  ulXmac_config_tx_nibble_fifo;
-  volatile unsigned long  ulXmac_config_sbu;
-  volatile unsigned long  ulXmac_config_sbu2;
-  volatile unsigned long  ulXmac_sbu_rate_mul_add;
-  volatile unsigned long  ulXmac_sbu_rate_mul_start;
-  volatile unsigned long  ulXmac_sbu_rate_mul;
-  volatile unsigned long  ulXmac_start_sample_pos;
-  volatile unsigned long  ulXmac_stop_sample_pos;
-  volatile unsigned long  ulXmac_config_obu;
-  volatile unsigned long  ulXmac_config_obu2;
-  volatile unsigned long  ulXmac_obu_rate_mul_add;
-  volatile unsigned long  ulXmac_obu_rate_mul_start;
-  volatile unsigned long  ulXmac_obu_rate_mul;
-  volatile unsigned long  ulXmac_start_trans_pos;
-  volatile unsigned long  ulXmac_stop_trans_pos;
-  volatile unsigned long  ulXmac_rpu_count1;
-  volatile unsigned long  ulXmac_rpu_count2;
-  volatile unsigned long  ulXmac_tpu_count1;
-  volatile unsigned long  ulXmac_tpu_count2;
-  volatile unsigned long  ulXmac_rx_count;
-  volatile unsigned long  ulXmac_tx_count;
-  volatile unsigned long  ulXmac_rpm_mask0;
-  volatile unsigned long  ulXmac_rpm_val0;
-  volatile unsigned long  ulXmac_rpm_mask1;
-  volatile unsigned long  ulXmac_rpm_val1;
-  volatile unsigned long  ulXmac_tpm_mask0;
-  volatile unsigned long  ulXmac_tpm_val0;
-  volatile unsigned long  ulXmac_tpm_mask1;
-  volatile unsigned long  ulXmac_tpm_val1;
-  volatile unsigned long aulReserved2[8];
-  volatile unsigned long  ulXmac_rx_crc32_l;
-  volatile unsigned long  ulXmac_rx_crc32_h;
-  volatile unsigned long  ulXmac_rx_crc32_cfg;
-  volatile unsigned long  ulXmac_tx_crc32_l;
-  volatile unsigned long  ulXmac_tx_crc32_h;
-  volatile unsigned long  ulXmac_tx_crc32_cfg;
-  volatile unsigned long  ulXmac_rx_crc_polynomial_l;
-  volatile unsigned long  ulXmac_rx_crc_polynomial_h;
-  volatile unsigned long  ulXmac_rx_crc_l;
-  volatile unsigned long  ulXmac_rx_crc_h;
-  volatile unsigned long  ulXmac_rx_crc_cfg;
-  volatile unsigned long  ulXmac_tx_crc_polynomial_l;
-  volatile unsigned long  ulXmac_tx_crc_polynomial_h;
-  volatile unsigned long  ulXmac_tx_crc_l;
-  volatile unsigned long  ulXmac_tx_crc_h;
-  volatile unsigned long  ulXmac_tx_crc_cfg;
+  volatile uint32_t aulXmac_sr[16];
+  volatile uint32_t  ulXmac_status_shared0;
+  volatile uint32_t  ulXmac_config_shared0;
+  volatile uint32_t  ulXmac_io_oe_shared0;
+  volatile uint32_t  ulXmac_status_shared1;
+  volatile uint32_t  ulXmac_config_shared1;
+  volatile uint32_t  ulXmac_io_oe_shared1;
+  volatile uint32_t aulReserved0[6];
+  volatile uint32_t aulXmac_urx_utx[2];
+  volatile uint32_t aulReserved1[2];
+  volatile uint32_t  ulXmac_urx;
+  volatile uint32_t  ulXmac_utx;
+  volatile uint32_t  ulXmac_rx;
+  volatile uint32_t  ulXmac_other_rx;
+  volatile uint32_t  ulXmac_rx_hw;
+  volatile uint32_t  ulXmac_rx_hw_count;
+  volatile uint32_t  ulXmac_tx;
+  volatile uint32_t  ulXmac_tx_hw;
+  volatile uint32_t  ulXmac_tx_hw_count;
+  volatile uint32_t  ulXmac_tx_sent;
+  volatile uint32_t  ulXmac_rpu_pc;
+  volatile uint32_t  ulXmac_rpu_jmp_latch;
+  volatile uint32_t  ulXmac_tpu_pc;
+  volatile uint32_t  ulXmac_tpu_jmp_latch;
+  volatile uint32_t aulXmac_wr[10];
+  volatile uint32_t  ulXmac_sys_time;
+  volatile uint32_t  ulXmac_sys_time_upper;
+  volatile uint32_t  ulXmac_sys_time_uc;
+  volatile uint32_t  ulXmac_sys_time_uc_upper;
+  volatile uint32_t aulXmac_cmp_status[5];
+  volatile uint32_t  ulXmac_alu_flags;
+  volatile uint32_t  ulXmac_status_int;
+  volatile uint32_t  ulXmac_stat_bits;
+  volatile uint32_t  ulXmac_stat_bits_shared_lower;
+  volatile uint32_t  ulXmac_stat_bits_shared_upper;
+  volatile uint32_t  ulXmac_status_mii;
+  volatile uint32_t  ulXmac_status_mii2;
+  volatile uint32_t  ulXmac_other_status_mii2;
+  volatile uint32_t  ulXmac_config_mii;
+  volatile uint32_t  ulXmac_config_rx_nibble_fifo;
+  volatile uint32_t  ulXmac_config_tx_nibble_fifo;
+  volatile uint32_t  ulXmac_config_sbu;
+  volatile uint32_t  ulXmac_config_sbu2;
+  volatile uint32_t  ulXmac_sbu_rate_mul_add;
+  volatile uint32_t  ulXmac_sbu_rate_mul_start;
+  volatile uint32_t  ulXmac_sbu_rate_mul;
+  volatile uint32_t  ulXmac_start_sample_pos;
+  volatile uint32_t  ulXmac_stop_sample_pos;
+  volatile uint32_t  ulXmac_config_obu;
+  volatile uint32_t  ulXmac_config_obu2;
+  volatile uint32_t  ulXmac_obu_rate_mul_add;
+  volatile uint32_t  ulXmac_obu_rate_mul_start;
+  volatile uint32_t  ulXmac_obu_rate_mul;
+  volatile uint32_t  ulXmac_start_trans_pos;
+  volatile uint32_t  ulXmac_stop_trans_pos;
+  volatile uint32_t  ulXmac_rpu_count1;
+  volatile uint32_t  ulXmac_rpu_count2;
+  volatile uint32_t  ulXmac_tpu_count1;
+  volatile uint32_t  ulXmac_tpu_count2;
+  volatile uint32_t  ulXmac_rx_count;
+  volatile uint32_t  ulXmac_tx_count;
+  volatile uint32_t  ulXmac_rpm_mask0;
+  volatile uint32_t  ulXmac_rpm_val0;
+  volatile uint32_t  ulXmac_rpm_mask1;
+  volatile uint32_t  ulXmac_rpm_val1;
+  volatile uint32_t  ulXmac_tpm_mask0;
+  volatile uint32_t  ulXmac_tpm_val0;
+  volatile uint32_t  ulXmac_tpm_mask1;
+  volatile uint32_t  ulXmac_tpm_val1;
+  volatile uint32_t aulReserved2[8];
+  volatile uint32_t  ulXmac_rx_crc32_l;
+  volatile uint32_t  ulXmac_rx_crc32_h;
+  volatile uint32_t  ulXmac_rx_crc32_cfg;
+  volatile uint32_t  ulXmac_tx_crc32_l;
+  volatile uint32_t  ulXmac_tx_crc32_h;
+  volatile uint32_t  ulXmac_tx_crc32_cfg;
+  volatile uint32_t  ulXmac_rx_crc_polynomial_l;
+  volatile uint32_t  ulXmac_rx_crc_polynomial_h;
+  volatile uint32_t  ulXmac_rx_crc_l;
+  volatile uint32_t  ulXmac_rx_crc_h;
+  volatile uint32_t  ulXmac_rx_crc_cfg;
+  volatile uint32_t  ulXmac_tx_crc_polynomial_l;
+  volatile uint32_t  ulXmac_tx_crc_polynomial_h;
+  volatile uint32_t  ulXmac_tx_crc_l;
+  volatile uint32_t  ulXmac_tx_crc_h;
+  volatile uint32_t  ulXmac_tx_crc_cfg;
 } NX56_XMAC_AREA_T;
 
 typedef struct NX56_POINTER_FIFO_AREA_Ttag
 {
-  volatile unsigned long aulPfifo[32];
-  volatile unsigned long aulPfifo_border[32];
-  volatile unsigned long  ulPfifo_reset;
-  volatile unsigned long  ulPfifo_full;
-  volatile unsigned long  ulPfifo_empty;
-  volatile unsigned long  ulPfifo_overflow;
-  volatile unsigned long  ulPfifo_underrun;
-  volatile unsigned long aulReserved2[27];
-  volatile unsigned long aulPfifo_fill_level[32];
+  volatile uint32_t aulPfifo[32];
+  volatile uint32_t aulPfifo_border[32];
+  volatile uint32_t  ulPfifo_reset;
+  volatile uint32_t  ulPfifo_full;
+  volatile uint32_t  ulPfifo_empty;
+  volatile uint32_t  ulPfifo_overflow;
+  volatile uint32_t  ulPfifo_underrun;
+  volatile uint32_t aulReserved2[27];
+  volatile uint32_t aulPfifo_fill_level[32];
 } NX56_POINTER_FIFO_AREA_T;
 
 typedef struct NX56_FMMUSM_AREA_Ttag
 {
   struct
   {
-    volatile unsigned long  ulCfg_log_startaddr;
-    volatile unsigned long  ulCfg_length;
-    volatile unsigned long  ulCfg_phys_startaddr;
-    volatile unsigned long  ulCfg_enable;
+    volatile uint32_t  ulCfg_log_startaddr;
+    volatile uint32_t  ulCfg_length;
+    volatile uint32_t  ulCfg_phys_startaddr;
+    volatile uint32_t  ulCfg_enable;
   } asFmmu[8];
   struct
   {
-    volatile unsigned long  ulCfg_adr_len;
-    volatile unsigned long  ulCfg_mode;
+    volatile uint32_t  ulCfg_adr_len;
+    volatile uint32_t  ulCfg_mode;
   } asSm[8];
-  volatile unsigned long aulReserved0[4];
-  volatile unsigned long  ulPhys_addr_offset;
-  volatile unsigned long  ulPhys_last_addr;
-  volatile unsigned long  ulFmmusm_xpec_nr;
-  volatile unsigned long aulReserved1[9];
-  volatile unsigned long  ulFmmusm_read_addr_in;
-  volatile unsigned long  ulFmmusm_write_addr_in;
-  volatile unsigned long  ulSm_read_addr_out;
-  volatile unsigned long  ulSm_write_addr_out;
-  volatile unsigned long  ulFmmu_read_bit_rol_pos;
-  volatile unsigned long  ulFmmu_read_bit_mask;
-  volatile unsigned long  ulFmmu_write_bit_rol_pos;
-  volatile unsigned long  ulFmmu_write_bit_mask;
-  volatile unsigned long  ulFmmusm_len_en;
-  volatile unsigned long  ulFmmusm_status_out;
-  volatile unsigned long  ulSm_buf_statcfg;
-  volatile unsigned long  ulSm_read_event;
-  volatile unsigned long  ulSm_write_event;
-  volatile unsigned long  ulSm_first_byte_addressed;
-  volatile unsigned long  ulSm_last_byte_addressed;
-  volatile unsigned long  ulSm_served;
+  volatile uint32_t aulReserved0[4];
+  volatile uint32_t  ulPhys_addr_offset;
+  volatile uint32_t  ulPhys_last_addr;
+  volatile uint32_t  ulFmmusm_xpec_nr;
+  volatile uint32_t aulReserved1[9];
+  volatile uint32_t  ulFmmusm_read_addr_in;
+  volatile uint32_t  ulFmmusm_write_addr_in;
+  volatile uint32_t  ulSm_read_addr_out;
+  volatile uint32_t  ulSm_write_addr_out;
+  volatile uint32_t  ulFmmu_read_bit_rol_pos;
+  volatile uint32_t  ulFmmu_read_bit_mask;
+  volatile uint32_t  ulFmmu_write_bit_rol_pos;
+  volatile uint32_t  ulFmmu_write_bit_mask;
+  volatile uint32_t  ulFmmusm_len_en;
+  volatile uint32_t  ulFmmusm_status_out;
+  volatile uint32_t  ulSm_buf_statcfg;
+  volatile uint32_t  ulSm_read_event;
+  volatile uint32_t  ulSm_write_event;
+  volatile uint32_t  ulSm_first_byte_addressed;
+  volatile uint32_t  ulSm_last_byte_addressed;
+  volatile uint32_t  ulSm_served;
 } NX56_FMMUSM_AREA_T;
 
 typedef struct NX56_TRIGGER_SAMPLE_UNIT_AREA_Ttag
 {
-  volatile unsigned long  ulTrigger_sample_config;
-  volatile unsigned long  ulTrigger_sample_status;
-  volatile unsigned long  ulTrigger_sample_irq;
-  volatile unsigned long  ulTrigger_activate;
-  volatile unsigned long  ulTrigger_impulse_length;
-  volatile unsigned long aulTrigger__starttime_ns[2];
-  volatile unsigned long aulTrigger__cyc_time[2];
-  volatile unsigned long  ulSample_mode;
+  volatile uint32_t  ulTrigger_sample_config;
+  volatile uint32_t  ulTrigger_sample_status;
+  volatile uint32_t  ulTrigger_sample_irq;
+  volatile uint32_t  ulTrigger_activate;
+  volatile uint32_t  ulTrigger_impulse_length;
+  volatile uint32_t aulTrigger__starttime_ns[2];
+  volatile uint32_t aulTrigger__cyc_time[2];
+  volatile uint32_t  ulSample_mode;
   struct
   {
-    volatile unsigned long  ulPos_systime_ns;
-    volatile unsigned long  ulNeg_systime_ns;
+    volatile uint32_t  ulPos_systime_ns;
+    volatile uint32_t  ulNeg_systime_ns;
   } asSample_[2];
-  volatile unsigned long  ulTrigger_offset;
-  volatile unsigned long  ulSync1_interval;
+  volatile uint32_t  ulTrigger_offset;
+  volatile uint32_t  ulSync1_interval;
 } NX56_TRIGGER_SAMPLE_UNIT_AREA_T;
 
 typedef struct NX56_BUF_MAN_AREA_Ttag
 {
-  volatile unsigned long aulBuf_man_rpec[2];
-  volatile unsigned long  ulBuf_man;
+  volatile uint32_t aulBuf_man_rpec[2];
+  volatile uint32_t  ulBuf_man;
 } NX56_BUF_MAN_AREA_T;
 
 typedef struct NX56_XPEC_IRQ_REGISTERS_AREA_Ttag
 {
-  volatile unsigned long aulIrq_xpec[2];
+  volatile uint32_t aulIrq_xpec[2];
 } NX56_XPEC_IRQ_REGISTERS_AREA_T;
 
 typedef struct NX56_XC_DEBUG_AREA_Ttag
 {
-  volatile unsigned long  ulXc_debug_config;
+  volatile uint32_t  ulXc_debug_config;
 } NX56_XC_DEBUG_AREA_T;
 
 typedef struct NX56_XC_START_STOP_AREA_Ttag
 {
-  volatile unsigned long  ulXc_start_stop_ctrl;
-  volatile unsigned long  ulXc_hold_status;
+  volatile uint32_t  ulXc_start_stop_ctrl;
+  volatile uint32_t  ulXc_hold_status;
 } NX56_XC_START_STOP_AREA_T;
 
 typedef struct NX56_DPM_AREA_Ttag
 {
-  volatile unsigned long  ulDpm_cfg0x0;
-  volatile unsigned long  ulDpm_if_cfg;
-  volatile unsigned long aulDpm_pio_cfg[2];
-  volatile unsigned long  ulDpm_addr_cfg;
-  volatile unsigned long  ulDpm_timing_cfg;
-  volatile unsigned long  ulDpm_rdy_cfg;
-  volatile unsigned long  ulDpm_status;
-  volatile unsigned long  ulDpm_status_err_reset;
-  volatile unsigned long  ulDpm_status_err_addr;
-  volatile unsigned long  ulDpm_misc_cfg;
-  volatile unsigned long  ulDpm_io_cfg_misc;
-  volatile unsigned long aulReserved0[2];
-  volatile unsigned long  ulDpm_tunnel_cfg;
-  volatile unsigned long  ulDpm_itbaddr;
+  volatile uint32_t  ulDpm_cfg0x0;
+  volatile uint32_t  ulDpm_if_cfg;
+  volatile uint32_t aulDpm_pio_cfg[2];
+  volatile uint32_t  ulDpm_addr_cfg;
+  volatile uint32_t  ulDpm_timing_cfg;
+  volatile uint32_t  ulDpm_rdy_cfg;
+  volatile uint32_t  ulDpm_status;
+  volatile uint32_t  ulDpm_status_err_reset;
+  volatile uint32_t  ulDpm_status_err_addr;
+  volatile uint32_t  ulDpm_misc_cfg;
+  volatile uint32_t  ulDpm_io_cfg_misc;
+  volatile uint32_t aulReserved0[2];
+  volatile uint32_t  ulDpm_tunnel_cfg;
+  volatile uint32_t  ulDpm_itbaddr;
   struct
   {
-    volatile unsigned long  ulEnd;
-    volatile unsigned long  ulMap;
+    volatile uint32_t  ulEnd;
+    volatile uint32_t  ulMap;
   } asDpm_win[4];
-  volatile unsigned long aulReserved1[8];
-  volatile unsigned long  ulDpm_irq_raw;
-  volatile unsigned long  ulDpm_irq_arm_mask_set;
-  volatile unsigned long  ulDpm_irq_arm_mask_reset;
-  volatile unsigned long  ulDpm_irq_arm_masked;
-  volatile unsigned long  ulDpm_irq_xpic_mask_set;
-  volatile unsigned long  ulDpm_irq_xpic_mask_reset;
-  volatile unsigned long  ulDpm_irq_xpic_masked;
-  volatile unsigned long  ulDpm_irq_fiq_mask_set;
-  volatile unsigned long  ulDpm_irq_fiq_mask_reset;
-  volatile unsigned long  ulDpm_irq_fiq_masked;
-  volatile unsigned long  ulDpm_irq_irq_mask_set;
-  volatile unsigned long  ulDpm_irq_irq_mask_reset;
-  volatile unsigned long  ulDpm_irq_irq_masked;
-  volatile unsigned long aulReserved2[1];
-  volatile unsigned long  ulDpm_sw_irq;
-  volatile unsigned long aulReserved3[1];
-  volatile unsigned long  ulDpm_reserved_netx50_wgd_host_timeout;
-  volatile unsigned long  ulDpm_reserved_netx50_wgd_host_trigger;
-  volatile unsigned long  ulDpm_reserved_netx50_wgd_netx_timeout;
-  volatile unsigned long  ulDpm_sys_sta_bigend16;
-  volatile unsigned long  ulDpm_reserved_netx50_timer_ctrl;
-  volatile unsigned long  ulDpm_reserved_netx50_timer_start_val;
-  volatile unsigned long  ulDpm_sys_sta;
-  volatile unsigned long  ulDpm_reset_request;
-  volatile unsigned long  ulDpm_firmware_irq_raw;
-  volatile unsigned long aulReserved4[1];
-  volatile unsigned long  ulDpm_firmware_irq_raw2;
-  volatile unsigned long aulReserved5[1];
-  volatile unsigned long  ulDpm_firmware_irq_mask;
-  volatile unsigned long  ulDpm_netx_version_bigend16;
-  volatile unsigned long  ulDpm_firmware_irq_mask2;
-  volatile unsigned long  ulDpm_netx_version;
+  volatile uint32_t aulReserved1[8];
+  volatile uint32_t  ulDpm_irq_raw;
+  volatile uint32_t  ulDpm_irq_arm_mask_set;
+  volatile uint32_t  ulDpm_irq_arm_mask_reset;
+  volatile uint32_t  ulDpm_irq_arm_masked;
+  volatile uint32_t  ulDpm_irq_xpic_mask_set;
+  volatile uint32_t  ulDpm_irq_xpic_mask_reset;
+  volatile uint32_t  ulDpm_irq_xpic_masked;
+  volatile uint32_t  ulDpm_irq_fiq_mask_set;
+  volatile uint32_t  ulDpm_irq_fiq_mask_reset;
+  volatile uint32_t  ulDpm_irq_fiq_masked;
+  volatile uint32_t  ulDpm_irq_irq_mask_set;
+  volatile uint32_t  ulDpm_irq_irq_mask_reset;
+  volatile uint32_t  ulDpm_irq_irq_masked;
+  volatile uint32_t aulReserved2[1];
+  volatile uint32_t  ulDpm_sw_irq;
+  volatile uint32_t aulReserved3[1];
+  volatile uint32_t  ulDpm_reserved_netx50_wgd_host_timeout;
+  volatile uint32_t  ulDpm_reserved_netx50_wgd_host_trigger;
+  volatile uint32_t  ulDpm_reserved_netx50_wgd_netx_timeout;
+  volatile uint32_t  ulDpm_sys_sta_bigend16;
+  volatile uint32_t  ulDpm_reserved_netx50_timer_ctrl;
+  volatile uint32_t  ulDpm_reserved_netx50_timer_start_val;
+  volatile uint32_t  ulDpm_sys_sta;
+  volatile uint32_t  ulDpm_reset_request;
+  volatile uint32_t  ulDpm_firmware_irq_raw;
+  volatile uint32_t aulReserved4[1];
+  volatile uint32_t  ulDpm_firmware_irq_raw2;
+  volatile uint32_t aulReserved5[1];
+  volatile uint32_t  ulDpm_firmware_irq_mask;
+  volatile uint32_t  ulDpm_netx_version_bigend16;
+  volatile uint32_t  ulDpm_firmware_irq_mask2;
+  volatile uint32_t  ulDpm_netx_version;
 } NX56_DPM_AREA_T;
 
 typedef struct NX56_ASIC_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulIo_config;
-  volatile unsigned long  ulIo_config_mask;
-  volatile unsigned long  ulIo_config2;
-  volatile unsigned long  ulIo_config2_mask;
-  volatile unsigned long  ulReset_ctrl;
-  volatile unsigned long  ulPhy_control;
-  volatile unsigned long  ulArmclk_rate_mul_add;
-  volatile unsigned long  ulUsb12clk_rate_mul_add;
+  volatile uint32_t  ulIo_config;
+  volatile uint32_t  ulIo_config_mask;
+  volatile uint32_t  ulIo_config2;
+  volatile uint32_t  ulIo_config2_mask;
+  volatile uint32_t  ulReset_ctrl;
+  volatile uint32_t  ulPhy_control;
+  volatile uint32_t  ulArmclk_rate_mul_add;
+  volatile uint32_t  ulUsb12clk_rate_mul_add;
   struct
   {
-    volatile unsigned long  ulClk_rate_mul_add;
-    volatile unsigned long  ulClk_div;
+    volatile uint32_t  ulClk_rate_mul_add;
+    volatile uint32_t  ulClk_div;
   } asFb[2];
-  volatile unsigned long  ulClkout_rate_mul_add;
-  volatile unsigned long  ulClkout_div;
-  volatile unsigned long  ulClock_enable;
-  volatile unsigned long  ulClock_enable_mask;
-  volatile unsigned long  ulMisc_asic_ctrl;
-  volatile unsigned long  ulOnly_porn;
-  volatile unsigned long  ulNetx_version;
-  volatile unsigned long  ulRom_wdg;
-  volatile unsigned long  ulSample_at_nres;
-  volatile unsigned long  ulNetx_status;
-  volatile unsigned long  ulRdy_run_cfg;
-  volatile unsigned long  ulSystem_status;
-  volatile unsigned long  ulNetx_lic_id;
-  volatile unsigned long aulNetx_lic_flags[2];
-  volatile unsigned long aulNetx_lic_errors[2];
-  volatile unsigned long  ulNetx_lock_reserved_ul;
-  volatile unsigned long  ulNetx_lock_reserved_lf;
-  volatile unsigned long  ulAsic_ctrl_access_key;
-  volatile unsigned long aulNetx_lock_reserved[32];
+  volatile uint32_t  ulClkout_rate_mul_add;
+  volatile uint32_t  ulClkout_div;
+  volatile uint32_t  ulClock_enable;
+  volatile uint32_t  ulClock_enable_mask;
+  volatile uint32_t  ulMisc_asic_ctrl;
+  volatile uint32_t  ulOnly_porn;
+  volatile uint32_t  ulNetx_version;
+  volatile uint32_t  ulRom_wdg;
+  volatile uint32_t  ulSample_at_nres;
+  volatile uint32_t  ulNetx_status;
+  volatile uint32_t  ulRdy_run_cfg;
+  volatile uint32_t  ulSystem_status;
+  volatile uint32_t  ulNetx_lic_id;
+  volatile uint32_t aulNetx_lic_flags[2];
+  volatile uint32_t aulNetx_lic_errors[2];
+  volatile uint32_t  ulNetx_lock_reserved_ul;
+  volatile uint32_t  ulNetx_lock_reserved_lf;
+  volatile uint32_t  ulAsic_ctrl_access_key;
+  volatile uint32_t aulNetx_lock_reserved[32];
 } NX56_ASIC_CTRL_AREA_T;
 
 typedef struct NX56_MMIO_CTRL_AREA_Ttag
 {
-  volatile unsigned long aulMmio_cfg[49];
-  volatile unsigned long aulMmio_pio_out_line_cfg[2];
-  volatile unsigned long aulMmio_pio_oe_line_cfg[2];
-  volatile unsigned long aulMmio_in_line_status[2];
-  volatile unsigned long aulMmio_is_pio_status[2];
+  volatile uint32_t aulMmio_cfg[49];
+  volatile uint32_t aulMmio_pio_out_line_cfg[2];
+  volatile uint32_t aulMmio_pio_oe_line_cfg[2];
+  volatile uint32_t aulMmio_in_line_status[2];
+  volatile uint32_t aulMmio_is_pio_status[2];
 } NX56_MMIO_CTRL_AREA_T;
 
 typedef struct NX56_HANDSHAKE_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulHandshake_base_addr;
-  volatile unsigned long aulReserved0[3];
-  volatile unsigned long  ulHandshake_dpm_irq_raw_clear;
-  volatile unsigned long  ulHandshake_dpm_irq_masked;
-  volatile unsigned long  ulHandshake_dpm_irq_msk_set;
-  volatile unsigned long  ulHandshake_dpm_irq_msk_reset;
-  volatile unsigned long  ulHandshake_arm_irq_raw_clear;
-  volatile unsigned long  ulHandshake_arm_irq_masked;
-  volatile unsigned long  ulHandshake_arm_irq_msk_set;
-  volatile unsigned long  ulHandshake_arm_irq_msk_reset;
-  volatile unsigned long  ulHandshake_xpic_irq_raw_clear;
-  volatile unsigned long  ulHandshake_xpic_irq_masked;
-  volatile unsigned long  ulHandshake_xpic_irq_msk_set;
-  volatile unsigned long  ulHandshake_xpic_irq_msk_reset;
-  volatile unsigned long aulReserved1[16];
-  volatile unsigned long aulHandshake_hsc_ctrl[16];
+  volatile uint32_t  ulHandshake_base_addr;
+  volatile uint32_t aulReserved0[3];
+  volatile uint32_t  ulHandshake_dpm_irq_raw_clear;
+  volatile uint32_t  ulHandshake_dpm_irq_masked;
+  volatile uint32_t  ulHandshake_dpm_irq_msk_set;
+  volatile uint32_t  ulHandshake_dpm_irq_msk_reset;
+  volatile uint32_t  ulHandshake_arm_irq_raw_clear;
+  volatile uint32_t  ulHandshake_arm_irq_masked;
+  volatile uint32_t  ulHandshake_arm_irq_msk_set;
+  volatile uint32_t  ulHandshake_arm_irq_msk_reset;
+  volatile uint32_t  ulHandshake_xpic_irq_raw_clear;
+  volatile uint32_t  ulHandshake_xpic_irq_masked;
+  volatile uint32_t  ulHandshake_xpic_irq_msk_set;
+  volatile uint32_t  ulHandshake_xpic_irq_msk_reset;
+  volatile uint32_t aulReserved1[16];
+  volatile uint32_t aulHandshake_hsc_ctrl[16];
   struct
   {
-    volatile unsigned long  ulCtrl;
-    volatile unsigned long  ulStatus_ctrl_netx;
-    volatile unsigned long  ulStatus_ctrl_host;
-    volatile unsigned long  ulWin_map;
+    volatile uint32_t  ulCtrl;
+    volatile uint32_t  ulStatus_ctrl_netx;
+    volatile uint32_t  ulStatus_ctrl_host;
+    volatile uint32_t  ulWin_map;
   } asHandshake_buf_man[2];
 } NX56_HANDSHAKE_CTRL_AREA_T;
 
 typedef struct NX56_XPIC_AREA_Ttag
 {
-  volatile unsigned long aulXpic_r[8];
-  volatile unsigned long aulXpic_usr[5];
-  volatile unsigned long  ulXpic_pc;
-  volatile unsigned long  ulXpic_stat;
-  volatile unsigned long  ulXpic_zero;
+  volatile uint32_t aulXpic_r[8];
+  volatile uint32_t aulXpic_usr[5];
+  volatile uint32_t  ulXpic_pc;
+  volatile uint32_t  ulXpic_stat;
+  volatile uint32_t  ulXpic_zero;
 } NX56_XPIC_AREA_T;
 
 typedef struct NX56_XPIC_DEBUG_AREA_Ttag
 {
-  volatile unsigned long  ulXpic_hold_pc;
+  volatile uint32_t  ulXpic_hold_pc;
   struct
   {
-    volatile unsigned long  ulAddr;
-    volatile unsigned long  ulAddr_mask;
-    volatile unsigned long  ulData;
-    volatile unsigned long  ulData_mask;
-    volatile unsigned long  ulContr;
-    volatile unsigned long  ulContr_mask;
+    volatile uint32_t  ulAddr;
+    volatile uint32_t  ulAddr_mask;
+    volatile uint32_t  ulData;
+    volatile uint32_t  ulData_mask;
+    volatile uint32_t  ulContr;
+    volatile uint32_t  ulContr_mask;
   } asXpic_break[2];
-  volatile unsigned long  ulXpic_break_last_pc;
-  volatile unsigned long  ulXpic_break_status;
-  volatile unsigned long  ulXpic_break_irq_raw;
-  volatile unsigned long  ulXpic_break_irq_masked;
-  volatile unsigned long  ulXpic_break_irq_msk_set;
-  volatile unsigned long  ulXpic_break_irq_msk_reset;
-  volatile unsigned long  ulXpic_break_own_irq_masked;
-  volatile unsigned long  ulXpic_break_own_irq_msk_set;
-  volatile unsigned long  ulXpic_break_own_irq_msk_reset;
-  volatile unsigned long  ulXpic_break_return_fiq_pc;
-  volatile unsigned long  ulXpic_break_return_irq_pc;
-  volatile unsigned long  ulXpic_irq_status;
+  volatile uint32_t  ulXpic_break_last_pc;
+  volatile uint32_t  ulXpic_break_status;
+  volatile uint32_t  ulXpic_break_irq_raw;
+  volatile uint32_t  ulXpic_break_irq_masked;
+  volatile uint32_t  ulXpic_break_irq_msk_set;
+  volatile uint32_t  ulXpic_break_irq_msk_reset;
+  volatile uint32_t  ulXpic_break_own_irq_masked;
+  volatile uint32_t  ulXpic_break_own_irq_msk_set;
+  volatile uint32_t  ulXpic_break_own_irq_msk_reset;
+  volatile uint32_t  ulXpic_break_return_fiq_pc;
+  volatile uint32_t  ulXpic_break_return_irq_pc;
+  volatile uint32_t  ulXpic_irq_status;
 } NX56_XPIC_DEBUG_AREA_T;
 
 typedef struct NX56_INT_PHY_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulInt_phy_ctrl_miimu;
-  volatile unsigned long  ulInt_phy_ctrl_miimu_sw;
-  volatile unsigned long  ulInt_phy_ctrl_led;
-  volatile unsigned long  ulInt_phy_ctrl_enhanced_link_detection;
+  volatile uint32_t  ulInt_phy_ctrl_miimu;
+  volatile uint32_t  ulInt_phy_ctrl_miimu_sw;
+  volatile uint32_t  ulInt_phy_ctrl_led;
+  volatile uint32_t  ulInt_phy_ctrl_enhanced_link_detection;
 } NX56_INT_PHY_CTRL_AREA_T;
 
 typedef struct NX56_MIIMU_AREA_Ttag
 {
-  volatile unsigned long  ulMiimu;
-  volatile unsigned long  ulMiimu_sw;
+  volatile uint32_t  ulMiimu;
+  volatile uint32_t  ulMiimu_sw;
 } NX56_MIIMU_AREA_T;
 
 typedef struct NX56_PIO_AREA_Ttag
 {
-  volatile unsigned long  ulPio_in;
-  volatile unsigned long  ulPio_out;
-  volatile unsigned long  ulPio_oe;
+  volatile uint32_t  ulPio_in;
+  volatile uint32_t  ulPio_out;
+  volatile uint32_t  ulPio_oe;
 } NX56_PIO_AREA_T;
 
 typedef struct NX56_HIF_IO_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulHif_io_cfg;
-  volatile unsigned long  ulHif_pio_cfg;
-  volatile unsigned long aulHif_pio_out[2];
-  volatile unsigned long aulHif_pio_oe[2];
-  volatile unsigned long aulHif_pio_in[2];
-  volatile unsigned long aulReserved0[1];
-  volatile unsigned long  ulHif_pio_irq_raw;
-  volatile unsigned long  ulHif_pio_irq_arm_mask_set;
-  volatile unsigned long  ulHif_pio_irq_arm_mask_reset;
-  volatile unsigned long  ulHif_pio_irq_arm_masked;
-  volatile unsigned long  ulHif_pio_irq_xpic_mask_set;
-  volatile unsigned long  ulHif_pio_irq_xpic_mask_reset;
-  volatile unsigned long  ulHif_pio_irq_xpic_masked;
+  volatile uint32_t  ulHif_io_cfg;
+  volatile uint32_t  ulHif_pio_cfg;
+  volatile uint32_t aulHif_pio_out[2];
+  volatile uint32_t aulHif_pio_oe[2];
+  volatile uint32_t aulHif_pio_in[2];
+  volatile uint32_t aulReserved0[1];
+  volatile uint32_t  ulHif_pio_irq_raw;
+  volatile uint32_t  ulHif_pio_irq_arm_mask_set;
+  volatile uint32_t  ulHif_pio_irq_arm_mask_reset;
+  volatile uint32_t  ulHif_pio_irq_arm_masked;
+  volatile uint32_t  ulHif_pio_irq_xpic_mask_set;
+  volatile uint32_t  ulHif_pio_irq_xpic_mask_reset;
+  volatile uint32_t  ulHif_pio_irq_xpic_masked;
 } NX56_HIF_IO_CTRL_AREA_T;
 
 typedef struct NX56_CRC_AREA_Ttag
 {
-  volatile unsigned long  ulCrc_crc;
-  volatile unsigned long  ulCrc_data_in;
-  volatile unsigned long  ulCrc_polynomial;
-  volatile unsigned long  ulCrc_config;
+  volatile uint32_t  ulCrc_crc;
+  volatile uint32_t  ulCrc_data_in;
+  volatile uint32_t  ulCrc_polynomial;
+  volatile uint32_t  ulCrc_config;
 } NX56_CRC_AREA_T;
 
 typedef struct NX56_SYSTIME_AREA_Ttag
 {
-  volatile unsigned long  ulSystime_s;
-  volatile unsigned long  ulSystime_ns;
-  volatile unsigned long  ulSystime_border;
-  volatile unsigned long  ulSystime_count_value;
+  volatile uint32_t  ulSystime_s;
+  volatile uint32_t  ulSystime_ns;
+  volatile uint32_t  ulSystime_border;
+  volatile uint32_t  ulSystime_count_value;
 } NX56_SYSTIME_AREA_T;
 
 typedef struct NX56_WATCHDOG_AREA_Ttag
 {
-  volatile unsigned long  ulNetx_sys_wdg_ctrl;
-  volatile unsigned long  ulNetx_sys_wdg;
-  volatile unsigned long  ulNetx_sys_wdg_irq_timeout;
-  volatile unsigned long  ulNetx_sys_wdg_res_timeout;
+  volatile uint32_t  ulNetx_sys_wdg_ctrl;
+  volatile uint32_t  ulNetx_sys_wdg;
+  volatile uint32_t  ulNetx_sys_wdg_irq_timeout;
+  volatile uint32_t  ulNetx_sys_wdg_res_timeout;
 } NX56_WATCHDOG_AREA_T;
 
 typedef struct NX56_SQI_AREA_Ttag
 {
-  volatile unsigned long aulSqi_cr[2];
-  volatile unsigned long  ulSqi_dr;
-  volatile unsigned long  ulSqi_sr;
-  volatile unsigned long  ulSqi_tcr;
-  volatile unsigned long  ulSqi_irq_mask;
-  volatile unsigned long  ulSqi_irq_raw;
-  volatile unsigned long  ulSqi_irq_masked;
-  volatile unsigned long  ulSqi_irq_clear;
-  volatile unsigned long  ulSqi_irq_cpu_sel;
-  volatile unsigned long  ulSqi_dmacr;
-  volatile unsigned long aulReserved0[1];
-  volatile unsigned long  ulSqi_pio_out;
-  volatile unsigned long  ulSqi_pio_oe;
-  volatile unsigned long  ulSqi_pio_in;
-  volatile unsigned long  ulSqi_sqirom_cfg;
+  volatile uint32_t aulSqi_cr[2];
+  volatile uint32_t  ulSqi_dr;
+  volatile uint32_t  ulSqi_sr;
+  volatile uint32_t  ulSqi_tcr;
+  volatile uint32_t  ulSqi_irq_mask;
+  volatile uint32_t  ulSqi_irq_raw;
+  volatile uint32_t  ulSqi_irq_masked;
+  volatile uint32_t  ulSqi_irq_clear;
+  volatile uint32_t  ulSqi_irq_cpu_sel;
+  volatile uint32_t  ulSqi_dmacr;
+  volatile uint32_t aulReserved0[1];
+  volatile uint32_t  ulSqi_pio_out;
+  volatile uint32_t  ulSqi_pio_oe;
+  volatile uint32_t  ulSqi_pio_in;
+  volatile uint32_t  ulSqi_sqirom_cfg;
 } NX56_SQI_AREA_T;
 
 typedef struct NX56_UART_AREA_Ttag
 {
-  volatile unsigned long  ulUartdr;
-  volatile unsigned long  ulUartrsr;
-  volatile unsigned long  ulUartlcr_h;
-  volatile unsigned long  ulUartlcr_m;
-  volatile unsigned long  ulUartlcr_l;
-  volatile unsigned long  ulUartcr;
-  volatile unsigned long  ulUartfr;
-  volatile unsigned long  ulUartiir;
-  volatile unsigned long  ulUartilpr;
-  volatile unsigned long  ulUartrts;
-  volatile unsigned long  ulUartforerun;
-  volatile unsigned long  ulUarttrail;
-  volatile unsigned long  ulUartdrvout;
-  volatile unsigned long  ulUartcr_2;
-  volatile unsigned long  ulUartrxiflsel;
-  volatile unsigned long  ulUarttxiflsel;
+  volatile uint32_t  ulUartdr;
+  volatile uint32_t  ulUartrsr;
+  volatile uint32_t  ulUartlcr_h;
+  volatile uint32_t  ulUartlcr_m;
+  volatile uint32_t  ulUartlcr_l;
+  volatile uint32_t  ulUartcr;
+  volatile uint32_t  ulUartfr;
+  volatile uint32_t  ulUartiir;
+  volatile uint32_t  ulUartilpr;
+  volatile uint32_t  ulUartrts;
+  volatile uint32_t  ulUartforerun;
+  volatile uint32_t  ulUarttrail;
+  volatile uint32_t  ulUartdrvout;
+  volatile uint32_t  ulUartcr_2;
+  volatile uint32_t  ulUartrxiflsel;
+  volatile uint32_t  ulUarttxiflsel;
 } NX56_UART_AREA_T;
 
 typedef struct NX56_I2C_AREA_Ttag
 {
-  volatile unsigned long  ulI2c_mcr;
-  volatile unsigned long  ulI2c_scr;
-  volatile unsigned long  ulI2c_cmd;
-  volatile unsigned long  ulI2c_mdr;
-  volatile unsigned long  ulI2c_sdr;
-  volatile unsigned long  ulI2c_mfifo_cr;
-  volatile unsigned long  ulI2c_sfifo_cr;
-  volatile unsigned long  ulI2c_sr;
-  volatile unsigned long  ulI2c_irqmsk;
-  volatile unsigned long  ulI2c_irqsr;
-  volatile unsigned long  ulI2c_irqmsked;
-  volatile unsigned long  ulI2c_dmacr;
-  volatile unsigned long  ulI2c_pio;
+  volatile uint32_t  ulI2c_mcr;
+  volatile uint32_t  ulI2c_scr;
+  volatile uint32_t  ulI2c_cmd;
+  volatile uint32_t  ulI2c_mdr;
+  volatile uint32_t  ulI2c_sdr;
+  volatile uint32_t  ulI2c_mfifo_cr;
+  volatile uint32_t  ulI2c_sfifo_cr;
+  volatile uint32_t  ulI2c_sr;
+  volatile uint32_t  ulI2c_irqmsk;
+  volatile uint32_t  ulI2c_irqsr;
+  volatile uint32_t  ulI2c_irqmsked;
+  volatile uint32_t  ulI2c_dmacr;
+  volatile uint32_t  ulI2c_pio;
 } NX56_I2C_AREA_T;
 
 typedef struct NX56_PARITY_AREA_Ttag
 {
-  volatile unsigned long  ulParity_enable;
-  volatile unsigned long  ulParity_abort_enable;
-  volatile unsigned long  ulParity_error_mem_status;
-  volatile unsigned long  ulParity_error_acc_status;
-  volatile unsigned long  ulParity_irq_raw;
-  volatile unsigned long  ulParity_irq_masked;
-  volatile unsigned long  ulParity_irq_msk_set;
-  volatile unsigned long  ulParity_irq_msk_reset;
+  volatile uint32_t  ulParity_enable;
+  volatile uint32_t  ulParity_abort_enable;
+  volatile uint32_t  ulParity_error_mem_status;
+  volatile uint32_t  ulParity_error_acc_status;
+  volatile uint32_t  ulParity_irq_raw;
+  volatile uint32_t  ulParity_irq_masked;
+  volatile uint32_t  ulParity_irq_msk_set;
+  volatile uint32_t  ulParity_irq_msk_reset;
 } NX56_PARITY_AREA_T;
 
 typedef struct NX56_USB_DEV_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulUsb_dev_cfg;
-  volatile unsigned long  ulUsb_dev_status;
-  volatile unsigned long  ulUsb_dev_vendor_features;
-  volatile unsigned long  ulUsb_dev_irq_mask;
-  volatile unsigned long  ulUsb_dev_irq_raw;
-  volatile unsigned long  ulUsb_dev_irq_masked;
+  volatile uint32_t  ulUsb_dev_cfg;
+  volatile uint32_t  ulUsb_dev_status;
+  volatile uint32_t  ulUsb_dev_vendor_features;
+  volatile uint32_t  ulUsb_dev_irq_mask;
+  volatile uint32_t  ulUsb_dev_irq_raw;
+  volatile uint32_t  ulUsb_dev_irq_masked;
 } NX56_USB_DEV_CTRL_AREA_T;
 
 typedef struct NX56_USB_DEV_FIFO_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_conf;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_error;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_control_ep_rx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_control_ep_rx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_control_ep_tx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_control_ep_tx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_interrupt_ep_tx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_interrupt_ep_tx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_uart_ep_rx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_uart_ep_rx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_uart_ep_tx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_uart_ep_tx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_jtag_ep_rx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_jtag_ep_rx_stat;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_jtag_ep_tx_len;
-  volatile unsigned long  ulUsb_dev_fifo_ctrl_jtag_ep_tx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_conf;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_error;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_control_ep_rx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_control_ep_rx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_control_ep_tx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_control_ep_tx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_interrupt_ep_tx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_interrupt_ep_tx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_uart_ep_rx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_uart_ep_rx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_uart_ep_tx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_uart_ep_tx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_jtag_ep_rx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_jtag_ep_rx_stat;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_jtag_ep_tx_len;
+  volatile uint32_t  ulUsb_dev_fifo_ctrl_jtag_ep_tx_stat;
 } NX56_USB_DEV_FIFO_CTRL_AREA_T;
 
 typedef struct NX56_USB_DEV_FIFO_AREA_Ttag
 {
-  volatile unsigned long  ulUsb_dev_control_out_data;
-  volatile unsigned long  ulUsb_dev_control_in_data;
-  volatile unsigned long  ulUsb_dev_interrupt_data;
-  volatile unsigned long  ulUsb_dev_uart_rx_data;
-  volatile unsigned long  ulUsb_dev_uart_tx_data;
-  volatile unsigned long  ulUsb_dev_jtag_rx_data;
-  volatile unsigned long  ulUsb_dev_jtag_tx_data;
+  volatile uint32_t  ulUsb_dev_control_out_data;
+  volatile uint32_t  ulUsb_dev_control_in_data;
+  volatile uint32_t  ulUsb_dev_interrupt_data;
+  volatile uint32_t  ulUsb_dev_uart_rx_data;
+  volatile uint32_t  ulUsb_dev_uart_tx_data;
+  volatile uint32_t  ulUsb_dev_jtag_rx_data;
+  volatile uint32_t  ulUsb_dev_jtag_tx_data;
 } NX56_USB_DEV_FIFO_AREA_T;
 
 typedef struct NX56_CANCTRL_AREA_Ttag
 {
-  volatile unsigned long  ulCanctrl_mode;
-  volatile unsigned long  ulCanctrl_command;
-  volatile unsigned long  ulCanctrl_status;
-  volatile unsigned long  ulCanctrl_irq;
-  volatile unsigned long  ulCanctrl_irq_en;
-  volatile unsigned long  ulCanctrl_not_extended_acceptance_mask0;
-  volatile unsigned long aulCanctrl_bus_timing[2];
-  volatile unsigned long aulReserved0[2];
-  volatile unsigned long  ulCanctrl_not_extended_data0;
-  volatile unsigned long  ulCanctrl_arb_lost_capture;
-  volatile unsigned long  ulCanctrl_err_code_capture;
-  volatile unsigned long  ulCanctrl_err_warning_limit;
-  volatile unsigned long  ulCanctrl_rx_error_cnt;
-  volatile unsigned long  ulCanctrl_tx_error_cnt;
-  volatile unsigned long aulCanctrl_data[13];
-  volatile unsigned long  ulCanctrl_rx_message_cnt;
-  volatile unsigned long aulReserved1[1];
-  volatile unsigned long  ulCanctrl_mode_control;
-  volatile unsigned long  ulCanctrl_arm_xpic_irq_enable;
+  volatile uint32_t  ulCanctrl_mode;
+  volatile uint32_t  ulCanctrl_command;
+  volatile uint32_t  ulCanctrl_status;
+  volatile uint32_t  ulCanctrl_irq;
+  volatile uint32_t  ulCanctrl_irq_en;
+  volatile uint32_t  ulCanctrl_not_extended_acceptance_mask0;
+  volatile uint32_t aulCanctrl_bus_timing[2];
+  volatile uint32_t aulReserved0[2];
+  volatile uint32_t  ulCanctrl_not_extended_data0;
+  volatile uint32_t  ulCanctrl_arb_lost_capture;
+  volatile uint32_t  ulCanctrl_err_code_capture;
+  volatile uint32_t  ulCanctrl_err_warning_limit;
+  volatile uint32_t  ulCanctrl_rx_error_cnt;
+  volatile uint32_t  ulCanctrl_tx_error_cnt;
+  volatile uint32_t aulCanctrl_data[13];
+  volatile uint32_t  ulCanctrl_rx_message_cnt;
+  volatile uint32_t aulReserved1[1];
+  volatile uint32_t  ulCanctrl_mode_control;
+  volatile uint32_t  ulCanctrl_arm_xpic_irq_enable;
 } NX56_CANCTRL_AREA_T;
 
 typedef struct NX56_DMAC_CH_AREA_Ttag
 {
-  volatile unsigned long  ulDmac_chsrc_ad;
-  volatile unsigned long  ulDmac_chdest_ad;
-  volatile unsigned long  ulDmac_chlink;
-  volatile unsigned long  ulDmac_chctrl;
-  volatile unsigned long  ulDmac_chcfg;
+  volatile uint32_t  ulDmac_chsrc_ad;
+  volatile uint32_t  ulDmac_chdest_ad;
+  volatile uint32_t  ulDmac_chlink;
+  volatile uint32_t  ulDmac_chctrl;
+  volatile uint32_t  ulDmac_chcfg;
 } NX56_DMAC_CH_AREA_T;
 
 typedef struct NX56_DMAC_REG_AREA_Ttag
 {
-  volatile unsigned long  ulDmac_int_status;
-  volatile unsigned long  ulDmac_inttc_status;
-  volatile unsigned long  ulDmac_inttc_clear;
-  volatile unsigned long  ulDmac_interr_status;
-  volatile unsigned long  ulDmac_interr_clear;
-  volatile unsigned long  ulDmac_rawinttc_status;
-  volatile unsigned long  ulDmac_rawinterr_status;
-  volatile unsigned long  ulDmac_enabled_channel;
-  volatile unsigned long  ulDmac_softb_req;
-  volatile unsigned long  ulDmac_softs_req;
-  volatile unsigned long  ulDmac_softlb_req;
-  volatile unsigned long  ulDmac_softls_req;
-  volatile unsigned long  ulDmac_config;
-  volatile unsigned long  ulDmac_sync;
+  volatile uint32_t  ulDmac_int_status;
+  volatile uint32_t  ulDmac_inttc_status;
+  volatile uint32_t  ulDmac_inttc_clear;
+  volatile uint32_t  ulDmac_interr_status;
+  volatile uint32_t  ulDmac_interr_clear;
+  volatile uint32_t  ulDmac_rawinttc_status;
+  volatile uint32_t  ulDmac_rawinterr_status;
+  volatile uint32_t  ulDmac_enabled_channel;
+  volatile uint32_t  ulDmac_softb_req;
+  volatile uint32_t  ulDmac_softs_req;
+  volatile uint32_t  ulDmac_softlb_req;
+  volatile uint32_t  ulDmac_softls_req;
+  volatile uint32_t  ulDmac_config;
+  volatile uint32_t  ulDmac_sync;
 } NX56_DMAC_REG_AREA_T;
 
 typedef struct NX56_EXT_ASYNCMEM_CTRL_AREA_Ttag
 {
-  volatile unsigned long aulExtsram_ctrl[4];
-  volatile unsigned long  ulExt_cs0_apm_ctrl;
-  volatile unsigned long aulReserved0[3];
-  volatile unsigned long  ulExt_rdy_cfg;
-  volatile unsigned long  ulExt_rdy_status;
+  volatile uint32_t aulExtsram_ctrl[4];
+  volatile uint32_t  ulExt_cs0_apm_ctrl;
+  volatile uint32_t aulReserved0[3];
+  volatile uint32_t  ulExt_rdy_cfg;
+  volatile uint32_t  ulExt_rdy_status;
 } NX56_EXT_ASYNCMEM_CTRL_AREA_T;
 
 typedef struct NX56_EXTMEM_PRIORITY_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulExtmem_prio_timslot_ctrl;
-  volatile unsigned long  ulExtmem_prio_accesstime_ctrl;
+  volatile uint32_t  ulExtmem_prio_timslot_ctrl;
+  volatile uint32_t  ulExtmem_prio_accesstime_ctrl;
 } NX56_EXTMEM_PRIORITY_CTRL_AREA_T;
 
 typedef struct NX56_EXTMEM_PIO_CTRL_AREA_Ttag
 {
-  volatile unsigned long  ulExtmem_pio_ctrl_mem_d_pio_oe_set_clear;
-  volatile unsigned long  ulExtmem_pio_ctrl_mem_d_pio_out_set_clear;
-  volatile unsigned long  ulExtmem_pio_ctrl_mem_d_pio_in;
+  volatile uint32_t  ulExtmem_pio_ctrl_mem_d_pio_oe_set_clear;
+  volatile uint32_t  ulExtmem_pio_ctrl_mem_d_pio_out_set_clear;
+  volatile uint32_t  ulExtmem_pio_ctrl_mem_d_pio_in;
 } NX56_EXTMEM_PIO_CTRL_AREA_T;
 
 typedef struct NX56_ARM_TIMER_AREA_Ttag
 {
-  volatile unsigned long aulArm_timer_config_timer[2];
-  volatile unsigned long aulArm_timer_preload_timer[2];
-  volatile unsigned long aulArm_timer_timer[2];
-  volatile unsigned long  ulArm_timer_systime_s;
-  volatile unsigned long  ulArm_timer_systime_ns;
-  volatile unsigned long  ulArm_timer_systime_ns_compare;
-  volatile unsigned long  ulArm_timer_systime_s_compare;
-  volatile unsigned long  ulArm_timer_systime_uc_s;
-  volatile unsigned long  ulArm_timer_systime_uc_ns;
-  volatile unsigned long  ulArm_timer_systime_uc_ns_compare;
-  volatile unsigned long  ulArm_timer_systime_uc_s_compare;
-  volatile unsigned long  ulArm_timer_irq_raw;
-  volatile unsigned long  ulArm_timer_irq_masked;
-  volatile unsigned long  ulArm_timer_irq_msk_set;
-  volatile unsigned long  ulArm_timer_irq_msk_reset;
+  volatile uint32_t aulArm_timer_config_timer[2];
+  volatile uint32_t aulArm_timer_preload_timer[2];
+  volatile uint32_t aulArm_timer_timer[2];
+  volatile uint32_t  ulArm_timer_systime_s;
+  volatile uint32_t  ulArm_timer_systime_ns;
+  volatile uint32_t  ulArm_timer_systime_ns_compare;
+  volatile uint32_t  ulArm_timer_systime_s_compare;
+  volatile uint32_t  ulArm_timer_systime_uc_s;
+  volatile uint32_t  ulArm_timer_systime_uc_ns;
+  volatile uint32_t  ulArm_timer_systime_uc_ns_compare;
+  volatile uint32_t  ulArm_timer_systime_uc_s_compare;
+  volatile uint32_t  ulArm_timer_irq_raw;
+  volatile uint32_t  ulArm_timer_irq_masked;
+  volatile uint32_t  ulArm_timer_irq_msk_set;
+  volatile uint32_t  ulArm_timer_irq_msk_reset;
 } NX56_ARM_TIMER_AREA_T;
 
 typedef struct NX56_VIC_AREA_Ttag
 {
-  volatile unsigned long  ulVic_irq_status;
-  volatile unsigned long  ulVic_fiq_status;
-  volatile unsigned long  ulVic_raw_intr;
-  volatile unsigned long  ulVic_int_select;
-  volatile unsigned long  ulVic_int_enable;
-  volatile unsigned long  ulVic_int_enclear;
-  volatile unsigned long  ulVic_softint;
-  volatile unsigned long  ulVic_softint_clear;
-  volatile unsigned long  ulVic_protection;
-  volatile unsigned long aulReserved0[3];
-  volatile unsigned long  ulVic_vect_addr;
-  volatile unsigned long  ulVic_def_vect_addr;
-  volatile unsigned long aulReserved1[50];
-  volatile unsigned long aulVic_vect_addr[16];
-  volatile unsigned long aulReserved2[48];
-  volatile unsigned long aulVic_vect_cntl[16];
+  volatile uint32_t  ulVic_irq_status;
+  volatile uint32_t  ulVic_fiq_status;
+  volatile uint32_t  ulVic_raw_intr;
+  volatile uint32_t  ulVic_int_select;
+  volatile uint32_t  ulVic_int_enable;
+  volatile uint32_t  ulVic_int_enclear;
+  volatile uint32_t  ulVic_softint;
+  volatile uint32_t  ulVic_softint_clear;
+  volatile uint32_t  ulVic_protection;
+  volatile uint32_t aulReserved0[3];
+  volatile uint32_t  ulVic_vect_addr;
+  volatile uint32_t  ulVic_def_vect_addr;
+  volatile uint32_t aulReserved1[50];
+  volatile uint32_t aulVic_vect_addr[16];
+  volatile uint32_t aulReserved2[48];
+  volatile uint32_t aulVic_vect_cntl[16];
 } NX56_VIC_AREA_T;
 
 typedef struct NX56_NFIFO_AREA_Ttag
 {
-  volatile unsigned long  ulNfifo_config;
-  volatile unsigned long  ulNfifo_scheduler_req;
-  volatile unsigned long  ulNfifo_last_access;
-  volatile unsigned long  ulNfifo_irq_raw;
-  volatile unsigned long  ulNfifo_irq_arm_masked;
-  volatile unsigned long  ulNfifo_irq_arm_msk_set;
-  volatile unsigned long  ulNfifo_irq_arm_msk_reset;
-  volatile unsigned long  ulNfifo_irq_xpic_masked;
-  volatile unsigned long  ulNfifo_irq_xpic_msk_set;
-  volatile unsigned long  ulNfifo_irq_xpic_msk_reset;
-  volatile unsigned long aulNfifo_fifo[1014];
+  volatile uint32_t  ulNfifo_config;
+  volatile uint32_t  ulNfifo_scheduler_req;
+  volatile uint32_t  ulNfifo_last_access;
+  volatile uint32_t  ulNfifo_irq_raw;
+  volatile uint32_t  ulNfifo_irq_arm_masked;
+  volatile uint32_t  ulNfifo_irq_arm_msk_set;
+  volatile uint32_t  ulNfifo_irq_arm_msk_reset;
+  volatile uint32_t  ulNfifo_irq_xpic_masked;
+  volatile uint32_t  ulNfifo_irq_xpic_msk_set;
+  volatile uint32_t  ulNfifo_irq_xpic_msk_reset;
+  volatile uint32_t aulNfifo_fifo[1014];
 } NX56_NFIFO_AREA_T;
 
 typedef struct NX56_ETH_AREA_Ttag
 {
-  volatile unsigned long  ulEth_config;
-  volatile unsigned long  ulEth_tx_config;
-  volatile unsigned long  ulEth_status;
-  volatile unsigned long  ulEth_tx_data;
-  volatile unsigned long  ulEth_rx_data;
-  volatile unsigned long  ulEth_tx_len;
-  volatile unsigned long  ulEth_rx_len_stat;
-  volatile unsigned long aulReserved0[1];
-  volatile unsigned long  ulEth_rx_systime_ns;
-  volatile unsigned long  ulEth_tx_systime_ns;
-  volatile unsigned long  ulEth_irq_raw;
-  volatile unsigned long  ulEth_irq_masked;
-  volatile unsigned long  ulEth_irq_msk_set;
-  volatile unsigned long  ulEth_irq_msk_reset;
+  volatile uint32_t  ulEth_config;
+  volatile uint32_t  ulEth_tx_config;
+  volatile uint32_t  ulEth_status;
+  volatile uint32_t  ulEth_tx_data;
+  volatile uint32_t  ulEth_rx_data;
+  volatile uint32_t  ulEth_tx_len;
+  volatile uint32_t  ulEth_rx_len_stat;
+  volatile uint32_t aulReserved0[1];
+  volatile uint32_t  ulEth_rx_systime_ns;
+  volatile uint32_t  ulEth_tx_systime_ns;
+  volatile uint32_t  ulEth_irq_raw;
+  volatile uint32_t  ulEth_irq_masked;
+  volatile uint32_t  ulEth_irq_msk_set;
+  volatile uint32_t  ulEth_irq_msk_reset;
 } NX56_ETH_AREA_T;
 
 typedef struct NX56_XC_EXTBUS_SEL_AREA_Ttag
 {
-  volatile unsigned long  ulXc_extbus_sel_ctrl;
+  volatile uint32_t  ulXc_extbus_sel_ctrl;
 } NX56_XC_EXTBUS_SEL_AREA_T;
 
 
