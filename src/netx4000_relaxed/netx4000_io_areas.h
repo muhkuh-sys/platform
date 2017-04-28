@@ -13,6 +13,12 @@
 #include "netx4000_regdef.h"
 
 
+typedef struct
+{
+	volatile unsigned long aulHandshakeReg[16];
+} NX4000_HANDSHAKE_BLOCK_AREA_T;
+
+
 typedef struct NX4000_S_RAP_UART_AREA_Ttag
 {
 	volatile unsigned short  usRAP_UART_UARTDR __attribute__ ((aligned (4)));
@@ -233,6 +239,9 @@ typedef struct NX4000_S_RAP_UART_AREA_Ttag
 
 #define NX4000_DEF_ptDdrCtrlArea NX4000_DDR_CTRL_AREA_T * const ptDdrCtrlArea = (NX4000_DDR_CTRL_AREA_T * const)Addr_NX4000_DDR_CTRL;
 #define NX4000_DEF_ptDdrPhyArea NX4000_DDR_PHY_AREA_T * const ptDdrPhyArea = (NX4000_DDR_PHY_AREA_T * const)Addr_NX4000_DDR_PHY;
+
+#define NX4000_DEF_ptHandshake0Area NX4000_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0Area = (NX4000_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000_intramhs0;
+#define NX4000_DEF_ptHandshake0ArmMirrorArea NX4000_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0ArmMirrorArea = (NX4000_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000_intramhs0_arm_mirror;
 
 
 /* RAP part */
