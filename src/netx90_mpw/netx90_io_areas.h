@@ -78,7 +78,7 @@
 #define NX90_DEF_ptDpm0ComArea NX90_DPM_AREA_T * const ptDpm0ComArea = (NX90_DPM_AREA_T * const)Addr_NX90_dpm0_com;
 #define NX90_DEF_ptDpm1ComArea NX90_DPM_AREA_T * const ptDpm1ComArea = (NX90_DPM_AREA_T * const)Addr_NX90_dpm1_com;
 
-#define NX90_DEF_ptIdpmComArea NX90_IDPM_AREA_T * const ptIdpmComArea = (NX90_IDPM_AREA_T * const)Adr_NX90_idpm_com;
+#define NX90_DEF_ptIdpmComArea NX90_IDPM_AREA_T * const ptIdpmComArea = (NX90_IDPM_AREA_T * const)Addr_NX90_idpm_com;
 
 #define NX90_DEF_ptIflashCfg0ComArea NX90_IFLASH_CFG_AREA_T * const ptIflashCfg0ComArea = (NX90_IFLASH_CFG_AREA_T * const)Addr_NX90_iflash_cfg0_com;
 #define NX90_DEF_ptIflashCfg1ComArea NX90_IFLASH_CFG_AREA_T * const ptIflashCfg1ComArea = (NX90_IFLASH_CFG_AREA_T * const)Addr_NX90_iflash_cfg1_com;
