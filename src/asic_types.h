@@ -31,6 +31,9 @@
 #define ASIC_TYP_NETX4000_RELAXED  6
 #define ASIC_TYP_NETX90_MPW        7
 #define ASIC_TYP_NETX90_MPW_APP    8
+#define ASIC_TYP_NETX4000_FULL     9
+#define ASIC_TYP_NETX90_FULL      10
+#define ASIC_TYP_NETX90_FULL_APP  11
 
 
 #endif  /* __ASIC_TYPES_H__ */

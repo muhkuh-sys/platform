@@ -10,7 +10,7 @@
 
 void uart_standalone_initialize(void);
 
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
 void rap_uart_standalone_initialize(void);
 #endif
 
