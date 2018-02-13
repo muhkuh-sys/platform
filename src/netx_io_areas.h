@@ -55,9 +55,9 @@
 #       define HOST NX90
 #       define HOSTNAME "netx90_mpw"
 #       include "netx90_mpw/netx90_io_areas.h"
-#elif ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#elif ASIC_TYP==ASIC_TYP_NETX4000
 #       define HOST NX4000
-#       define HOSTNAME "netx4000_full"
+#       define HOSTNAME "netx4000"
 #       include "netx4000_full/netx4000_io_areas.h"
 #else
 #       error "no host define set!"

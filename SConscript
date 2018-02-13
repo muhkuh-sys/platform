@@ -34,13 +34,13 @@ if hasattr(atEnv, 'NETX4000_RELAXED') == True:
 	tLib = tEnv.StaticLibrary('targets/platform_netx4000_relaxed', tSrc)
 	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
-if hasattr(atEnv, 'NETX4000_FULL') == True:
-	tEnvDefault = atEnv.NETX4000_FULL
+if hasattr(atEnv, 'NETX4000') == True:
+	tEnvDefault = atEnv.NETX4000
 	tEnv = tEnvDefault.Clone()
 	tEnv.Append(CPPPATH = ['src', 'src/lib'])
 	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
-	tSrc = tEnv.SetBuildPath('targets/netx4000_full', 'src', sources + sources_netx4000)
-	tLib = tEnv.StaticLibrary('targets/platform_netx4000_full', tSrc)
+	tSrc = tEnv.SetBuildPath('targets/netx4000', 'src', sources + sources_netx4000)
+	tLib = tEnv.StaticLibrary('targets/platform_netx4000', tSrc)
 	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
 
 if hasattr(atEnv, 'NETX500') == True:

@@ -6,7 +6,7 @@
 #include "uart_standalone.h"
 #include "serial_vectors.h"
 
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 #       include "rap_uart.h"
 #endif
 
@@ -71,7 +71,7 @@ static const UART_CONFIGURATION_T tDefaultUartCfg =
 	.us_baud_div = UART_BAUDRATE_DIV(UART_BAUDRATE_115200)
 };
 
-#elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 static const UART_CONFIGURATION_T tDefaultUartCfg =
 {
 	.us_baud_div = UART_BAUDRATE_DIV(UART_BAUDRATE_115200)
@@ -137,7 +137,7 @@ static const SERIAL_COMM_UI_FN_T tSerialVectors_Uart =
 
 /*-------------------------------------------------------------------------*/
 
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 
 #       define DEFAULT_RAP_UART_UNIT 0
 
@@ -224,7 +224,7 @@ void uart_standalone_initialize(void)
 }
 
 
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 void rap_uart_standalone_initialize(void)
 {
 	rap_uart_init(DEFAULT_UART_UNIT, &tDefaultRapUartCfg);

@@ -29,7 +29,7 @@
 
 void systime_init(void)
 {
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 	HOSTDEF(ptSystimeUcArea);
 
 	/* Set the systime border to 1ms. */
@@ -69,7 +69,7 @@ void systime_init(void)
 
 unsigned long systime_get_ms(void)
 {
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 	HOSTDEF(ptSystimeUcArea);
 
 	return ptSystimeUcArea->ulSystime_s;
@@ -92,7 +92,7 @@ unsigned long systime_get_ms(void)
 
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 {
-#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000_FULL
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 	HOSTDEF(ptSystimeUcArea)
 	unsigned long ulDiff;
 
