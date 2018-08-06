@@ -25,6 +25,12 @@
 #ifndef __SYSTIME_H__
 #define __SYSTIME_H__
 
+typedef struct TIMER_HANDLE_STRUCT
+{
+	unsigned long ulStart;
+	unsigned long ulDuration;
+} TIMER_HANDLE_T;
+
 void systime_init(void);
 
 unsigned long systime_get_ms(void);
@@ -32,5 +38,9 @@ unsigned long systime_get_ms(void);
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration);
 
 void systime_delay_ms(unsigned long ulDuration);
+
+void systime_handle_start_ms(TIMER_HANDLE_T *ptHandle, unsigned long ulDuration);
+int systime_handle_is_elapsed(TIMER_HANDLE_T *ptHandle);
+
 
 #endif  /* __SYSTIME_H__ */

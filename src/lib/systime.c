@@ -147,3 +147,18 @@ void systime_delay_ms(unsigned long ulDuration)
 		iElapsed = systime_elapsed(ulStart, ulDuration);
 	} while( iElapsed==0 );
 }
+
+
+
+void systime_handle_start_ms(TIMER_HANDLE_T *ptHandle, unsigned long ulDuration)
+{
+	ptHandle->ulStart = systime_get_ms();
+	ptHandle->ulDuration = ulDuration;
+}
+
+
+
+int systime_handle_is_elapsed(TIMER_HANDLE_T *ptHandle)
+{
+	return systime_elapsed(ptHandle->ulStart, ptHandle->ulDuration);
+}
