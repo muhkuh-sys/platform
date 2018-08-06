@@ -39,8 +39,8 @@
 #define NX90_DEF_ptMledCtrlComArea NX90_MLED_CTRL_AREA_T * const ptMledCtrlComArea = (NX90_MLED_CTRL_AREA_T * const)Addr_NX90_mled_ctrl_com;
 #define NX90_DEF_ptMledCtrlAppArea NX90_MLED_CTRL_AREA_T * const ptMledCtrlAppArea = (NX90_MLED_CTRL_AREA_T * const)Addr_NX90_mled_ctrl_app;
 
-#define NX90_DEF_ptEccCtrlComArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_com;
-#define NX90_DEF_ptEccCtrlAppArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_app;
+#define NX90_DEF_ptEccCtrlComArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlComArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_com;
+#define NX90_DEF_ptEccCtrlAppArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlAppArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_app;
 
 #define NX90_DEF_ptGpioArea NX90_GPIO_AREA_T * const ptGpioArea = (NX90_GPIO_AREA_T * const)Addr_NX90_gpio_com;
 
@@ -84,11 +84,13 @@
 #define NX90_DEF_ptIflashCfg1ComArea NX90_IFLASH_CFG_AREA_T * const ptIflashCfg1ComArea = (NX90_IFLASH_CFG_AREA_T * const)Addr_NX90_iflash_cfg1_com;
 #define NX90_DEF_ptIflashCfg2Area NX90_IFLASH_CFG_AREA_T * const ptIflashCfg2Area = (NX90_IFLASH_CFG_AREA_T * const)Addr_NX90_iflash_cfg2;
 
-#define NX90_DEF_ptHandshakeComArea NX90_HANDSHAKE_CTRL_AREA_T * const ptHandshakeComArea = (NX90_HANDSHAKE_CTRL_AREA_T * const)Addr_NX90_handshake_ctrl_com;
+#define NX90_DEF_ptHandshakeCtrlComArea NX90_HANDSHAKE_CTRL_AREA_T * const ptHandshakeCtrlComArea = (NX90_HANDSHAKE_CTRL_AREA_T * const)Addr_NX90_handshake_ctrl_com;
 
 #define NX90_DEF_ptBistCtrlComArea NX90_BIST_CTRL_AREA_T * const ptBistCtrlComArea = (NX90_BIST_CTRL_AREA_T * const)Addr_NX90_bist_ctrl_com;
 
 #define NX90_DEF_ptCrcComArea NX90_CRC_AREA_T * const ptCrcComArea = (NX90_CRC_AREA_T * const)Addr_NX90_crc_com;
+
+#define NX90_DEF_ptIflashGlobalTimingsArea NX90_IFLASH_GLOBAL_TIMINGS_AREA_T * const ptIflashGlobalTimingsArea = (NX90_IFLASH_GLOBAL_TIMINGS_AREA_T * const)Addr_NX90_flash_global_timings_com;
 
 #define NX90_DEF_ptHashArea NX90_HASH_AREA_T * const ptHashArea = (NX90_HASH_AREA_T * const)Addr_NX90_hash;
 
@@ -111,7 +113,8 @@
 #define NX90_DEF_ptXpecIrqRegistersArea NX90_XPEC_IRQ_REGISTERS_AREA_T * const ptXpecIrqRegistersArea = (NX90_XPEC_IRQ_REGISTERS_AREA_T * const)Addr_NX90_xc_xpec_irq_registers;
 #define NX90_DEF_ptXcDebugArea NX90_XC_DEBUG_AREA_T * const ptXcDebugArea = (NX90_XC_DEBUG_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptXcStartStopArea NX90_XC_START_STOP_AREA_T * const ptXcStartStopArea = (NX90_XC_START_STOP_AREA_T * const)Addr_NX90_xc_start_stop;
-#define NX90_DEF_ptPhyCtrlArea NX90_PHY_CTRL_AREA_T * const ptPhyCtrlArea = (NX90_PHY_CTRL_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptXc0PhyCtrl0Area NX90_PHY_CTRL_AREA_T * const ptXc0PhyCtrl0Area = (NX90_PHY_CTRL_AREA_T * const)Addr_NX90_xc0_phy_ctrl0;
+#define NX90_DEF_ptXc0PhyCtrl1Area NX90_PHY_CTRL_AREA_T * const ptXc0PhyCtrl1Area = (NX90_PHY_CTRL_AREA_T * const)Addr_NX90_xc0_phy_ctrl1;
 #define NX90_DEF_ptXcSystimeConfigArea NX90_XC_SYSTIME_CONFIG_AREA_T * const ptXcSystimeConfigArea = (NX90_XC_SYSTIME_CONFIG_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptXpicArea NX90_XPIC_AREA_T * const ptXpicArea = (NX90_XPIC_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptXpicDebugArea NX90_XPIC_DEBUG_AREA_T * const ptXpicDebugArea = (NX90_XPIC_DEBUG_AREA_T * const)Adr_NX90_;
@@ -127,16 +130,16 @@
 #define NX90_DEF_ptMmioCtrlArea NX90_MMIO_CTRL_AREA_T * const ptMmioCtrlArea = (NX90_MMIO_CTRL_AREA_T * const)Addr_NX90_mmio_ctrl;
 #define NX90_DEF_ptGlobalBufManArea NX90_GLOBAL_BUF_MAN_AREA_T * const ptGlobalBufManArea = (NX90_GLOBAL_BUF_MAN_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptHifIoCtrlArea NX90_HIF_IO_CTRL_AREA_T * const ptHifIoCtrlArea = (NX90_HIF_IO_CTRL_AREA_T * const)Addr_NX90_hif_io_ctrl;
-#define NX90_DEF_ptExtAsyncmemCtrlArea NX90_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX90_EXT_ASYNCMEM_CTRL_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptExtSdramCtrlArea NX90_EXT_SDRAM_CTRL_AREA_T * const ptExtSdramCtrlArea = (NX90_EXT_SDRAM_CTRL_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptExtmemPriorityCtrlArea NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrlArea = (NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptHifAsyncmemCtrlArea NX90_EXT_ASYNCMEM_CTRL_AREA_T * const ptHifAsyncmemCtrlArea = (NX90_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX90_hif_asyncmem_ctrl;
+#define NX90_DEF_ptHifSdramCtrlArea NX90_EXT_SDRAM_CTRL_AREA_T * const ptHifSdramCtrlArea = (NX90_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX90_hif_sdram_ctrl;
+#define NX90_DEF_ptHifmemPriorityCtrlArea NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const ptHifmemPriorityCtrlArea = (NX90_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX90_hifmem_priority_ctrl;
 
 #define NX90_DEF_ptSqiArea NX90_SQI_AREA_T * const ptSqiArea = (NX90_SQI_AREA_T * const)Addr_NX90_sqi;
 
 #define NX90_DEF_ptSampleAtPornStatArea NX90_SAMPLE_AT_PORN_STAT_AREA_T * const ptSampleAtPornStatArea = (NX90_SAMPLE_AT_PORN_STAT_AREA_T * const)Addr_NX90_sample_at_porn_stat;
 #define NX90_DEF_ptAdcSeqArea NX90_ADC_SEQ_AREA_T * const ptAdcSeqArea = (NX90_ADC_SEQ_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptMiimuArea NX90_MIIMU_AREA_T * const ptMiimuArea = (NX90_MIIMU_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptEthArea NX90_ETH_AREA_T * const ptEthArea = (NX90_ETH_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptMiimuArea NX90_MIIMU_AREA_T * const ptMiimuArea = (NX90_MIIMU_AREA_T * const)Addr_NX90_miimu;
+#define NX90_DEF_ptEthArea NX90_ETH_AREA_T * const ptEthArea = (NX90_ETH_AREA_T * const)Addr_NX90_eth;
 #define NX90_DEF_ptDmacMuxArea NX90_DMAC_MUX_AREA_T * const ptDmacMuxArea = (NX90_DMAC_MUX_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptGpioAppArea NX90_GPIO_APP_AREA_T * const ptGpioAppArea = (NX90_GPIO_APP_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEndatArea NX90_ENDAT_AREA_T * const ptEndatArea = (NX90_ENDAT_AREA_T * const)Adr_NX90_;
