@@ -35,13 +35,13 @@ void systime_init(void)
 	/* Set the systime border to 1ms. */
 	ptSystimeUcArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeUcArea->ulSystime_count_value = 10U<<28U;
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW || ASIC_TYP==ASIC_TYP_NETX90
 	HOSTDEF(ptSystimeUcComArea);
 
 	/* Set the systime border to 1ms. */
 	ptSystimeUcComArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeUcComArea->ulSystime_count_value = 10U<<28U;
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP || ASIC_TYP==ASIC_TYP_NETX90_APP
 	HOSTDEF(ptSystimeAppArea);
 
 	/* Set the systime border to 1ms. */
@@ -73,11 +73,11 @@ unsigned long systime_get_ms(void)
 	HOSTDEF(ptSystimeUcArea);
 
 	return ptSystimeUcArea->ulSystime_s;
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW || ASIC_TYP==ASIC_TYP_NETX90
 	HOSTDEF(ptSystimeUcComArea);
 
 	return ptSystimeUcComArea->ulSystime_s;
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP || ASIC_TYP==ASIC_TYP_NETX90_APP
 	HOSTDEF(ptSystimeAppArea);
 
 	return ptSystimeAppArea->ulSystime_s;
@@ -101,7 +101,7 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 	ulDiff = ptSystimeUcArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW || ASIC_TYP==ASIC_TYP_NETX90
 	HOSTDEF(ptSystimeUcComArea);
 
 	unsigned long ulDiff;
@@ -111,7 +111,7 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 	ulDiff = ptSystimeUcComArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
-#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW_APP || ASIC_TYP==ASIC_TYP_NETX90_APP
 	HOSTDEF(ptSystimeAppArea);
 
 	unsigned long ulDiff;

@@ -248,6 +248,33 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 
 	ptAsicCtrlArea->ulRdy_run_cfg = ulValue;
 }
+#elif ASIC_TYP==ASIC_TYP_NETX90 || ASIC_TYP==ASIC_TYP_NETX90_APP
+void rdy_run_setLEDs(RDYRUN_T tState)
+{
+	HOSTDEF(ptAsicCtrlComArea);
+	unsigned long ulValue;
+
+
+	/* Initialize the new SCL and SDA parts. */
+	ulValue = 0;
+
+	/* Add the active LED. */
+	switch(tState)
+	{
+	case RDYRUN_OFF:
+		break;
+
+	case RDYRUN_GREEN:
+		ulValue |= HOSTMSK(rdy_run_cfg_RUN_DRV);
+		break;
+
+	case RDYRUN_YELLOW:
+		ulValue |= HOSTMSK(rdy_run_cfg_RDY_DRV);
+		break;
+	}
+
+	ptAsicCtrlComArea->ulRdy_run_cfg = ulValue;
+}
 #endif
 
 /*-------------------------------------*/
