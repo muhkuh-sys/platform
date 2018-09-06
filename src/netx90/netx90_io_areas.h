@@ -106,6 +106,9 @@
 
 #define NX90_DEF_ptXpecArea NX90_XPEC_AREA_T * const ptXpecArea = (NX90_XPEC_AREA_T * const)Adr_NX90_;
 
+#define NX90_DEF_ptXc0Xmac0RegsArea NX90_XMAC_AREA_T * const ptXc0Xmac0RegsArea = (NX90_XMAC_AREA_T * const)Addr_NX90_xc0_xmac0_regs;
+#define NX90_DEF_ptXc0Xmac1RegsArea NX90_XMAC_AREA_T * const ptXc0Xmac1RegsArea = (NX90_XMAC_AREA_T * const)Addr_NX90_xc0_xmac1_regs;
+
 #define NX90_DEF_ptXmacArea NX90_XMAC_AREA_T * const ptXmacArea = (NX90_XMAC_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptPointerFifoArea NX90_POINTER_FIFO_AREA_T * const ptPointerFifoArea = (NX90_POINTER_FIFO_AREA_T * const)Addr_NX90_xc0_pointer_fifo;
 #define NX90_DEF_ptFmmusmArea NX90_FMMUSM_AREA_T * const ptFmmusmArea = (NX90_FMMUSM_AREA_T * const)Adr_NX90_;
