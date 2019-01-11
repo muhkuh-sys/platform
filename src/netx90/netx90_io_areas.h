@@ -150,7 +150,12 @@
 #define NX90_DEF_ptEndatArea NX90_ENDAT_AREA_T * const ptEndatArea = (NX90_ENDAT_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEndatCtrlArea NX90_ENDAT_CTRL_AREA_T * const ptEndatCtrlArea = (NX90_ENDAT_CTRL_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptCanctrlArea NX90_CANCTRL_AREA_T * const ptCanctrlArea = (NX90_CANCTRL_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptSpiArea NX90_SPI_AREA_T * const ptSpiArea = (NX90_SPI_AREA_T * const)Adr_NX90_;
+
+#define NX90_DEF_ptSpi0AppArea NX90_SPI_AREA_T * const ptSpi0AppArea = (NX90_SPI_AREA_T * const)Addr_NX90_spi0_app;
+#define NX90_DEF_ptSpi1AppArea NX90_SPI_AREA_T * const ptSpi1AppArea = (NX90_SPI_AREA_T * const)Addr_NX90_spi1_app;
+#define NX90_DEF_ptSpi2AppArea NX90_SPI_AREA_T * const ptSpi2AppArea = (NX90_SPI_AREA_T * const)Addr_NX90_spi2_app;
+#define NX90_DEF_ptSpiXpicAppArea NX90_SPI_AREA_T * const ptSpiXpicAppArea = (NX90_SPI_AREA_T * const)Addr_NX90_spi_xpic_app;
+
 #define NX90_DEF_ptPioArea NX90_PIO_AREA_T * const ptPioArea = (NX90_PIO_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptBissArea NX90_BISS_AREA_T * const ptBissArea = (NX90_BISS_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptBissCtrlArea NX90_BISS_CTRL_AREA_T * const ptBissCtrlArea = (NX90_BISS_CTRL_AREA_T * const)Adr_NX90_;
