@@ -146,7 +146,7 @@
 #define NX90_DEF_ptMiimuArea NX90_MIIMU_AREA_T * const ptMiimuArea = (NX90_MIIMU_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEthArea NX90_ETH_AREA_T * const ptEthArea = (NX90_ETH_AREA_T * const)Addr_NX90_eth;
 #define NX90_DEF_ptDmacMuxArea NX90_DMAC_MUX_AREA_T * const ptDmacMuxArea = (NX90_DMAC_MUX_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptGpioAppArea NX90_GPIO_APP_AREA_T * const ptGpioAppArea = (NX90_GPIO_APP_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptGpioAppArea NX90_GPIO_APP_AREA_T * const ptGpioAppArea = (NX90_GPIO_APP_AREA_T * const)Addr_NX90_gpio_app;
 #define NX90_DEF_ptEndatArea NX90_ENDAT_AREA_T * const ptEndatArea = (NX90_ENDAT_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptEndatCtrlArea NX90_ENDAT_CTRL_AREA_T * const ptEndatCtrlArea = (NX90_ENDAT_CTRL_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptCanctrlArea NX90_CANCTRL_AREA_T * const ptCanctrlArea = (NX90_CANCTRL_AREA_T * const)Adr_NX90_;
