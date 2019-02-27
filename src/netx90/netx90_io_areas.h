@@ -32,7 +32,7 @@
 #define NX90_DEF_ptUartXpicAppArea NX90_UART_AREA_T * const ptUartXpicAppArea = (NX90_UART_AREA_T * const)Addr_NX90_uart_xpic_app;
 
 #define NX90_DEF_ptSlaveFirewallCtrlArea NX90_SLAVE_FIREWALL_CTRL_AREA_T * const ptSlaveFirewallCtrlArea = (NX90_SLAVE_FIREWALL_CTRL_AREA_T * const)Addr_NX90_slave_firewall_ctrl;
-#define NX90_DEF_ptModuleFirewallCtrlArea NX90_MODULE_FIREWALL_CTRL_AREA_T * const ptModuleFirewallCtrlArea = (NX90_MODULE_FIREWALL_CTRL_AREA_T * const)Addr_NX90_slave_firewall_ctrl;
+#define NX90_DEF_ptModuleFirewallCtrlArea NX90_MODULE_FIREWALL_CTRL_AREA_T * const ptModuleFirewallCtrlArea = (NX90_MODULE_FIREWALL_CTRL_AREA_T * const)Addr_NX90_module_firewall_ctrl;
 
 #define NX90_DEF_ptI2c0ComArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c0_com;
 #define NX90_DEF_ptI2c1ComArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c1_com;
