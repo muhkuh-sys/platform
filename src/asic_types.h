@@ -34,6 +34,6 @@
 #define ASIC_TYP_NETX4000          9
 #define ASIC_TYP_NETX90           10
 #define ASIC_TYP_NETX90_APP       11
-
+#define ASIC_TYP_NETIOL           12
 
 #endif  /* __ASIC_TYPES_H__ */

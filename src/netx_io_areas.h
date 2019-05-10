@@ -66,6 +66,10 @@
 #       define HOST NX90
 #       define HOSTNAME "netx90"
 #       include "netx90/netx90_io_areas.h"
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+#       define HOST NIOL
+#       define HOSTNAME "netiol"
+#       include "netiol/netiol_io_areas.h"
 #else
 #       error "no host define set!"
 #endif
