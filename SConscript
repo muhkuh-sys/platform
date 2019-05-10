@@ -123,3 +123,12 @@ if hasattr(atEnv, 'NETX6') == True:
 	tSrc  = tEnv.SetBuildPath('targets/netx6', 'src', sources + sources_netx6)
 	tLib  = tEnv.StaticLibrary('targets/platform_netx6', tSrc)
 	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)
+
+if hasattr(atEnv, 'NETIOL') == True:
+	tEnvDefault = atEnv.NETIOL
+	tEnv = tEnvDefault.Clone()
+	tEnv.Append(CPPPATH = ['src', 'src/lib'])
+	tEnv.Append(CCFLAGS = ['-ffunction-sections', '-fdata-sections'])
+	tSrc  = tEnv.SetBuildPath('targets/netiol', 'src', sources)
+	tLib  = tEnv.StaticLibrary('targets/platform_netiol', tSrc)
+	tEnvDefault.Replace(PLATFORM_LIBRARY = tLib)

@@ -51,6 +51,46 @@
  * netX90      : HBOOT
  *               -> MMIO configuration in a HBOOT chunk
  */
+
+/* A UART on a netIOL is special. It must be done with the IOLink controller. */
+#if ASIC_TYP==ASIC_TYP_NETIOL
+int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
+{
+	/* TODO: Continue here. */
+}
+
+
+void uart_put(unsigned int uiUartUnit, unsigned char ucChar)
+{
+	/* TODO: Continue here. */
+}
+
+
+void uart_flush(unsigned int uiUartUnit)
+{
+	/* TODO: Continue here. */
+}
+
+
+unsigned int uart_get(unsigned int uiUartUnit)
+{
+	/* TODO: Continue here. */
+}
+
+
+unsigned int uart_peek(unsigned int uiUartUnit)
+{
+	/* TODO: Continue here. */
+}
+
+
+void uart_close(unsigned int uiUartUnit)
+{
+	/* TODO: Continue here. */
+}
+
+#else
+
 typedef struct UART_INSTANCE_STRUCT
 {
 	HOSTADEF(UART) * const ptArea;
@@ -416,4 +456,4 @@ void uart_close(unsigned int uiUartUnit)
 		ptUartArea->ulUartdrvout = 0;
 	}
 }
-
+#endif

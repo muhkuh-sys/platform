@@ -89,6 +89,12 @@ static const UART_CONFIGURATION_T tDefaultUartCfg =
 	.us_baud_div = UART_BAUDRATE_DIV(UART_BAUDRATE_115200)
 };
 
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+static const UART_CONFIGURATION_T tDefaultUartCfg =
+{
+	.us_baud_div = UART_BAUDRATE_DIV(UART_BAUDRATE_115200)
+};
+
 #else
 #       error "Unsupported ASIC_TYPE!"
 

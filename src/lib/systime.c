@@ -47,6 +47,8 @@ void systime_init(void)
 	/* Set the systime border to 1ms. */
 	ptSystimeAppArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeAppArea->ulSystime_count_value = 10U<<28U;
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+	/* TODO: Continue here. */
 #else
 	HOSTDEF(ptSystimeArea);
 
@@ -81,6 +83,8 @@ unsigned long systime_get_ms(void)
 	HOSTDEF(ptSystimeAppArea);
 
 	return ptSystimeAppArea->ulSystime_s;
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+	/* TODO: Continue here. */
 #else
 	HOSTDEF(ptSystimeArea)
 
@@ -121,6 +125,8 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 	ulDiff = ptSystimeAppArea->ulSystime_s - ulStart;
 
 	return (ulDiff>=ulDuration);
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+	/* TODO: Continue here. */
 #else
 	HOSTDEF(ptSystimeArea)
 	unsigned long ulDiff;

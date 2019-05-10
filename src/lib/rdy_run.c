@@ -275,6 +275,11 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 
 	ptAsicCtrlComArea->ulRdy_run_cfg = ulValue;
 }
+#elif ASIC_TYP==ASIC_TYP_NETIOL
+void rdy_run_setLEDs(RDYRUN_T tState)
+{
+	/* TODO: Continue here. */
+}
 #endif
 
 /*-------------------------------------*/
