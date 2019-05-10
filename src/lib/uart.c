@@ -55,10 +55,10 @@ typedef struct UART_INSTANCE_STRUCT
 {
 	HOSTADEF(UART) * const ptArea;
 #if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
-	MMIO_CFG_T tMmioRx;
-	MMIO_CFG_T tMmioTx;
-	MMIO_CFG_T tMmioRts;
-	MMIO_CFG_T tMmioCts;
+	HOSTMMIODEF tMmioRx;
+	HOSTMMIODEF tMmioTx;
+	HOSTMMIODEF tMmioRts;
+	HOSTMMIODEF tMmioCts;
 #endif
 } UART_INSTANCE_T;
 
@@ -68,93 +68,93 @@ static const UART_INSTANCE_T atUartInstances[] =
 #if ASIC_TYP==ASIC_TYP_NETX10
 	{
 		(NX10_UART_AREA_T * const)Addr_NX10_uart0,
-		MMIO_CFG_uart0_rxd,
-		MMIO_CFG_uart0_txd,
-		MMIO_CFG_uart0_rtsn,
-		MMIO_CFG_uart0_ctsn
+		NX10_MMIO_CFG_uart0_rxd,
+		NX10_MMIO_CFG_uart0_txd,
+		NX10_MMIO_CFG_uart0_rtsn,
+		NX10_MMIO_CFG_uart0_ctsn
 	},
 
 	{
 		(NX10_UART_AREA_T * const)Addr_NX10_uart1,
-		MMIO_CFG_uart1_rxd,
-		MMIO_CFG_uart1_txd,
-		MMIO_CFG_uart1_rtsn,
-		MMIO_CFG_uart1_ctsn
+		NX10_MMIO_CFG_uart1_rxd,
+		NX10_MMIO_CFG_uart1_txd,
+		NX10_MMIO_CFG_uart1_rtsn,
+		NX10_MMIO_CFG_uart1_ctsn
 	}
 
 #elif ASIC_TYP==ASIC_TYP_NETX50
 	{
 		(NX50_UART_AREA_T * const)Addr_NX50_uart0,
-		MMIO_CFG_uart0_rxd,
-		MMIO_CFG_uart0_txd,
-		MMIO_CFG_uart0_rts,
-		MMIO_CFG_uart0_cts
+		NX50_MMIO_CFG_uart0_rxd,
+		NX50_MMIO_CFG_uart0_txd,
+		NX50_MMIO_CFG_uart0_rts,
+		NX50_MMIO_CFG_uart0_cts
 	},
 
 	{
 		(NX50_UART_AREA_T * const)Addr_NX50_uart1,
-		MMIO_CFG_uart1_rxd,
-		MMIO_CFG_uart1_txd,
-		MMIO_CFG_uart1_rts,
-		MMIO_CFG_uart1_cts
+		NX50_MMIO_CFG_uart1_rxd,
+		NX50_MMIO_CFG_uart1_txd,
+		NX50_MMIO_CFG_uart1_rts,
+		NX50_MMIO_CFG_uart1_cts
 	},
 
 	{
 		(NX50_UART_AREA_T * const)Addr_NX50_uart2,
-		MMIO_CFG_uart2_rxd,
-		MMIO_CFG_uart2_txd,
-		MMIO_CFG_uart2_rts,
-		MMIO_CFG_uart2_cts
+		NX50_MMIO_CFG_uart2_rxd,
+		NX50_MMIO_CFG_uart2_txd,
+		NX50_MMIO_CFG_uart2_rts,
+		NX50_MMIO_CFG_uart2_cts
 	}
 
 #elif ASIC_TYP==ASIC_TYP_NETX56
 	{
 		(NX56_UART_AREA_T * const)Addr_NX56_uart0,
-		MMIO_CFG_uart0_rxd,
-		MMIO_CFG_uart0_txd,
-		MMIO_CFG_uart0_rtsn,
-		MMIO_CFG_uart0_ctsn
+		NX56_MMIO_CFG_uart0_rxd,
+		NX56_MMIO_CFG_uart0_txd,
+		NX56_MMIO_CFG_uart0_rtsn,
+		NX56_MMIO_CFG_uart0_ctsn
 	},
 
 	{
 		(NX56_UART_AREA_T * const)Addr_NX56_uart1,
-		MMIO_CFG_uart1_rxd,
-		MMIO_CFG_uart1_txd,
-		MMIO_CFG_uart1_rtsn,
-		MMIO_CFG_uart1_ctsn
+		NX56_MMIO_CFG_uart1_rxd,
+		NX56_MMIO_CFG_uart1_txd,
+		NX56_MMIO_CFG_uart1_rtsn,
+		NX56_MMIO_CFG_uart1_ctsn
 	},
 
 	{
 		(NX56_UART_AREA_T * const)Addr_NX56_uart2,
-		MMIO_CFG_uart2_rxd,
-		MMIO_CFG_uart2_txd,
-		MMIO_CFG_uart2_rtsn,
-		MMIO_CFG_uart2_ctsn
+		NX56_MMIO_CFG_uart2_rxd,
+		NX56_MMIO_CFG_uart2_txd,
+		NX56_MMIO_CFG_uart2_rtsn,
+		NX56_MMIO_CFG_uart2_ctsn
 	}
 
 #elif ASIC_TYP==ASIC_TYP_NETX6
 	{
 		(NX6_UART_AREA_T * const)Addr_NX6_uart0,
-		MMIO_CFG_uart0_rxd,
-		MMIO_CFG_uart0_txd,
-		MMIO_CFG_uart0_rtsn,
-		MMIO_CFG_uart0_ctsn
+		NX6_MMIO_CFG_uart0_rxd,
+		NX6_MMIO_CFG_uart0_txd,
+		NX6_MMIO_CFG_uart0_rtsn,
+		NX6_MMIO_CFG_uart0_ctsn
 	},
 
 	{
 		(NX6_UART_AREA_T * const)Addr_NX6_uart1,
-		MMIO_CFG_uart1_rxd,
-		MMIO_CFG_uart1_txd,
-		MMIO_CFG_uart1_rtsn,
-		MMIO_CFG_uart1_ctsn
+		NX6_MMIO_CFG_uart1_rxd,
+		NX6_MMIO_CFG_uart1_txd,
+		NX6_MMIO_CFG_uart1_rtsn,
+		NX6_MMIO_CFG_uart1_ctsn
 	},
 
 	{
 		(NX6_UART_AREA_T * const)Addr_NX6_uart2,
-		MMIO_CFG_uart2_rxd,
-		MMIO_CFG_uart2_txd,
-		MMIO_CFG_uart2_rtsn,
-		MMIO_CFG_uart2_ctsn
+		NX6_MMIO_CFG_uart2_rxd,
+		NX6_MMIO_CFG_uart2_txd,
+		NX6_MMIO_CFG_uart2_rtsn,
+		NX6_MMIO_CFG_uart2_ctsn
 	}
 
 #elif ASIC_TYP==ASIC_TYP_NETX500

@@ -24,8 +24,11 @@
 #ifndef __NETX_IO_AREAS_H__
 #define __NETX_IO_AREAS_H__
 
-#define DO_CONCAT(a,b,c) a##_##b##_##c
-#define CONCAT(a,b,c) DO_CONCAT(a,b,c)
+#define DO_CONCAT3(a,b,c) a##_##b##_##c
+#define CONCAT3(a,b,c) DO_CONCAT3(a,b,c)
+
+#define DO_CONCAT2(a,b) a##_##b
+#define CONCAT2(a,b) DO_CONCAT2(a,b)
 
 #if ASIC_TYP==ASIC_TYP_NETX500
 #       define HOST NX500
@@ -70,22 +73,24 @@
 /* Only netX6 is special. The XPIC CPU uses global pointers more efficiently. */
 #if ASIC_TYP==ASIC_TYP_NETX6
 #       define HOSTDEF(a)
-#       define HOSTADR(a)  CONCAT(Adr,HOST,a)
-#       define HOSTADDR(a) CONCAT(Addr,HOST,a)
-#       define HOSTMSK(a)  CONCAT(MSK,HOST,a)
-#       define HOSTSRT(a)  CONCAT(SRT,HOST,a)
-#       define HOSTADEF(a) CONCAT(HOST,a,AREA_T)
-#       define HOSTDFLT(a) CONCAT(DFLT_VAL,HOST,a)
-#       define HOSTBFW(a)  CONCAT(BFW,HOST,a)
+#       define HOSTADR(a)  CONCAT3(Adr,HOST,a)
+#       define HOSTADDR(a) CONCAT3(Addr,HOST,a)
+#       define HOSTMSK(a)  CONCAT3(MSK,HOST,a)
+#       define HOSTSRT(a)  CONCAT3(SRT,HOST,a)
+#       define HOSTADEF(a) CONCAT3(HOST,a,AREA_T)
+#       define HOSTDFLT(a) CONCAT3(DFLT_VAL,HOST,a)
+#       define HOSTBFW(a)  CONCAT3(BFW,HOST,a)
 #else
-#       define HOSTDEF(a)  CONCAT(HOST,DEF,a)
-#       define HOSTADR(a)  CONCAT(Adr,HOST,a)
-#       define HOSTADDR(a) CONCAT(Addr,HOST,a)
-#       define HOSTMSK(a)  CONCAT(MSK,HOST,a)
-#       define HOSTSRT(a)  CONCAT(SRT,HOST,a)
-#       define HOSTADEF(a) CONCAT(HOST,a,AREA_T)
-#       define HOSTDFLT(a) CONCAT(DFLT_VAL,HOST,a)
-#       define HOSTBFW(a)  CONCAT(BFW,HOST,a)
+#       define HOSTDEF(a)  CONCAT3(HOST,DEF,a)
+#       define HOSTADR(a)  CONCAT3(Adr,HOST,a)
+#       define HOSTADDR(a) CONCAT3(Addr,HOST,a)
+#       define HOSTMSK(a)  CONCAT3(MSK,HOST,a)
+#       define HOSTSRT(a)  CONCAT3(SRT,HOST,a)
+#       define HOSTADEF(a) CONCAT3(HOST,a,AREA_T)
+#       define HOSTDFLT(a) CONCAT3(DFLT_VAL,HOST,a)
+#       define HOSTBFW(a)  CONCAT3(BFW,HOST,a)
+#       define HOSTMMIO(a) CONCAT3(HOST,MMIO_CFG,a)
+#       define HOSTMMIODEF CONCAT2(HOST,MMIO_CFG_T)
 #endif
 
 #endif  /* __NETX_IO_AREAS_H__ */
