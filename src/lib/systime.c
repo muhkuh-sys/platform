@@ -21,6 +21,19 @@
 
 #include "systime.h"
 
+#if ASIC_TYP==ASIC_TYP_NETIOL
+unsigned long ulSystime_ms = 0;
+/*
+The netIOL only has 24 bit timers that count clock cycles. 
+At 100 MHz, the timer runs over after 160ms. 
+At 8 MHz, it runs over after 2 seconds. 
+The systime functions currently assume that the system is running at 8MHz.
+The timer is run in single-shot mode. Every time systime_get_ms() is called and the
+timer has run out, 2000 ms are added to ulSystime_ms.
+This means that, unless systime_get_ms() is called periodically at least 2 seconds, it will miss time.
+*/
+#endif
+
 /* ASIC */
 #define DEV_FREQUENCY 100000000
 
@@ -48,10 +61,21 @@ void systime_init(void)
 	ptSystimeAppArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
 	ptSystimeAppArea->ulSystime_count_value = 10U<<28U;
 #elif ASIC_TYP==ASIC_TYP_NETIOL
-	/* TODO: Continue here. */
+	
+	/* Set the reload value to 16 Mio. 
+	When the system is running at 8 MHz, the timer overflows after 2 sec. */
+	HOSTDEF(ptSwTimerArea);
+	ptSwTimerArea->ulSw_timer_en_mode_clr = MSK_NIOL_sw_timer_en_mode_t0_en | MSK_NIOL_sw_timer_en_mode_t0_mode;
+	ptSwTimerArea->asSw_timer_timer[0].ulUpper = 0;
+	ptSwTimerArea->asSw_timer_timer[0].ulLower = 0;
+	#define NETIOL_SWTIMER_RELOAD_VAL 16000000UL
+	ptSwTimerArea->asSw_timer_timer[0].ulUpper_rld = NETIOL_SWTIMER_RELOAD_VAL >> 16;
+	ptSwTimerArea->asSw_timer_timer[0].ulLower_rld = NETIOL_SWTIMER_RELOAD_VAL & 0xFFFFUL;
+	
+	ptSwTimerArea->ulSw_timer_en_mode_set = MSK_NIOL_sw_timer_en_mode_t0_en;
+	
 #else
 	HOSTDEF(ptSystimeArea);
-
 
 	/* Set the systime border to 1ms. */
 	ptSystimeArea->ulSystime_border = (DEV_FREQUENCY/100U)-1U;
@@ -84,7 +108,29 @@ unsigned long systime_get_ms(void)
 
 	return ptSystimeAppArea->ulSystime_s;
 #elif ASIC_TYP==ASIC_TYP_NETIOL
-	/* TODO: Continue here. */
+	HOSTDEF(ptSwTimerArea)
+	unsigned long ulTimerVal;
+	unsigned long ulTimer_ms;
+	
+	/* This approach requires that get_ms is called every 2 seconds to keep countin correctly. */
+	if (0 == (ptSwTimerArea->ulSw_timer_en_mode & MSK_NIOL_sw_timer_en_mode_t0_en))
+	{
+		/* Timer has stopped: more than 2 sec. passed. Increase systime_ms by 2000 and restart timer. */
+		ptSwTimerArea->ulSw_timer_en_mode_set = MSK_NIOL_sw_timer_en_mode_t0_en;
+		ulSystime_ms += 2000;
+		ulTimer_ms = ulSystime_ms;
+	}
+	else
+	{
+		/* Timer still running. Less than 2 sec. passed. */
+		ptSwTimerArea->ulSw_timer_en_mode_clr = MSK_NIOL_sw_timer_en_mode_t0_en;
+		ulTimerVal = ptSwTimerArea->asSw_timer_timer[0].ulUpper_rld << 16 | ptSwTimerArea-> asSw_timer_timer[0].ulLower_rld;
+		ptSwTimerArea->ulSw_timer_en_mode_set = MSK_NIOL_sw_timer_en_mode_t0_en;
+		ulTimer_ms = ulSystime_ms + (NETIOL_SWTIMER_RELOAD_VAL - ulTimerVal) / 8000UL;
+	}
+	
+	return ulTimer_ms;
+	
 #else
 	HOSTDEF(ptSystimeArea)
 
@@ -92,7 +138,6 @@ unsigned long systime_get_ms(void)
 	return ptSystimeArea->ulSystime_s;
 #endif
 }
-
 
 int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 {
@@ -126,7 +171,13 @@ int systime_elapsed(unsigned long ulStart, unsigned long ulDuration)
 
 	return (ulDiff>=ulDuration);
 #elif ASIC_TYP==ASIC_TYP_NETIOL
-	/* TODO: Continue here. */
+	unsigned long ulDiff;
+
+	/* get the time difference */
+	ulDiff = systime_get_ms() - ulStart;
+
+	return (ulDiff>=ulDuration);
+
 #else
 	HOSTDEF(ptSystimeArea)
 	unsigned long ulDiff;
