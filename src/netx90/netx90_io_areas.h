@@ -34,8 +34,8 @@
 #define NX90_DEF_ptSlaveFirewallCtrlArea NX90_SLAVE_FIREWALL_CTRL_AREA_T * const ptSlaveFirewallCtrlArea = (NX90_SLAVE_FIREWALL_CTRL_AREA_T * const)Addr_NX90_slave_firewall_ctrl;
 #define NX90_DEF_ptModuleFirewallCtrlArea NX90_MODULE_FIREWALL_CTRL_AREA_T * const ptModuleFirewallCtrlArea = (NX90_MODULE_FIREWALL_CTRL_AREA_T * const)Addr_NX90_module_firewall_ctrl;
 
-#define NX90_DEF_ptI2c0ComArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c0_com;
-#define NX90_DEF_ptI2c1ComArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c1_com;
+#define NX90_DEF_ptI2c0ComArea NX90_I2C_AREA_T * const ptI2c0ComArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c0_com;
+#define NX90_DEF_ptI2c1ComArea NX90_I2C_AREA_T * const ptI2c1ComArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c1_com;
 #define NX90_DEF_ptI2cAppArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c_app;
 #define NX90_DEF_ptI2cXpicAppArea NX90_I2C_AREA_T * const ptI2cArea = (NX90_I2C_AREA_T * const)Addr_NX90_i2c_xpic_app;
 
@@ -46,7 +46,7 @@
 #define NX90_DEF_ptEccCtrlArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl;
 #define NX90_DEF_ptEccCtrlAppArea NX90_ECC_CTRL_AREA_T * const ptEccCtrlAppArea = (NX90_ECC_CTRL_AREA_T * const)Addr_NX90_ecc_ctrl_app;
 
-#define NX90_DEF_ptGpioArea NX90_GPIO_AREA_T * const ptGpioArea = (NX90_GPIO_AREA_T * const)Addr_NX90_gpio_com;
+#define NX90_DEF_ptGpioComArea NX90_GPIO_AREA_T * const ptGpioComArea = (NX90_GPIO_AREA_T * const)Addr_NX90_gpio_com;
 
 #define NX90_DEF_ptBlinkArea NX90_BLINK_AREA_T * const ptBlinkArea = (NX90_BLINK_AREA_T * const)Addr_NX90_blink_com;
 
