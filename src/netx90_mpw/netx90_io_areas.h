@@ -42,7 +42,7 @@
 #define NX90MPW_DEF_ptEccCtrlComArea NX90MPW_ECC_CTRL_AREA_T * const ptEccCtrlComArea = (NX90MPW_ECC_CTRL_AREA_T * const)Addr_NX90MPW_ecc_ctrl_com;
 #define NX90MPW_DEF_ptEccCtrlAppArea NX90MPW_ECC_CTRL_AREA_T * const ptEccCtrlAppArea = (NX90MPW_ECC_CTRL_AREA_T * const)Addr_NX90MPW_ecc_ctrl_app;
 
-#define NX90MPW_DEF_ptGpioArea NX90MPW_GPIO_AREA_T * const ptGpioArea = (NX90MPW_GPIO_AREA_T * const)Addr_NX90MPW_gpio_com;
+#define NX90MPW_DEF_ptGpioComArea NX90MPW_GPIO_AREA_T * const ptGpioComArea = (NX90MPW_GPIO_AREA_T * const)Addr_NX90MPW_gpio_com;
 
 #define NX90MPW_DEF_ptBlinkArea NX90MPW_BLINK_AREA_T * const ptBlinkArea = (NX90MPW_BLINK_AREA_T * const)Addr_NX90MPW_blink_com;
 
