@@ -121,8 +121,8 @@
 #define NX90_DEF_ptXc0PhyCtrl0Area NX90_PHY_CTRL_AREA_T * const ptXc0PhyCtrl0Area = (NX90_PHY_CTRL_AREA_T * const)Addr_NX90_xc0_phy_ctrl0;
 #define NX90_DEF_ptXc0PhyCtrl1Area NX90_PHY_CTRL_AREA_T * const ptXc0PhyCtrl1Area = (NX90_PHY_CTRL_AREA_T * const)Addr_NX90_xc0_phy_ctrl1;
 #define NX90_DEF_ptXcSystimeConfigArea NX90_XC_SYSTIME_CONFIG_AREA_T * const ptXcSystimeConfigArea = (NX90_XC_SYSTIME_CONFIG_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptXpicArea NX90_XPIC_AREA_T * const ptXpicArea = (NX90_XPIC_AREA_T * const)Adr_NX90_;
-#define NX90_DEF_ptXpicDebugArea NX90_XPIC_DEBUG_AREA_T * const ptXpicDebugArea = (NX90_XPIC_DEBUG_AREA_T * const)Adr_NX90_;
+#define NX90_DEF_ptXpicComRegsArea NX90_XPIC_AREA_T * const ptXpicComRegsArea = (NX90_XPIC_AREA_T * const)Addr_NX90_xpic_com_regs;
+#define NX90_DEF_ptXpicComDebugArea NX90_XPIC_DEBUG_AREA_T * const ptXpicComDebugArea = (NX90_XPIC_DEBUG_AREA_T * const)Addr_NX90_xpic_com_debug;
 #define NX90_DEF_ptXpicVicArea NX90_XPIC_VIC_AREA_T * const ptXpicVicArea = (NX90_XPIC_VIC_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptXpicWgdArea NX90_XPIC_WDG_AREA_T * const ptXpicWgdArea = (NX90_XPIC_WDG_AREA_T * const)Adr_NX90_;
 #define NX90_DEF_ptSrArea NX90_SR_AREA_T * const ptSrArea = (NX90_SR_AREA_T * const)Adr_NX90_;
