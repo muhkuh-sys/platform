@@ -47,7 +47,7 @@ typedef enum
 
 typedef struct
 {
-#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6
+#if ASIC_TYP==ASIC_TYP_NETX10 || ASIC_TYP==ASIC_TYP_NETX50 || ASIC_TYP==ASIC_TYP_NETX56 || ASIC_TYP==ASIC_TYP_NETX6 || ASIC_TYP==ASIC_TYP_NETX4000 || ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 	unsigned char uc_rx_mmio;
 	unsigned char uc_tx_mmio;
 	unsigned char uc_rts_mmio;
@@ -65,4 +65,4 @@ unsigned int uart_peek(unsigned int uiUartUnit);
 void uart_close(unsigned int uiUartUnit);
 
 
-#endif	/* __UART_H__ */
+#endif  /* __UART_H__ */

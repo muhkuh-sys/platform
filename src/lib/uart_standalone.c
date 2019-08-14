@@ -74,6 +74,10 @@ static const UART_CONFIGURATION_T tDefaultUartCfg =
 #elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED || ASIC_TYP==ASIC_TYP_NETX4000
 static const UART_CONFIGURATION_T tDefaultUartCfg =
 {
+	.uc_rx_mmio = 26U,
+	.uc_tx_mmio = 27U,
+	.uc_rts_mmio = 0xffU,
+	.uc_cts_mmio = 0xffU,
 	.us_baud_div = UART_BAUDRATE_DIV(UART_BAUDRATE_115200)
 };
 
