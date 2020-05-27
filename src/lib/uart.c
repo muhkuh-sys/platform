@@ -300,7 +300,7 @@ int uart_init(unsigned int uiUartUnit, const UART_CONFIGURATION_T *ptCfg)
 		ptUartArea->ulUartlcr_h = ulValue;
 
 		/* Disable all drivers. */
-		ptUartArea->ulUartdrvout = ulValue;
+		ptUartArea->ulUartdrvout = 0;
 
 		/* Disable RTS/CTS mode. */
 		ptUartArea->ulUartrts = 0;
