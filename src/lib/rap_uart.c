@@ -28,19 +28,19 @@ typedef struct
 static const RAP_UART_INSTANCE_T atRapUartInstances[] =
 {
 	{
-		.ptArea = (HOSTADEF(S_RAP_UART) * const)Addr_NX4000_RAP_UART0,
+		.ptArea = (HOSTADEF(S_RAP_UART) * const)HOSTADDR(RAP_UART0),
 	},
 
 	{
-		.ptArea = (HOSTADEF(S_RAP_UART) * const)Addr_NX4000_RAP_UART1,
+		.ptArea = (HOSTADEF(S_RAP_UART) * const)HOSTADDR(RAP_UART1),
 	},
 
 	{
-		.ptArea = (HOSTADEF(S_RAP_UART) * const)Addr_NX4000_RAP_UART2,
+		.ptArea = (HOSTADEF(S_RAP_UART) * const)HOSTADDR(RAP_UART2),
 	},
 
 	{
-		.ptArea = (HOSTADEF(S_RAP_UART) * const)Addr_NX4000_RAP_UART3,
+		.ptArea = (HOSTADEF(S_RAP_UART) * const)HOSTADDR(RAP_UART3),
 	}
 };
 

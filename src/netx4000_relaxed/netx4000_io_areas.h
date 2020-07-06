@@ -16,10 +16,10 @@
 typedef struct
 {
 	volatile unsigned long aulHandshakeReg[16];
-} NX4000_HANDSHAKE_BLOCK_AREA_T;
+} NX4000RELAXED_HANDSHAKE_BLOCK_AREA_T;
 
 
-typedef struct NX4000_S_RAP_UART_AREA_Ttag
+typedef struct NX4000RELAXED_S_RAP_UART_AREA_Ttag
 {
 	volatile unsigned short  usRAP_UART_UARTDR __attribute__ ((aligned (4)));
 	volatile unsigned short  usRAP_UART_UARTRSR __attribute__ ((aligned (4)));
@@ -45,222 +45,222 @@ typedef struct NX4000_S_RAP_UART_AREA_Ttag
 	volatile unsigned long  aulReserved090[980];
 	volatile unsigned long  aulRAP_UART_UARTPeriphID[4];
 	volatile unsigned long  aulRAP_UART_UARTPcellID[4];
-} NX4000_S_RAP_UART_AREA_T;
+} NX4000RELAXED_S_RAP_UART_AREA_T;
 
 
 
-#define NX4000_DEF_ptHifSdramArea NX4000_EXT_SDRAM_CTRL_AREA_T * const ptHifSdramArea = (NX4000_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000_hif_sdram_ctrl;
-#define NX4000_DEF_ptMemSdramArea NX4000_EXT_SDRAM_CTRL_AREA_T * const ptMemSdramArea = (NX4000_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000_ext_sdram_ctrl;
+#define NX4000RELAXED_DEF_ptHifSdramArea NX4000RELAXED_EXT_SDRAM_CTRL_AREA_T * const ptHifSdramArea = (NX4000RELAXED_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000RELAXED_hif_sdram_ctrl;
+#define NX4000RELAXED_DEF_ptMemSdramArea NX4000RELAXED_EXT_SDRAM_CTRL_AREA_T * const ptMemSdramArea = (NX4000RELAXED_EXT_SDRAM_CTRL_AREA_T * const)Addr_NX4000RELAXED_ext_sdram_ctrl;
 
-#define NX4000_DEF_ptXpecArea NX4000_XPEC_AREA_T * const ptXpecArea = (NX4000_XPEC_AREA_T * const);
+#define NX4000RELAXED_DEF_ptXpecArea NX4000RELAXED_XPEC_AREA_T * const ptXpecArea = (NX4000RELAXED_XPEC_AREA_T * const);
 /*
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_rpu0_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_tpu0_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_rpu1_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc0_tpu1_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_rpu0_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_tpu0_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_rpu1_ram;
-#define NX4000_DEF_ptXmacArea NX4000_XMAC_AREA_T * const ptXmacArea = (NX4000_XMAC_AREA_T * const)Addr_NX4000_xc1_tpu1_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc0_rpu0_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc0_tpu0_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc0_rpu1_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc0_tpu1_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc1_rpu0_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc1_tpu0_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc1_rpu1_ram;
+#define NX4000RELAXED_DEF_ptXmacArea NX4000RELAXED_XMAC_AREA_T * const ptXmacArea = (NX4000RELAXED_XMAC_AREA_T * const)Addr_NX4000RELAXED_xc1_tpu1_ram;
 */
-#define NX4000_DEF_ptXc0PointerFifoArea NX4000_POINTER_FIFO_AREA_T * const ptXc0PointerFifoArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc0_pointer_fifo;
-#define NX4000_DEF_ptXc1PointerFifoArea NX4000_POINTER_FIFO_AREA_T * const ptXc1PointerFifoArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc1_pointer_fifo;
-#define NX4000_DEF_ptXc0PointerFifoMotionArea NX4000_POINTER_FIFO_AREA_T * const ptXc0PointerFifoMotionArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc0_pointer_fifo_motion;
-#define NX4000_DEF_ptXc1PointerFifoMotionArea NX4000_POINTER_FIFO_AREA_T * const ptXc1PointerFifoMotionArea = (NX4000_POINTER_FIFO_AREA_T * const)Addr_NX4000_xc1_pointer_fifo_motion;
+#define NX4000RELAXED_DEF_ptXc0PointerFifoArea NX4000RELAXED_POINTER_FIFO_AREA_T * const ptXc0PointerFifoArea = (NX4000RELAXED_POINTER_FIFO_AREA_T * const)Addr_NX4000RELAXED_xc0_pointer_fifo;
+#define NX4000RELAXED_DEF_ptXc1PointerFifoArea NX4000RELAXED_POINTER_FIFO_AREA_T * const ptXc1PointerFifoArea = (NX4000RELAXED_POINTER_FIFO_AREA_T * const)Addr_NX4000RELAXED_xc1_pointer_fifo;
+#define NX4000RELAXED_DEF_ptXc0PointerFifoMotionArea NX4000RELAXED_POINTER_FIFO_AREA_T * const ptXc0PointerFifoMotionArea = (NX4000RELAXED_POINTER_FIFO_AREA_T * const)Addr_NX4000RELAXED_xc0_pointer_fifo_motion;
+#define NX4000RELAXED_DEF_ptXc1PointerFifoMotionArea NX4000RELAXED_POINTER_FIFO_AREA_T * const ptXc1PointerFifoMotionArea = (NX4000RELAXED_POINTER_FIFO_AREA_T * const)Addr_NX4000RELAXED_xc1_pointer_fifo_motion;
 
-#define NX4000_DEF_ptXc0FmmusmArea NX4000_FMMUSM_AREA_T * const ptXc0FmmusmArea = (NX4000_FMMUSM_AREA_T * const)Addr_NX4000_xc0_fmmusm;
-#define NX4000_DEF_ptXc1FmmusmArea NX4000_FMMUSM_AREA_T * const ptXc1FmmusmArea = (NX4000_FMMUSM_AREA_T * const)Addr_NX4000_xc1_fmmusm;
+#define NX4000RELAXED_DEF_ptXc0FmmusmArea NX4000RELAXED_FMMUSM_AREA_T * const ptXc0FmmusmArea = (NX4000RELAXED_FMMUSM_AREA_T * const)Addr_NX4000RELAXED_xc0_fmmusm;
+#define NX4000RELAXED_DEF_ptXc1FmmusmArea NX4000RELAXED_FMMUSM_AREA_T * const ptXc1FmmusmArea = (NX4000RELAXED_FMMUSM_AREA_T * const)Addr_NX4000RELAXED_xc1_fmmusm;
 
-#define NX4000_DEF_ptXc0TriggerSampleUnitArea NX4000_TRIGGER_SAMPLE_UNIT_AREA_T * const ptXc0TriggerSampleUnitArea = (NX4000_TRIGGER_SAMPLE_UNIT_AREA_T * const)Addr_NX4000_xc0_trigger_sample_unit;
-#define NX4000_DEF_ptXc1TriggerSampleUnitArea NX4000_TRIGGER_SAMPLE_UNIT_AREA_T * const ptXc1TriggerSampleUnitArea = (NX4000_TRIGGER_SAMPLE_UNIT_AREA_T * const)Addr_NX4000_xc1_trigger_sample_unit;
+#define NX4000RELAXED_DEF_ptXc0TriggerSampleUnitArea NX4000RELAXED_TRIGGER_SAMPLE_UNIT_AREA_T * const ptXc0TriggerSampleUnitArea = (NX4000RELAXED_TRIGGER_SAMPLE_UNIT_AREA_T * const)Addr_NX4000RELAXED_xc0_trigger_sample_unit;
+#define NX4000RELAXED_DEF_ptXc1TriggerSampleUnitArea NX4000RELAXED_TRIGGER_SAMPLE_UNIT_AREA_T * const ptXc1TriggerSampleUnitArea = (NX4000RELAXED_TRIGGER_SAMPLE_UNIT_AREA_T * const)Addr_NX4000RELAXED_xc1_trigger_sample_unit;
 
-#define NX4000_DEF_ptXcExternalConfigArea NX4000_XC_EXTERNAL_CONFIG_AREA_T * const ptXcExternalConfigArea = (NX4000_XC_EXTERNAL_CONFIG_AREA_T * const)Addr_NX4000_xc_external_config;
+#define NX4000RELAXED_DEF_ptXcExternalConfigArea NX4000RELAXED_XC_EXTERNAL_CONFIG_AREA_T * const ptXcExternalConfigArea = (NX4000RELAXED_XC_EXTERNAL_CONFIG_AREA_T * const)Addr_NX4000RELAXED_xc_external_config;
 
-#define NX4000_DEF_ptXc0BufManArea NX4000_BUF_MAN_AREA_T * const ptXc0BufManArea = (NX4000_BUF_MAN_AREA_T * const)Addr_NX4000_xc0_buf_man;
-#define NX4000_DEF_ptXc1BufManArea NX4000_BUF_MAN_AREA_T * const ptXc1BufManArea = (NX4000_BUF_MAN_AREA_T * const)Addr_NX4000_xc1_buf_man;
-#define NX4000_DEF_ptXc0BufManMotionArea NX4000_BUF_MAN_AREA_T * const ptXc0BufManMotionArea = (NX4000_BUF_MAN_AREA_T * const)Addr_NX4000_xc0_buf_man_motion;
-#define NX4000_DEF_ptXc1BufManMotionArea NX4000_BUF_MAN_AREA_T * const ptXc1BufManMotionArea = (NX4000_BUF_MAN_AREA_T * const)Addr_NX4000_xc1_buf_man_motion;
-
-
-#define NX4000_DEF_ptXpecIrqRegistersArea NX4000_XPEC_IRQ_REGISTERS_AREA_T * const ptXpecIrqRegistersArea = (NX4000_XPEC_IRQ_REGISTERS_AREA_T * const)Addr_NX4000_xc_xpec_irq_registers;
-
-#define NX4000_DEF_ptXcDebugArea NX4000_XC_DEBUG_AREA_T * const ptXcDebugArea = (NX4000_XC_DEBUG_AREA_T * const)Addr_NX4000_xc_debug;
-
-#define NX4000_DEF_ptXcStartStopArea NX4000_XC_START_STOP_AREA_T * const ptXcStartStopArea = (NX4000_XC_START_STOP_AREA_T * const)Addr_NX4000_xc_start_stop;
-
-#define NX4000_DEF_ptXc0PhyCtrl0Area NX4000_PHY_CTRL_AREA_T * const ptXc0PhyCtrl0Area = (NX4000_PHY_CTRL_AREA_T * const)Addr_NX4000_xc0_phy_ctrl0;
-#define NX4000_DEF_ptXc0PhyCtrl1Area NX4000_PHY_CTRL_AREA_T * const ptXc0PhyCtrl1Area = (NX4000_PHY_CTRL_AREA_T * const)Addr_NX4000_xc0_phy_ctrl1;
-#define NX4000_DEF_ptXc1PhyCtrl0Area NX4000_PHY_CTRL_AREA_T * const ptXc1PhyCtrl0Area = (NX4000_PHY_CTRL_AREA_T * const)Addr_NX4000_xc1_phy_ctrl0;
-#define NX4000_DEF_ptXc1PhyCtrl1Area NX4000_PHY_CTRL_AREA_T * const ptXc1PhyCtrl1Area = (NX4000_PHY_CTRL_AREA_T * const)Addr_NX4000_xc1_phy_ctrl1;
-
-#define NX4000_DEF_ptXcSystimeConfigArea NX4000_XC_SYSTIME_CONFIG_AREA_T * const ptXcSystimeConfigArea = (NX4000_XC_SYSTIME_CONFIG_AREA_T * const)Addr_NX4000_xc_systime_config;
-
-#define NX4000_DEF_ptAsicCtrlArea NX4000_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX4000_ASIC_CTRL_AREA_T * const)Addr_NX4000_asic_ctrl;
-
-#define NX4000_DEF_ptHifIoCtrlArea NX4000_HIF_IO_CTRL_AREA_T * const ptHifIoCtrlArea = (NX4000_HIF_IO_CTRL_AREA_T * const)Addr_NX4000_hif_io_ctrl;
-
-#define NX4000_DEF_ptMmioCtrlArea NX4000_MMIO_CTRL_AREA_T * const ptMmioCtrlArea = (NX4000_MMIO_CTRL_AREA_T * const)Addr_NX4000_mmio_ctrl;
-
-#define NX4000_DEF_ptEccCtrlArea NX4000_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX4000_ECC_CTRL_AREA_T * const)Addr_NX4000_ecc_ctrl;
-
-#define NX4000_DEF_ptHandshakeCtrl0Area NX4000_HANDSHAKE_CTRL_AREA_T * const ptHandshakeCtrl0Area = (NX4000_HANDSHAKE_CTRL_AREA_T * const)Addr_NX4000_handshake_ctrl0;
-#define NX4000_DEF_ptHandshakeCtrl1Area NX4000_HANDSHAKE_CTRL_AREA_T * const ptHandshakeCtrl1Area = (NX4000_HANDSHAKE_CTRL_AREA_T * const)Addr_NX4000_handshake_ctrl1;
-
-#define NX4000_DEF_ptMiimuArea NX4000_MIIMU_AREA_T * const ptMiimuArea = (NX4000_MIIMU_AREA_T * const)Addr_NX4000_miimu;
-
-#define NX4000_DEF_ptPioArea NX4000_PIO_AREA_T * const ptPioArea = (NX4000_PIO_AREA_T * const)Addr_NX4000_pio;
-
-#define NX4000_DEF_ptCrcArea NX4000_CRC_AREA_T * const ptCrcArea = (NX4000_CRC_AREA_T * const)Addr_NX4000_crc;
-
-#define NX4000_DEF_ptSystime0Area NX4000_SYSTIME_AREA_T * const ptSystime0Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime0;
-#define NX4000_DEF_ptSystime1Area NX4000_SYSTIME_AREA_T * const ptSystime1Area = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime1;
-#define NX4000_DEF_ptSystimeUcArea NX4000_SYSTIME_AREA_T * const ptSystimeUcArea = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_uc;
-#define NX4000_DEF_ptSystimeRapArea NX4000_SYSTIME_AREA_T * const ptSystimeRapArea = (NX4000_SYSTIME_AREA_T * const)Addr_NX4000_systime_rap;
-
-#define NX4000_DEF_ptWatchdogArea NX4000_WATCHDOG_AREA_T * const ptWatchdogArea = (NX4000_WATCHDOG_AREA_T * const)Addr_NX4000_watchdog;
-
-#define NX4000_DEF_ptUart0Area NX4000_UART_AREA_T * const ptUart0Area = (NX4000_UART_AREA_T * const)Addr_NX4000_uart0;
-#define NX4000_DEF_ptUart1Area NX4000_UART_AREA_T * const ptUart1Area = (NX4000_UART_AREA_T * const)Addr_NX4000_uart1;
-#define NX4000_DEF_ptUart2Area NX4000_UART_AREA_T * const ptUart2Area = (NX4000_UART_AREA_T * const)Addr_NX4000_uart2;
-
-#define NX4000_DEF_ptI2c0Area NX4000_I2C_AREA_T * const ptI2c0Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_i2c0;
-#define NX4000_DEF_ptI2c1Area NX4000_I2C_AREA_T * const ptI2c1Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_i2c1;
-#define NX4000_DEF_ptI2c2Area NX4000_I2C_AREA_T * const ptI2c2Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_i2c2;
-
-#define NX4000_DEF_ptUsbDevCtrlArea NX4000_USB_DEV_CTRL_AREA_T * const ptUsbDevCtrlArea = (NX4000_USB_DEV_CTRL_AREA_T * const)Addr_NX4000_usb_dev_ctrl;
-
-#define NX4000_DEF_ptUsbDevFifoCtrlArea NX4000_USB_DEV_FIFO_CTRL_AREA_T * const ptUsbDevFifoCtrlArea = (NX4000_USB_DEV_FIFO_CTRL_AREA_T * const)Addr_NX4000_usb_dev_fifo_ctrl;
-
-#define NX4000_DEF_ptUsbDevFifoArea NX4000_USB_DEV_FIFO_AREA_T * const ptUsbDevFifoArea = (NX4000_USB_DEV_FIFO_AREA_T * const)Addr_NX4000_usb_dev_fifo;
-
-#define NX4000_DEF_ptCanctrlArea NX4000_CANCTRL_AREA_T * const ptCanctrlArea = (NX4000_CANCTRL_AREA_T * const)Addr_NX4000_canctrl;
-
-#define NX4000_DEF_ptLvds2mii0Area NX4000_LVDS2MII_AREA_T * const ptLvds2mii0Area = (NX4000_LVDS2MII_AREA_T * const)Addr_NX4000_lvds2mii0;
-#define NX4000_DEF_ptLvds2mii1Area NX4000_LVDS2MII_AREA_T * const ptLvds2mii1Area = (NX4000_LVDS2MII_AREA_T * const)Addr_NX4000_lvds2mii1;
-
-#define NX4000_DEF_ptDpmArea NX4000_DPM_AREA_T * const ptDpmArea = (NX4000_DPM_AREA_T * const)Addr_NX4000_dpm;
-#define NX4000_DEF_ptIdpm0Area NX4000_IDPM_AREA_T * const ptIdpm0Area = (NX4000_IDPM_AREA_T * const)Addr_NX4000_idpm0;
-#define NX4000_DEF_ptIdpm1Area NX4000_IDPM_AREA_T * const ptIdpm1Area = (NX4000_IDPM_AREA_T * const)Addr_NX4000_idpm1;
-
-#define NX4000_DEF_ptCryptArea NX4000_CRYPT_AREA_T * const ptCryptArea = (NX4000_CRYPT_AREA_T * const)Addr_NX4000_crypt;
-
-#define NX4000_DEF_ptDmacCh0Area NX4000_DMAC_CH_AREA_T * const ptDmacCh0Area = (NX4000_DMAC_CH_AREA_T * const)Addr_NX4000_dmac_ch0;
-#define NX4000_DEF_ptDmacCh1Area NX4000_DMAC_CH_AREA_T * const ptDmacCh1Area = (NX4000_DMAC_CH_AREA_T * const)Addr_NX4000_dmac_ch1;
-#define NX4000_DEF_ptDmacCh2Area NX4000_DMAC_CH_AREA_T * const ptDmacCh2Area = (NX4000_DMAC_CH_AREA_T * const)Addr_NX4000_dmac_ch2;
-
-#define NX4000_DEF_ptDmacRegArea NX4000_DMAC_REG_AREA_T * const ptDmacRegArea = (NX4000_DMAC_REG_AREA_T * const)Addr_NX4000_dmac_reg;
-
-#define NX4000_DEF_ptDmacMuxArea NX4000_DMAC_MUX_AREA_T * const ptDmacMuxArea = (NX4000_DMAC_MUX_AREA_T * const)Addr_NX4000_dmac_mux;
-
-#define NX4000_DEF_ptLcdCtrlArea NX4000_LCD_CTRL_AREA_T * const ptLcdCtrlArea = (NX4000_LCD_CTRL_AREA_T * const)Addr_NX4000_lcd_ctrl;
-
-#define NX4000_DEF_ptExtAsyncmemCtrlArea NX4000_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX4000_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX4000_ext_asyncmem_ctrl;
-#define NX4000_DEF_ptHifAsyncmemCtrlArea NX4000_EXT_ASYNCMEM_CTRL_AREA_T * const ptHifAsyncmemCtrlArea = (NX4000_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX4000_hif_asyncmem_ctrl;
-
-#define NX4000_DEF_ptExtmemPriorityCtrArea NX4000_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrArea = (NX4000_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX4000_extmem_priority_ctrl;
-#define NX4000_DEF_ptHifmemPriorityCtrArea NX4000_EXTMEM_PRIORITY_CTRL_AREA_T * const ptHifmemPriorityCtrArea = (NX4000_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX4000_hifmem_priority_ctrl;
-
-#define NX4000_DEF_ptArmTimerArea NX4000_ARM_TIMER_AREA_T * const ptArmTimerArea = (NX4000_ARM_TIMER_AREA_T * const)Addr_NX4000_arm_timer;
-
-#define NX4000_DEF_ptXpic0Area NX4000_XPIC_AREA_T * const ptXpic0Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic0_regs;
-#define NX4000_DEF_ptXpic1Area NX4000_XPIC_AREA_T * const ptXpic1Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic1_regs;
-#define NX4000_DEF_ptXpic2Area NX4000_XPIC_AREA_T * const ptXpic2Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic2_regs;
-#define NX4000_DEF_ptXpic3Area NX4000_XPIC_AREA_T * const ptXpic3Area = (NX4000_XPIC_AREA_T * const)Addr_NX4000_xpic3_regs;
-
-#define NX4000_DEF_ptXpic0DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic0DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic0_debug;
-#define NX4000_DEF_ptXpic1DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic1DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic1_debug;
-#define NX4000_DEF_ptXpic2DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic2DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic2_debug;
-#define NX4000_DEF_ptXpic3DebugArea NX4000_XPIC_DEBUG_AREA_T * const ptXpic3DebugArea = (NX4000_XPIC_DEBUG_AREA_T * const)Addr_NX4000_xpic3_debug;
-
-#define NX4000_DEF_ptNfifoArea NX4000_NFIFO_AREA_T * const ptNfifoArea = (NX4000_NFIFO_AREA_T * const)Addr_NX4000_nfifo;
-
-#define NX4000_DEF_ptSchedulerArea NX4000_SCHEDULER_AREA_T * const ptSchedulerArea = (NX4000_SCHEDULER_AREA_T * const)Addr_NX4000_scheduler;
-
-#define NX4000_DEF_ptEthArea NX4000_ETH_AREA_T * const ptEthArea = (NX4000_ETH_AREA_T * const)Addr_NX4000_eth;
-
-#define NX4000_DEF_ptCordicArea NX4000_CORDIC_AREA_T * const ptCordicArea = (NX4000_CORDIC_AREA_T * const)Addr_NX4000_cordic;
-
-#define NX4000_DEF_ptGpioArea NX4000_GPIO_AREA_T * const ptGpioArea = (NX4000_GPIO_AREA_T * const)Addr_NX4000_gpio;
-#define NX4000_DEF_ptGpioMotion0Area NX4000_GPIO_AREA_T * const ptGpioMotion0Area = (NX4000_GPIO_AREA_T * const)Addr_NX4000_gpio_motion0;
-#define NX4000_DEF_ptGpioMotion1Area NX4000_GPIO_AREA_T * const ptGpioMotion1Area = (NX4000_GPIO_AREA_T * const)Addr_NX4000_gpio_motion1;
-#define NX4000_DEF_ptGpioMotion2Area NX4000_GPIO_AREA_T * const ptGpioMotion2Area = (NX4000_GPIO_AREA_T * const)Addr_NX4000_gpio_motion2;
-#define NX4000_DEF_ptGpioMotion3Area NX4000_GPIO_AREA_T * const ptGpioMotion3Area = (NX4000_GPIO_AREA_T * const)Addr_NX4000_gpio_motion3;
-
-#define NX4000_DEF_ptXlink0Area NX4000_XLINK_AREA_T * const ptXlink0Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink0;
-#define NX4000_DEF_ptXlink1Area NX4000_XLINK_AREA_T * const ptXlink1Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink1;
-#define NX4000_DEF_ptXlink2Area NX4000_XLINK_AREA_T * const ptXlink2Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink2;
-#define NX4000_DEF_ptXlink3Area NX4000_XLINK_AREA_T * const ptXlink3Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink3;
-#define NX4000_DEF_ptXlink4Area NX4000_XLINK_AREA_T * const ptXlink4Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink4;
-#define NX4000_DEF_ptXlink5Area NX4000_XLINK_AREA_T * const ptXlink5Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink5;
-#define NX4000_DEF_ptXlink6Area NX4000_XLINK_AREA_T * const ptXlink6Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink6;
-#define NX4000_DEF_ptXlink7Area NX4000_XLINK_AREA_T * const ptXlink7Area = (NX4000_XLINK_AREA_T * const)Addr_NX4000_xlink7;
-
-#define NX4000_DEF_ptIoLinkIrqArea NX4000_IO_LINK_IRQ_AREA_T * const ptIoLinkIrqArea = (NX4000_IO_LINK_IRQ_AREA_T * const)Addr_NX4000_io_link_irq;
-
-#define NX4000_DEF_ptSpiArea NX4000_SPI_AREA_T * const ptSpiArea = (NX4000_SPI_AREA_T * const)Addr_NX4000_spi;
-#define NX4000_DEF_ptSpiXpic3Area NX4000_SPI_AREA_T * const ptSpiXpic3Area = (NX4000_SPI_AREA_T * const)Addr_NX4000_spi_xpic3;
-
-#define NX4000_DEF_ptMpwmArea NX4000_MPWM_AREA_T * const ptMpwmArea = (NX4000_MPWM_AREA_T * const)Addr_NX4000_mpwm;
-
-#define NX4000_DEF_ptMencArea NX4000_MENC_AREA_T * const ptMencArea = (NX4000_MENC_AREA_T * const)Addr_NX4000_menc;
-
-#define NX4000_DEF_ptAdcCtrlArea NX4000_ADC_CTRL_AREA_T * const ptAdcCtrlArea = (NX4000_ADC_CTRL_AREA_T * const)Addr_NX4000_adc_ctrl;
-
-#define NX4000_DEF_ptXpicTimer0Area NX4000_XPIC_TIMER_AREA_T * const ptXpicTimer0Area = (NX4000_XPIC_TIMER_AREA_T * const)Addr_NX4000_xpic_timer0;
-#define NX4000_DEF_ptXpicTimer1Area NX4000_XPIC_TIMER_AREA_T * const ptXpicTimer1Area = (NX4000_XPIC_TIMER_AREA_T * const)Addr_NX4000_xpic_timer1;
-#define NX4000_DEF_ptXpicTimer2Area NX4000_XPIC_TIMER_AREA_T * const ptXpicTimer2Area = (NX4000_XPIC_TIMER_AREA_T * const)Addr_NX4000_xpic_timer2;
-#define NX4000_DEF_ptXpicTimer3Area NX4000_XPIC_TIMER_AREA_T * const ptXpicTimer3Area = (NX4000_XPIC_TIMER_AREA_T * const)Addr_NX4000_xpic_timer3;
-
-#define NX4000_DEF_ptXpicVic0Area NX4000_XPIC_VIC_AREA_T * const ptXpicVic0Area = (NX4000_XPIC_VIC_AREA_T * const)Addr_NX4000_xpic_vic0;
-#define NX4000_DEF_ptXpicVic1Area NX4000_XPIC_VIC_AREA_T * const ptXpicVic1Area = (NX4000_XPIC_VIC_AREA_T * const)Addr_NX4000_xpic_vic1;
-#define NX4000_DEF_ptXpicVic2Area NX4000_XPIC_VIC_AREA_T * const ptXpicVic2Area = (NX4000_XPIC_VIC_AREA_T * const)Addr_NX4000_xpic_vic2;
-#define NX4000_DEF_ptXpicVic3Area NX4000_XPIC_VIC_AREA_T * const ptXpicVic3Area = (NX4000_XPIC_VIC_AREA_T * const)Addr_NX4000_xpic_vic3;
-
-#define NX4000_DEF_ptXpicWdg0Area NX4000_XPIC_WDG_AREA_T * const ptXpicWdg0Area = (NX4000_XPIC_WDG_AREA_T * const)Addr_NX4000_xpic_wdg0;
-#define NX4000_DEF_ptXpicWdg1Area NX4000_XPIC_WDG_AREA_T * const ptXpicWdg1Area = (NX4000_XPIC_WDG_AREA_T * const)Addr_NX4000_xpic_wdg1;
-#define NX4000_DEF_ptXpicWdg2Area NX4000_XPIC_WDG_AREA_T * const ptXpicWdg2Area = (NX4000_XPIC_WDG_AREA_T * const)Addr_NX4000_xpic_wdg2;
-#define NX4000_DEF_ptXpicWdg3Area NX4000_XPIC_WDG_AREA_T * const ptXpicWdg3Area = (NX4000_XPIC_WDG_AREA_T * const)Addr_NX4000_xpic_wdg3;
+#define NX4000RELAXED_DEF_ptXc0BufManArea NX4000RELAXED_BUF_MAN_AREA_T * const ptXc0BufManArea = (NX4000RELAXED_BUF_MAN_AREA_T * const)Addr_NX4000RELAXED_xc0_buf_man;
+#define NX4000RELAXED_DEF_ptXc1BufManArea NX4000RELAXED_BUF_MAN_AREA_T * const ptXc1BufManArea = (NX4000RELAXED_BUF_MAN_AREA_T * const)Addr_NX4000RELAXED_xc1_buf_man;
+#define NX4000RELAXED_DEF_ptXc0BufManMotionArea NX4000RELAXED_BUF_MAN_AREA_T * const ptXc0BufManMotionArea = (NX4000RELAXED_BUF_MAN_AREA_T * const)Addr_NX4000RELAXED_xc0_buf_man_motion;
+#define NX4000RELAXED_DEF_ptXc1BufManMotionArea NX4000RELAXED_BUF_MAN_AREA_T * const ptXc1BufManMotionArea = (NX4000RELAXED_BUF_MAN_AREA_T * const)Addr_NX4000RELAXED_xc1_buf_man_motion;
 
 
-#define NX4000_DEF_ptXpicHsIrq0RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_xpic_hs_irq0;
-#define NX4000_DEF_ptXpicHsIrq1RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_xpic_hs_irq1;
-#define NX4000_DEF_ptXpicHsIrq2RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_xpic_hs_irq2;
-#define NX4000_DEF_ptXpicHsIrq3RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_xpic_hs_irq3;
-#define NX4000_DEF_ptCr7HsIrqRegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_cr7_hs_irq;
-#define NX4000_DEF_ptCr9HsIrq0RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_cr9_hs_irq0;
-#define NX4000_DEF_ptCr9HsIrq1RegArea NX4000_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000_HS_IRQ_REG_AREA_T * const)Addr_NX4000_cr9_hs_irq1;
+#define NX4000RELAXED_DEF_ptXpecIrqRegistersArea NX4000RELAXED_XPEC_IRQ_REGISTERS_AREA_T * const ptXpecIrqRegistersArea = (NX4000RELAXED_XPEC_IRQ_REGISTERS_AREA_T * const)Addr_NX4000RELAXED_xc_xpec_irq_registers;
 
-#define NX4000_DEF_ptXcStatcfgSharedArea NX4000_XC_STATCFG_SHARED_AREA_T * const ptXcStatcfgSharedArea = (NX4000_XC_STATCFG_SHARED_AREA_T * const)Addr_NX4000_xc_statcfg_shared;
+#define NX4000RELAXED_DEF_ptXcDebugArea NX4000RELAXED_XC_DEBUG_AREA_T * const ptXcDebugArea = (NX4000RELAXED_XC_DEBUG_AREA_T * const)Addr_NX4000RELAXED_xc_debug;
 
-#define NX4000_DEF_ptSrArea NX4000_SR_AREA_T * const ptSrArea = (NX4000_SR_AREA_T * const);
+#define NX4000RELAXED_DEF_ptXcStartStopArea NX4000RELAXED_XC_START_STOP_AREA_T * const ptXcStartStopArea = (NX4000RELAXED_XC_START_STOP_AREA_T * const)Addr_NX4000RELAXED_xc_start_stop;
 
-#define NX4000_DEF_ptXcExtbusSelArea NX4000_XC_EXTBUS_SEL_AREA_T * const ptXcExtbusSelArea = (NX4000_XC_EXTBUS_SEL_AREA_T * const);
-#define NX4000_DEF_ptExtmemPioCtrlArea NX4000_EXTMEM_PIO_CTRL_AREA_T * const ptExtmemPioCtrlArea = (NX4000_EXTMEM_PIO_CTRL_AREA_T * const);
+#define NX4000RELAXED_DEF_ptXc0PhyCtrl0Area NX4000RELAXED_PHY_CTRL_AREA_T * const ptXc0PhyCtrl0Area = (NX4000RELAXED_PHY_CTRL_AREA_T * const)Addr_NX4000RELAXED_xc0_phy_ctrl0;
+#define NX4000RELAXED_DEF_ptXc0PhyCtrl1Area NX4000RELAXED_PHY_CTRL_AREA_T * const ptXc0PhyCtrl1Area = (NX4000RELAXED_PHY_CTRL_AREA_T * const)Addr_NX4000RELAXED_xc0_phy_ctrl1;
+#define NX4000RELAXED_DEF_ptXc1PhyCtrl0Area NX4000RELAXED_PHY_CTRL_AREA_T * const ptXc1PhyCtrl0Area = (NX4000RELAXED_PHY_CTRL_AREA_T * const)Addr_NX4000RELAXED_xc1_phy_ctrl0;
+#define NX4000RELAXED_DEF_ptXc1PhyCtrl1Area NX4000RELAXED_PHY_CTRL_AREA_T * const ptXc1PhyCtrl1Area = (NX4000RELAXED_PHY_CTRL_AREA_T * const)Addr_NX4000RELAXED_xc1_phy_ctrl1;
 
-#define NX4000_DEF_ptDdrCtrlArea NX4000_DDR_CTRL_AREA_T * const ptDdrCtrlArea = (NX4000_DDR_CTRL_AREA_T * const)Addr_NX4000_DDR_CTRL;
-#define NX4000_DEF_ptDdrPhyArea NX4000_DDR_PHY_AREA_T * const ptDdrPhyArea = (NX4000_DDR_PHY_AREA_T * const)Addr_NX4000_DDR_PHY;
+#define NX4000RELAXED_DEF_ptXcSystimeConfigArea NX4000RELAXED_XC_SYSTIME_CONFIG_AREA_T * const ptXcSystimeConfigArea = (NX4000RELAXED_XC_SYSTIME_CONFIG_AREA_T * const)Addr_NX4000RELAXED_xc_systime_config;
 
-#define NX4000_DEF_ptHandshake0Area NX4000_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0Area = (NX4000_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000_intramhs0;
-#define NX4000_DEF_ptHandshake0ArmMirrorArea NX4000_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0ArmMirrorArea = (NX4000_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000_intramhs0_arm_mirror;
+#define NX4000RELAXED_DEF_ptAsicCtrlArea NX4000RELAXED_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX4000RELAXED_ASIC_CTRL_AREA_T * const)Addr_NX4000RELAXED_asic_ctrl;
+
+#define NX4000RELAXED_DEF_ptHifIoCtrlArea NX4000RELAXED_HIF_IO_CTRL_AREA_T * const ptHifIoCtrlArea = (NX4000RELAXED_HIF_IO_CTRL_AREA_T * const)Addr_NX4000RELAXED_hif_io_ctrl;
+
+#define NX4000RELAXED_DEF_ptMmioCtrlArea NX4000RELAXED_MMIO_CTRL_AREA_T * const ptMmioCtrlArea = (NX4000RELAXED_MMIO_CTRL_AREA_T * const)Addr_NX4000RELAXED_mmio_ctrl;
+
+#define NX4000RELAXED_DEF_ptEccCtrlArea NX4000RELAXED_ECC_CTRL_AREA_T * const ptEccCtrlArea = (NX4000RELAXED_ECC_CTRL_AREA_T * const)Addr_NX4000RELAXED_ecc_ctrl;
+
+#define NX4000RELAXED_DEF_ptHandshakeCtrl0Area NX4000RELAXED_HANDSHAKE_CTRL_AREA_T * const ptHandshakeCtrl0Area = (NX4000RELAXED_HANDSHAKE_CTRL_AREA_T * const)Addr_NX4000RELAXED_handshake_ctrl0;
+#define NX4000RELAXED_DEF_ptHandshakeCtrl1Area NX4000RELAXED_HANDSHAKE_CTRL_AREA_T * const ptHandshakeCtrl1Area = (NX4000RELAXED_HANDSHAKE_CTRL_AREA_T * const)Addr_NX4000RELAXED_handshake_ctrl1;
+
+#define NX4000RELAXED_DEF_ptMiimuArea NX4000RELAXED_MIIMU_AREA_T * const ptMiimuArea = (NX4000RELAXED_MIIMU_AREA_T * const)Addr_NX4000RELAXED_miimu;
+
+#define NX4000RELAXED_DEF_ptPioArea NX4000RELAXED_PIO_AREA_T * const ptPioArea = (NX4000RELAXED_PIO_AREA_T * const)Addr_NX4000RELAXED_pio;
+
+#define NX4000RELAXED_DEF_ptCrcArea NX4000RELAXED_CRC_AREA_T * const ptCrcArea = (NX4000RELAXED_CRC_AREA_T * const)Addr_NX4000RELAXED_crc;
+
+#define NX4000RELAXED_DEF_ptSystime0Area NX4000RELAXED_SYSTIME_AREA_T * const ptSystime0Area = (NX4000RELAXED_SYSTIME_AREA_T * const)Addr_NX4000RELAXED_systime0;
+#define NX4000RELAXED_DEF_ptSystime1Area NX4000RELAXED_SYSTIME_AREA_T * const ptSystime1Area = (NX4000RELAXED_SYSTIME_AREA_T * const)Addr_NX4000RELAXED_systime1;
+#define NX4000RELAXED_DEF_ptSystimeUcArea NX4000RELAXED_SYSTIME_AREA_T * const ptSystimeUcArea = (NX4000RELAXED_SYSTIME_AREA_T * const)Addr_NX4000RELAXED_systime_uc;
+#define NX4000RELAXED_DEF_ptSystimeRapArea NX4000RELAXED_SYSTIME_AREA_T * const ptSystimeRapArea = (NX4000RELAXED_SYSTIME_AREA_T * const)Addr_NX4000RELAXED_systime_rap;
+
+#define NX4000RELAXED_DEF_ptWatchdogArea NX4000RELAXED_WATCHDOG_AREA_T * const ptWatchdogArea = (NX4000RELAXED_WATCHDOG_AREA_T * const)Addr_NX4000RELAXED_watchdog;
+
+#define NX4000RELAXED_DEF_ptUart0Area NX4000RELAXED_UART_AREA_T * const ptUart0Area = (NX4000RELAXED_UART_AREA_T * const)Addr_NX4000RELAXED_uart0;
+#define NX4000RELAXED_DEF_ptUart1Area NX4000RELAXED_UART_AREA_T * const ptUart1Area = (NX4000RELAXED_UART_AREA_T * const)Addr_NX4000RELAXED_uart1;
+#define NX4000RELAXED_DEF_ptUart2Area NX4000RELAXED_UART_AREA_T * const ptUart2Area = (NX4000RELAXED_UART_AREA_T * const)Addr_NX4000RELAXED_uart2;
+
+#define NX4000RELAXED_DEF_ptI2c0Area NX4000RELAXED_I2C_AREA_T * const ptI2c0Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_i2c0;
+#define NX4000RELAXED_DEF_ptI2c1Area NX4000RELAXED_I2C_AREA_T * const ptI2c1Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_i2c1;
+#define NX4000RELAXED_DEF_ptI2c2Area NX4000RELAXED_I2C_AREA_T * const ptI2c2Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_i2c2;
+
+#define NX4000RELAXED_DEF_ptUsbDevCtrlArea NX4000RELAXED_USB_DEV_CTRL_AREA_T * const ptUsbDevCtrlArea = (NX4000RELAXED_USB_DEV_CTRL_AREA_T * const)Addr_NX4000RELAXED_usb_dev_ctrl;
+
+#define NX4000RELAXED_DEF_ptUsbDevFifoCtrlArea NX4000RELAXED_USB_DEV_FIFO_CTRL_AREA_T * const ptUsbDevFifoCtrlArea = (NX4000RELAXED_USB_DEV_FIFO_CTRL_AREA_T * const)Addr_NX4000RELAXED_usb_dev_fifo_ctrl;
+
+#define NX4000RELAXED_DEF_ptUsbDevFifoArea NX4000RELAXED_USB_DEV_FIFO_AREA_T * const ptUsbDevFifoArea = (NX4000RELAXED_USB_DEV_FIFO_AREA_T * const)Addr_NX4000RELAXED_usb_dev_fifo;
+
+#define NX4000RELAXED_DEF_ptCanctrlArea NX4000RELAXED_CANCTRL_AREA_T * const ptCanctrlArea = (NX4000RELAXED_CANCTRL_AREA_T * const)Addr_NX4000RELAXED_canctrl;
+
+#define NX4000RELAXED_DEF_ptLvds2mii0Area NX4000RELAXED_LVDS2MII_AREA_T * const ptLvds2mii0Area = (NX4000RELAXED_LVDS2MII_AREA_T * const)Addr_NX4000RELAXED_lvds2mii0;
+#define NX4000RELAXED_DEF_ptLvds2mii1Area NX4000RELAXED_LVDS2MII_AREA_T * const ptLvds2mii1Area = (NX4000RELAXED_LVDS2MII_AREA_T * const)Addr_NX4000RELAXED_lvds2mii1;
+
+#define NX4000RELAXED_DEF_ptDpmArea NX4000RELAXED_DPM_AREA_T * const ptDpmArea = (NX4000RELAXED_DPM_AREA_T * const)Addr_NX4000RELAXED_dpm;
+#define NX4000RELAXED_DEF_ptIdpm0Area NX4000RELAXED_IDPM_AREA_T * const ptIdpm0Area = (NX4000RELAXED_IDPM_AREA_T * const)Addr_NX4000RELAXED_idpm0;
+#define NX4000RELAXED_DEF_ptIdpm1Area NX4000RELAXED_IDPM_AREA_T * const ptIdpm1Area = (NX4000RELAXED_IDPM_AREA_T * const)Addr_NX4000RELAXED_idpm1;
+
+#define NX4000RELAXED_DEF_ptCryptArea NX4000RELAXED_CRYPT_AREA_T * const ptCryptArea = (NX4000RELAXED_CRYPT_AREA_T * const)Addr_NX4000RELAXED_crypt;
+
+#define NX4000RELAXED_DEF_ptDmacCh0Area NX4000RELAXED_DMAC_CH_AREA_T * const ptDmacCh0Area = (NX4000RELAXED_DMAC_CH_AREA_T * const)Addr_NX4000RELAXED_dmac_ch0;
+#define NX4000RELAXED_DEF_ptDmacCh1Area NX4000RELAXED_DMAC_CH_AREA_T * const ptDmacCh1Area = (NX4000RELAXED_DMAC_CH_AREA_T * const)Addr_NX4000RELAXED_dmac_ch1;
+#define NX4000RELAXED_DEF_ptDmacCh2Area NX4000RELAXED_DMAC_CH_AREA_T * const ptDmacCh2Area = (NX4000RELAXED_DMAC_CH_AREA_T * const)Addr_NX4000RELAXED_dmac_ch2;
+
+#define NX4000RELAXED_DEF_ptDmacRegArea NX4000RELAXED_DMAC_REG_AREA_T * const ptDmacRegArea = (NX4000RELAXED_DMAC_REG_AREA_T * const)Addr_NX4000RELAXED_dmac_reg;
+
+#define NX4000RELAXED_DEF_ptDmacMuxArea NX4000RELAXED_DMAC_MUX_AREA_T * const ptDmacMuxArea = (NX4000RELAXED_DMAC_MUX_AREA_T * const)Addr_NX4000RELAXED_dmac_mux;
+
+#define NX4000RELAXED_DEF_ptLcdCtrlArea NX4000RELAXED_LCD_CTRL_AREA_T * const ptLcdCtrlArea = (NX4000RELAXED_LCD_CTRL_AREA_T * const)Addr_NX4000RELAXED_lcd_ctrl;
+
+#define NX4000RELAXED_DEF_ptExtAsyncmemCtrlArea NX4000RELAXED_EXT_ASYNCMEM_CTRL_AREA_T * const ptExtAsyncmemCtrlArea = (NX4000RELAXED_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX4000RELAXED_ext_asyncmem_ctrl;
+#define NX4000RELAXED_DEF_ptHifAsyncmemCtrlArea NX4000RELAXED_EXT_ASYNCMEM_CTRL_AREA_T * const ptHifAsyncmemCtrlArea = (NX4000RELAXED_EXT_ASYNCMEM_CTRL_AREA_T * const)Addr_NX4000RELAXED_hif_asyncmem_ctrl;
+
+#define NX4000RELAXED_DEF_ptExtmemPriorityCtrArea NX4000RELAXED_EXTMEM_PRIORITY_CTRL_AREA_T * const ptExtmemPriorityCtrArea = (NX4000RELAXED_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX4000RELAXED_extmem_priority_ctrl;
+#define NX4000RELAXED_DEF_ptHifmemPriorityCtrArea NX4000RELAXED_EXTMEM_PRIORITY_CTRL_AREA_T * const ptHifmemPriorityCtrArea = (NX4000RELAXED_EXTMEM_PRIORITY_CTRL_AREA_T * const)Addr_NX4000RELAXED_hifmem_priority_ctrl;
+
+#define NX4000RELAXED_DEF_ptArmTimerArea NX4000RELAXED_ARM_TIMER_AREA_T * const ptArmTimerArea = (NX4000RELAXED_ARM_TIMER_AREA_T * const)Addr_NX4000RELAXED_arm_timer;
+
+#define NX4000RELAXED_DEF_ptXpic0Area NX4000RELAXED_XPIC_AREA_T * const ptXpic0Area = (NX4000RELAXED_XPIC_AREA_T * const)Addr_NX4000RELAXED_xpic0_regs;
+#define NX4000RELAXED_DEF_ptXpic1Area NX4000RELAXED_XPIC_AREA_T * const ptXpic1Area = (NX4000RELAXED_XPIC_AREA_T * const)Addr_NX4000RELAXED_xpic1_regs;
+#define NX4000RELAXED_DEF_ptXpic2Area NX4000RELAXED_XPIC_AREA_T * const ptXpic2Area = (NX4000RELAXED_XPIC_AREA_T * const)Addr_NX4000RELAXED_xpic2_regs;
+#define NX4000RELAXED_DEF_ptXpic3Area NX4000RELAXED_XPIC_AREA_T * const ptXpic3Area = (NX4000RELAXED_XPIC_AREA_T * const)Addr_NX4000RELAXED_xpic3_regs;
+
+#define NX4000RELAXED_DEF_ptXpic0DebugArea NX4000RELAXED_XPIC_DEBUG_AREA_T * const ptXpic0DebugArea = (NX4000RELAXED_XPIC_DEBUG_AREA_T * const)Addr_NX4000RELAXED_xpic0_debug;
+#define NX4000RELAXED_DEF_ptXpic1DebugArea NX4000RELAXED_XPIC_DEBUG_AREA_T * const ptXpic1DebugArea = (NX4000RELAXED_XPIC_DEBUG_AREA_T * const)Addr_NX4000RELAXED_xpic1_debug;
+#define NX4000RELAXED_DEF_ptXpic2DebugArea NX4000RELAXED_XPIC_DEBUG_AREA_T * const ptXpic2DebugArea = (NX4000RELAXED_XPIC_DEBUG_AREA_T * const)Addr_NX4000RELAXED_xpic2_debug;
+#define NX4000RELAXED_DEF_ptXpic3DebugArea NX4000RELAXED_XPIC_DEBUG_AREA_T * const ptXpic3DebugArea = (NX4000RELAXED_XPIC_DEBUG_AREA_T * const)Addr_NX4000RELAXED_xpic3_debug;
+
+#define NX4000RELAXED_DEF_ptNfifoArea NX4000RELAXED_NFIFO_AREA_T * const ptNfifoArea = (NX4000RELAXED_NFIFO_AREA_T * const)Addr_NX4000RELAXED_nfifo;
+
+#define NX4000RELAXED_DEF_ptSchedulerArea NX4000RELAXED_SCHEDULER_AREA_T * const ptSchedulerArea = (NX4000RELAXED_SCHEDULER_AREA_T * const)Addr_NX4000RELAXED_scheduler;
+
+#define NX4000RELAXED_DEF_ptEthArea NX4000RELAXED_ETH_AREA_T * const ptEthArea = (NX4000RELAXED_ETH_AREA_T * const)Addr_NX4000RELAXED_eth;
+
+#define NX4000RELAXED_DEF_ptCordicArea NX4000RELAXED_CORDIC_AREA_T * const ptCordicArea = (NX4000RELAXED_CORDIC_AREA_T * const)Addr_NX4000RELAXED_cordic;
+
+#define NX4000RELAXED_DEF_ptGpioArea NX4000RELAXED_GPIO_AREA_T * const ptGpioArea = (NX4000RELAXED_GPIO_AREA_T * const)Addr_NX4000RELAXED_gpio;
+#define NX4000RELAXED_DEF_ptGpioMotion0Area NX4000RELAXED_GPIO_AREA_T * const ptGpioMotion0Area = (NX4000RELAXED_GPIO_AREA_T * const)Addr_NX4000RELAXED_gpio_motion0;
+#define NX4000RELAXED_DEF_ptGpioMotion1Area NX4000RELAXED_GPIO_AREA_T * const ptGpioMotion1Area = (NX4000RELAXED_GPIO_AREA_T * const)Addr_NX4000RELAXED_gpio_motion1;
+#define NX4000RELAXED_DEF_ptGpioMotion2Area NX4000RELAXED_GPIO_AREA_T * const ptGpioMotion2Area = (NX4000RELAXED_GPIO_AREA_T * const)Addr_NX4000RELAXED_gpio_motion2;
+#define NX4000RELAXED_DEF_ptGpioMotion3Area NX4000RELAXED_GPIO_AREA_T * const ptGpioMotion3Area = (NX4000RELAXED_GPIO_AREA_T * const)Addr_NX4000RELAXED_gpio_motion3;
+
+#define NX4000RELAXED_DEF_ptXlink0Area NX4000RELAXED_XLINK_AREA_T * const ptXlink0Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink0;
+#define NX4000RELAXED_DEF_ptXlink1Area NX4000RELAXED_XLINK_AREA_T * const ptXlink1Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink1;
+#define NX4000RELAXED_DEF_ptXlink2Area NX4000RELAXED_XLINK_AREA_T * const ptXlink2Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink2;
+#define NX4000RELAXED_DEF_ptXlink3Area NX4000RELAXED_XLINK_AREA_T * const ptXlink3Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink3;
+#define NX4000RELAXED_DEF_ptXlink4Area NX4000RELAXED_XLINK_AREA_T * const ptXlink4Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink4;
+#define NX4000RELAXED_DEF_ptXlink5Area NX4000RELAXED_XLINK_AREA_T * const ptXlink5Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink5;
+#define NX4000RELAXED_DEF_ptXlink6Area NX4000RELAXED_XLINK_AREA_T * const ptXlink6Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink6;
+#define NX4000RELAXED_DEF_ptXlink7Area NX4000RELAXED_XLINK_AREA_T * const ptXlink7Area = (NX4000RELAXED_XLINK_AREA_T * const)Addr_NX4000RELAXED_xlink7;
+
+#define NX4000RELAXED_DEF_ptIoLinkIrqArea NX4000RELAXED_IO_LINK_IRQ_AREA_T * const ptIoLinkIrqArea = (NX4000RELAXED_IO_LINK_IRQ_AREA_T * const)Addr_NX4000RELAXED_io_link_irq;
+
+#define NX4000RELAXED_DEF_ptSpiArea NX4000RELAXED_SPI_AREA_T * const ptSpiArea = (NX4000RELAXED_SPI_AREA_T * const)Addr_NX4000RELAXED_spi;
+#define NX4000RELAXED_DEF_ptSpiXpic3Area NX4000RELAXED_SPI_AREA_T * const ptSpiXpic3Area = (NX4000RELAXED_SPI_AREA_T * const)Addr_NX4000RELAXED_spi_xpic3;
+
+#define NX4000RELAXED_DEF_ptMpwmArea NX4000RELAXED_MPWM_AREA_T * const ptMpwmArea = (NX4000RELAXED_MPWM_AREA_T * const)Addr_NX4000RELAXED_mpwm;
+
+#define NX4000RELAXED_DEF_ptMencArea NX4000RELAXED_MENC_AREA_T * const ptMencArea = (NX4000RELAXED_MENC_AREA_T * const)Addr_NX4000RELAXED_menc;
+
+#define NX4000RELAXED_DEF_ptAdcCtrlArea NX4000RELAXED_ADC_CTRL_AREA_T * const ptAdcCtrlArea = (NX4000RELAXED_ADC_CTRL_AREA_T * const)Addr_NX4000RELAXED_adc_ctrl;
+
+#define NX4000RELAXED_DEF_ptXpicTimer0Area NX4000RELAXED_XPIC_TIMER_AREA_T * const ptXpicTimer0Area = (NX4000RELAXED_XPIC_TIMER_AREA_T * const)Addr_NX4000RELAXED_xpic_timer0;
+#define NX4000RELAXED_DEF_ptXpicTimer1Area NX4000RELAXED_XPIC_TIMER_AREA_T * const ptXpicTimer1Area = (NX4000RELAXED_XPIC_TIMER_AREA_T * const)Addr_NX4000RELAXED_xpic_timer1;
+#define NX4000RELAXED_DEF_ptXpicTimer2Area NX4000RELAXED_XPIC_TIMER_AREA_T * const ptXpicTimer2Area = (NX4000RELAXED_XPIC_TIMER_AREA_T * const)Addr_NX4000RELAXED_xpic_timer2;
+#define NX4000RELAXED_DEF_ptXpicTimer3Area NX4000RELAXED_XPIC_TIMER_AREA_T * const ptXpicTimer3Area = (NX4000RELAXED_XPIC_TIMER_AREA_T * const)Addr_NX4000RELAXED_xpic_timer3;
+
+#define NX4000RELAXED_DEF_ptXpicVic0Area NX4000RELAXED_XPIC_VIC_AREA_T * const ptXpicVic0Area = (NX4000RELAXED_XPIC_VIC_AREA_T * const)Addr_NX4000RELAXED_xpic_vic0;
+#define NX4000RELAXED_DEF_ptXpicVic1Area NX4000RELAXED_XPIC_VIC_AREA_T * const ptXpicVic1Area = (NX4000RELAXED_XPIC_VIC_AREA_T * const)Addr_NX4000RELAXED_xpic_vic1;
+#define NX4000RELAXED_DEF_ptXpicVic2Area NX4000RELAXED_XPIC_VIC_AREA_T * const ptXpicVic2Area = (NX4000RELAXED_XPIC_VIC_AREA_T * const)Addr_NX4000RELAXED_xpic_vic2;
+#define NX4000RELAXED_DEF_ptXpicVic3Area NX4000RELAXED_XPIC_VIC_AREA_T * const ptXpicVic3Area = (NX4000RELAXED_XPIC_VIC_AREA_T * const)Addr_NX4000RELAXED_xpic_vic3;
+
+#define NX4000RELAXED_DEF_ptXpicWdg0Area NX4000RELAXED_XPIC_WDG_AREA_T * const ptXpicWdg0Area = (NX4000RELAXED_XPIC_WDG_AREA_T * const)Addr_NX4000RELAXED_xpic_wdg0;
+#define NX4000RELAXED_DEF_ptXpicWdg1Area NX4000RELAXED_XPIC_WDG_AREA_T * const ptXpicWdg1Area = (NX4000RELAXED_XPIC_WDG_AREA_T * const)Addr_NX4000RELAXED_xpic_wdg1;
+#define NX4000RELAXED_DEF_ptXpicWdg2Area NX4000RELAXED_XPIC_WDG_AREA_T * const ptXpicWdg2Area = (NX4000RELAXED_XPIC_WDG_AREA_T * const)Addr_NX4000RELAXED_xpic_wdg2;
+#define NX4000RELAXED_DEF_ptXpicWdg3Area NX4000RELAXED_XPIC_WDG_AREA_T * const ptXpicWdg3Area = (NX4000RELAXED_XPIC_WDG_AREA_T * const)Addr_NX4000RELAXED_xpic_wdg3;
+
+
+#define NX4000RELAXED_DEF_ptXpicHsIrq0RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_xpic_hs_irq0;
+#define NX4000RELAXED_DEF_ptXpicHsIrq1RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_xpic_hs_irq1;
+#define NX4000RELAXED_DEF_ptXpicHsIrq2RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_xpic_hs_irq2;
+#define NX4000RELAXED_DEF_ptXpicHsIrq3RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_xpic_hs_irq3;
+#define NX4000RELAXED_DEF_ptCr7HsIrqRegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_cr7_hs_irq;
+#define NX4000RELAXED_DEF_ptCr9HsIrq0RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_cr9_hs_irq0;
+#define NX4000RELAXED_DEF_ptCr9HsIrq1RegArea NX4000RELAXED_HS_IRQ_REG_AREA_T * const ptHsIrqRegArea = (NX4000RELAXED_HS_IRQ_REG_AREA_T * const)Addr_NX4000RELAXED_cr9_hs_irq1;
+
+#define NX4000RELAXED_DEF_ptXcStatcfgSharedArea NX4000RELAXED_XC_STATCFG_SHARED_AREA_T * const ptXcStatcfgSharedArea = (NX4000RELAXED_XC_STATCFG_SHARED_AREA_T * const)Addr_NX4000RELAXED_xc_statcfg_shared;
+
+#define NX4000RELAXED_DEF_ptSrArea NX4000RELAXED_SR_AREA_T * const ptSrArea = (NX4000RELAXED_SR_AREA_T * const);
+
+#define NX4000RELAXED_DEF_ptXcExtbusSelArea NX4000RELAXED_XC_EXTBUS_SEL_AREA_T * const ptXcExtbusSelArea = (NX4000RELAXED_XC_EXTBUS_SEL_AREA_T * const);
+#define NX4000RELAXED_DEF_ptExtmemPioCtrlArea NX4000RELAXED_EXTMEM_PIO_CTRL_AREA_T * const ptExtmemPioCtrlArea = (NX4000RELAXED_EXTMEM_PIO_CTRL_AREA_T * const);
+
+#define NX4000RELAXED_DEF_ptDdrCtrlArea NX4000RELAXED_DDR_CTRL_AREA_T * const ptDdrCtrlArea = (NX4000RELAXED_DDR_CTRL_AREA_T * const)Addr_NX4000RELAXED_DDR_CTRL;
+#define NX4000RELAXED_DEF_ptDdrPhyArea NX4000RELAXED_DDR_PHY_AREA_T * const ptDdrPhyArea = (NX4000RELAXED_DDR_PHY_AREA_T * const)Addr_NX4000RELAXED_DDR_PHY;
+
+#define NX4000RELAXED_DEF_ptHandshake0Area NX4000RELAXED_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0Area = (NX4000RELAXED_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000RELAXED_intramhs0;
+#define NX4000RELAXED_DEF_ptHandshake0ArmMirrorArea NX4000RELAXED_HANDSHAKE_BLOCK_AREA_T * const ptHandshake0ArmMirrorArea = (NX4000RELAXED_HANDSHAKE_BLOCK_AREA_T * const)Addr_NX4000RELAXED_intramhs0_arm_mirror;
 
 
 /* RAP part */
 
-#define NX4000_DEF_ptPL353Area NX4000_PL353_AREA_T * const ptPL353Area = (NX4000_PL353_AREA_T * const)Addr_NX4000_PL353;
-#define NX4000_DEF_ptSQI0Area NX4000_SQI_AREA_T * const ptSQI0Area = (NX4000_SQI_AREA_T * const)Addr_NX4000_SQI0;
-#define NX4000_DEF_ptSQI1Area NX4000_SQI_AREA_T * const ptSQI1Area = (NX4000_SQI_AREA_T * const)Addr_NX4000_SQI1;
-#define NX4000_DEF_ptPCIEArea NX4000_PCIE_AREA_T * const ptPCIEArea = (NX4000_PCIE_AREA_T * const)Addr_NX4000_PCIE;
+#define NX4000RELAXED_DEF_ptPL353Area NX4000RELAXED_PL353_AREA_T * const ptPL353Area = (NX4000RELAXED_PL353_AREA_T * const)Addr_NX4000RELAXED_PL353;
+#define NX4000RELAXED_DEF_ptSQI0Area NX4000RELAXED_SQI_AREA_T * const ptSQI0Area = (NX4000RELAXED_SQI_AREA_T * const)Addr_NX4000RELAXED_SQI0;
+#define NX4000RELAXED_DEF_ptSQI1Area NX4000RELAXED_SQI_AREA_T * const ptSQI1Area = (NX4000RELAXED_SQI_AREA_T * const)Addr_NX4000RELAXED_SQI1;
+#define NX4000RELAXED_DEF_ptPCIEArea NX4000RELAXED_PCIE_AREA_T * const ptPCIEArea = (NX4000RELAXED_PCIE_AREA_T * const)Addr_NX4000RELAXED_PCIE;
 
-#define NX4000_DEF_ptRAPI2C0Area NX4000_I2C_AREA_T * const ptRAPI2C0Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C0;
-#define NX4000_DEF_ptRAPI2C1Area NX4000_I2C_AREA_T * const ptRAPI2C1Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C1;
-#define NX4000_DEF_ptRAPI2C2Area NX4000_I2C_AREA_T * const ptRAPI2C2Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C2;
-#define NX4000_DEF_ptRAPI2C3Area NX4000_I2C_AREA_T * const ptRAPI2C3Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C3;
-#define NX4000_DEF_ptRAPI2C4Area NX4000_I2C_AREA_T * const ptRAPI2C4Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C4;
-#define NX4000_DEF_ptRAPI2C5Area NX4000_I2C_AREA_T * const ptRAPI2C5Area = (NX4000_I2C_AREA_T * const)Addr_NX4000_RAP_I2C5;
+#define NX4000RELAXED_DEF_ptRAPI2C0Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C0Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C0;
+#define NX4000RELAXED_DEF_ptRAPI2C1Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C1Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C1;
+#define NX4000RELAXED_DEF_ptRAPI2C2Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C2Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C2;
+#define NX4000RELAXED_DEF_ptRAPI2C3Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C3Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C3;
+#define NX4000RELAXED_DEF_ptRAPI2C4Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C4Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C4;
+#define NX4000RELAXED_DEF_ptRAPI2C5Area NX4000RELAXED_I2C_AREA_T * const ptRAPI2C5Area = (NX4000RELAXED_I2C_AREA_T * const)Addr_NX4000RELAXED_RAP_I2C5;
 
-#define NX4000_DEF_ptRAPSysctrlArea NX4000_RAP_SYSCTRL_AREA_T * const ptRAPSysctrlArea = (NX4000_RAP_SYSCTRL_AREA_T * const)Addr_NX4000_RAP_SYSCTRL;
+#define NX4000RELAXED_DEF_ptRAPSysctrlArea NX4000RELAXED_RAP_SYSCTRL_AREA_T * const ptRAPSysctrlArea = (NX4000RELAXED_RAP_SYSCTRL_AREA_T * const)Addr_NX4000RELAXED_RAP_SYSCTRL;
 
-#define NX4000_DEF_ptRAPSDIOArea NX4000_SDIO_AREA_T * const ptRAPSDIOArea = (NX4000_SDIO_AREA_T * const)Addr_NX4000_SDIO;
+#define NX4000RELAXED_DEF_ptRAPSDIOArea NX4000RELAXED_SDIO_AREA_T * const ptRAPSDIOArea = (NX4000RELAXED_SDIO_AREA_T * const)Addr_NX4000RELAXED_SDIO;
 
 
 /* Howto generate:

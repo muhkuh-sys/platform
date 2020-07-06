@@ -48,7 +48,7 @@
 #       define HOSTNAME "netx6"
 #       include "netx6/netx6_regdef.s"
 #elif ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
-#       define HOST NX4000
+#       define HOST NX4000RELAXED
 #       define HOSTNAME "netx4000_relaxed"
 #       include "netx4000_relaxed/netx4000_regdef.S"
 #elif ASIC_TYP==ASIC_TYP_NETX90_MPW || ASIC_TYP==ASIC_TYP_NETX90_MPW_APP
