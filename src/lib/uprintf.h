@@ -27,6 +27,7 @@
 
 
 void uprintf(const char *pcFmt, ...);
+unsigned int usnprintf(char *pcBuffer, unsigned int sizBuffer, const char *pcFmt, ...);
 void hexdump(const unsigned char *pcData, size_t sizData);
 
 

@@ -34,7 +34,26 @@
 /* Select one of the available line feed modes here. */
 #define CONSOLE_LINEFEED CONSOLE_LINEFEED_CRLF
 
-static void uprintf_hex(unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
+
+struct UPRINTF_OUTPUT_STRUCT;
+
+typedef void (*PFN_UPRINTF_PUT_T) (struct UPRINTF_OUTPUT_STRUCT *ptV, char cOutput);
+typedef void (*PFN_UPRINTF_FLUSH_T) (struct UPRINTF_OUTPUT_STRUCT *ptV);
+
+typedef struct UPRINTF_OUTPUT_STRUCT
+{
+	PFN_UPRINTF_PUT_T fnPut;
+	PFN_UPRINTF_FLUSH_T fnFlush;
+
+	char *pcBufferStart;
+	char *pcBufferCnt;
+	char *pcBufferEnd;
+	unsigned int uiCharsPrinted;
+} UPRINTF_OUTPUT_T;
+
+
+
+static void uprintf_hex(UPRINTF_OUTPUT_T *ptV, unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
 {
 	int fLeadingDigitWasPrinted;
 	size_t sizCnt;
@@ -60,7 +79,7 @@ static void uprintf_hex(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 			if( sizCnt<sizMinimum )
 			{
 				/* yes -> print fillup char */
-				SERIAL_PUT(cFillUpChar);
+				ptV->fnPut(ptV, cFillUpChar);
 			}
 		}
 		else
@@ -71,7 +90,7 @@ static void uprintf_hex(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 			{
 				uiDigit += 'a'-'9'-1;
 			}
-			SERIAL_PUT((unsigned char)uiDigit);
+			ptV->fnPut(ptV, (char)uiDigit);
 
 			/* now the leading digit has been printed */
 			fLeadingDigitWasPrinted = 1;
@@ -97,7 +116,7 @@ static const unsigned long aulUprintfDecTab[10] =
 	1000000000
 };
 
-static void uprintf_dec(unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
+static void uprintf_dec(UPRINTF_OUTPUT_T *ptV, unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
 {
 	int fLeadingDigitWasPrinted;
 	size_t sizCnt;
@@ -129,14 +148,14 @@ static void uprintf_dec(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 			if( sizCnt<sizMinimum )
 			{
 				/* yes -> print fillup char */
-				SERIAL_PUT(cFillUpChar);
+				ptV->fnPut(ptV, cFillUpChar);
 			}
 		}
 		else
 		{
 			/* print the digit */
 			uiDigit |= '0';
-			SERIAL_PUT((unsigned char)uiDigit);
+			ptV->fnPut(ptV, (char)uiDigit);
 
 			/* now the leading digit has been printed */
 			fLeadingDigitWasPrinted = 1;
@@ -145,7 +164,7 @@ static void uprintf_dec(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 }
 
 
-static void uprintf_bin(unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
+static void uprintf_bin(UPRINTF_OUTPUT_T *ptV, unsigned long ulValue, size_t sizMinimum, char cFillUpChar)
 {
 	int fLeadingDigitWasPrinted;
 	size_t sizCnt;
@@ -171,14 +190,14 @@ static void uprintf_bin(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 			if( sizCnt<sizMinimum )
 			{
 				/* yes -> print fillup char */
-				SERIAL_PUT(cFillUpChar);
+				ptV->fnPut(ptV, cFillUpChar);
 			}
 		}
 		else
 		{
 			/* print the digit */
 			uiDigit |= '0';
-			SERIAL_PUT((unsigned char)uiDigit);
+			ptV->fnPut(ptV, (char)uiDigit);
 
 			/* now the leading digit has been printed */
 			fLeadingDigitWasPrinted = 1;
@@ -190,7 +209,7 @@ static void uprintf_bin(unsigned long ulValue, size_t sizMinimum, char cFillUpCh
 }
 
 
-static void uprintf_str(const char *pcString, size_t sizMinimum, char cFillUpChar)
+static void uprintf_str(UPRINTF_OUTPUT_T *ptV, const char *pcString, size_t sizMinimum, char cFillUpChar)
 {
 	size_t sizString;
 	size_t sizCnt;
@@ -210,7 +229,7 @@ static void uprintf_str(const char *pcString, size_t sizMinimum, char cFillUpCha
 	sizCnt = sizString;
 	while( sizCnt<sizMinimum )
 	{
-		SERIAL_PUT(cFillUpChar);
+		ptV->fnPut(ptV, cFillUpChar);
 		++sizCnt;
 	}
 
@@ -221,16 +240,15 @@ static void uprintf_str(const char *pcString, size_t sizMinimum, char cFillUpCha
 		cChar = *(pcCnt++);
 		if( cChar!='\0' )
 		{
-			SERIAL_PUT(cChar);
+			ptV->fnPut(ptV, cChar);
 		}
 	} while( cChar!='\0' );
 }
 
 
-void uprintf(const char *pcFmt, ...)
+static void uvprintf(const char *pcFmt, UPRINTF_OUTPUT_T *ptV, va_list ptArgs)
 {
 	char cChar;
-	va_list ptArgument;
 	char cFillUpChar;
 	size_t sizMinimumSize;
 	int iDigitCnt;
@@ -243,157 +261,254 @@ void uprintf(const char *pcFmt, ...)
 	int iArgument;
 
 
-	if( (tSerialVectors.fn.fnPut!=NULL) && (tSerialVectors.fn.fnFlush!=NULL)  )
-	{		
-		/* Get initial pointer to first argument */
-		va_start(ptArgument, pcFmt);
-	
-		/* Is it a NULL Pointer ? */
-		if( pcFmt==NULL )
+	/* Is the format string a NULL Pointer ? */
+	if( pcFmt==NULL )
+	{
+		/* Replace the argument with the default string. */
+		pcFmt = "NULL\n";
+	}
+
+	/* Loop over all chars in the format string. */
+	do
+	{
+		/* Get the next char. */
+		cChar = *(pcFmt++);
+
+		/* Is this the end of the format string? */
+		if( cChar!=0 )
 		{
-			/* replace the argument with the default string */
-			pcFmt = "NULL\n";
-		}
-	
-		/* loop over all chars in the format string */
-		do
-		{
-			/* get the next char */
-			cChar = *(pcFmt++);
-	
-			/* is this the end of the format string? */
-			if( cChar!=0 )
+			/* No -> process the char. */
+
+			/* Is this an escape char? */
+			if( cChar=='%' )
 			{
-				/* no -> process the char */
-	
-				/* is this an escape char? */
-				if( cChar=='%' )
+				/* Yes -> process the escape sequence. */
+
+				/* Set default values for escape sequences. */
+				cFillUpChar = ' ';
+				sizMinimumSize = 0;
+
+				do
 				{
-					/* yes -> process the escape sequence */
-	
-					/* set default values for escape sequences */
-					cFillUpChar = ' ';
-					sizMinimumSize = 0;
-	
-					do
+					cChar = *(pcFmt++);
+					if( cChar=='%' )
 					{
-						cChar = *(pcFmt++);
-						if( cChar=='%' )
+						/* It is just a '%'. */
+						ptV->fnPut(ptV, cChar);
+						break;
+					}
+					else if( cChar=='0' )
+					{
+						cFillUpChar = '0';
+					}
+					else if( cChar>'0' && cChar<='9' )
+					{
+						/* No digit found yet. */
+						iDigitCnt = 1;
+						/* The number started one char before. */
+						pcNumEnd = pcFmt;
+						/* Count all digits. */
+						do
 						{
-							/* it is just a '%' */
-							SERIAL_PUT(cChar);
-							break;
-						}
-						else if( cChar=='0' )
-						{
-							cFillUpChar = '0';
-						}
-						else if( cChar>'0' && cChar<='9' )
-						{
-							/* no digit found yet */
-							iDigitCnt = 1;
-							/* the number started one char before */
-							pcNumEnd = pcFmt;
-							/* count all digits */
-							do
+							cChar = *pcFmt;
+							if( cChar>='0' && cChar<='9' )
 							{
-								cChar = *pcFmt;
-								if( cChar>='0' && cChar<='9' )
-								{
-									++pcFmt;
-								}
-								else
-								{
-									break;
-								}
-							} while(1);
-	
-							/* loop over all digits and add them to the */
-							uiValue = 0;
-							iDigitCnt = 0;
-							pcNumCnt = pcFmt;
-							while( pcNumCnt>=pcNumEnd )
-							{
-								--pcNumCnt;
-								uiCnt = (*pcNumCnt) & 0x0fU;
-								while( uiCnt>0 )
-								{
-									uiValue += aulUprintfDecTab[iDigitCnt];
-									--uiCnt;
-								}
-								++iDigitCnt;
+								++pcFmt;
 							}
-							sizMinimumSize = (size_t)uiValue;
-						}
-						else if( cChar=='x' )
+							else
+							{
+								break;
+							}
+						} while(1);
+
+						/* Loop over all digits and add them to the value. */
+						uiValue = 0;
+						iDigitCnt = 0;
+						pcNumCnt = pcFmt;
+						while( pcNumCnt>=pcNumEnd )
 						{
-							/* show hexadecimal number */
-							ulArgument = va_arg((ptArgument), unsigned long);
-							uprintf_hex(ulArgument, sizMinimumSize, cFillUpChar);
-							break;
+							--pcNumCnt;
+							uiCnt = (*pcNumCnt) & 0x0fU;
+							while( uiCnt>0 )
+							{
+								uiValue += aulUprintfDecTab[iDigitCnt];
+								--uiCnt;
+							}
+							++iDigitCnt;
 						}
-						else if( cChar=='d' || cChar=='u' )
-						{
-							/* show decimal number */
-							ulArgument = va_arg((ptArgument), unsigned long);
-							uprintf_dec(ulArgument, sizMinimumSize, cFillUpChar);
-							break;
-						}
-						else if( cChar=='b' )
-						{
-							/* show binary number */
-							ulArgument = va_arg((ptArgument), unsigned long);
-							uprintf_bin(ulArgument, sizMinimumSize, cFillUpChar);
-							break;
-						}
-						else if( cChar=='s' )
-						{
-							/* show string */
-							pcArgument = va_arg((ptArgument), const char *);
-							uprintf_str(pcArgument, sizMinimumSize, cFillUpChar);
-							break;
-						}
-						else if( cChar=='c' )
-						{
-							/* show char */
-							iArgument = va_arg((ptArgument), int);
-							SERIAL_PUT((char)iArgument);
-							break;
-						}
-						else
-						{
-							SERIAL_PUT('*');
-							SERIAL_PUT('*');
-							SERIAL_PUT('*');
-							break;
-						}
-					} while( cChar!=0 );
-				}
-				else if( cChar=='\n' )
-				{
-					/* Print line feed. */
+						sizMinimumSize = (size_t)uiValue;
+					}
+					else if( cChar=='x' )
+					{
+						/* Show a hexadecimal number. */
+						ulArgument = va_arg((ptArgs), unsigned long);
+						uprintf_hex(ptV, ulArgument, sizMinimumSize, cFillUpChar);
+						break;
+					}
+					else if( cChar=='d' || cChar=='u' )
+					{
+						/* Show a decimal number. */
+						ulArgument = va_arg((ptArgs), unsigned long);
+						uprintf_dec(ptV, ulArgument, sizMinimumSize, cFillUpChar);
+						break;
+					}
+					else if( cChar=='b' )
+					{
+						/* Show a binary number. */
+						ulArgument = va_arg((ptArgs), unsigned long);
+						uprintf_bin(ptV, ulArgument, sizMinimumSize, cFillUpChar);
+						break;
+					}
+					else if( cChar=='s' )
+					{
+						/* Show a string. */
+						pcArgument = va_arg((ptArgs), const char *);
+						uprintf_str(ptV, pcArgument, sizMinimumSize, cFillUpChar);
+						break;
+					}
+					else if( cChar=='c' )
+					{
+						/* Show a char. */
+						iArgument = va_arg((ptArgs), int);
+						ptV->fnPut(ptV, (char)iArgument);
+						break;
+					}
+					else
+					{
+						ptV->fnPut(ptV, '*');
+						ptV->fnPut(ptV, '*');
+						ptV->fnPut(ptV, '*');
+						break;
+					}
+				} while( cChar!=0 );
+			}
+			else if( cChar=='\n' )
+			{
+				/* Print line feed. */
 #if CONSOLE_LINEFEED==CONSOLE_LINEFEED_LF
-					/* Nothing to do for LF line feed. */
+				/* Nothing to do for LF line feed. */
 #elif CONSOLE_LINEFEED==CONSOLE_LINEFEED_CR
-					cChar = '\r';
+				cChar = '\r';
 #elif CONSOLE_LINEFEED==CONSOLE_LINEFEED_CRLF
-					SERIAL_PUT('\r');
+				ptV->fnPut(ptV, '\r');
 #else
 #       error "Invalid line feed mode!"
 #endif
-					SERIAL_PUT(cChar);
-					SERIAL_FLUSH();
-				}
-				else
-				{
-					SERIAL_PUT(cChar);
-				}
+				ptV->fnPut(ptV, cChar);
+				ptV->fnFlush(ptV);
 			}
-		} while( cChar!=0 );
-	
-		va_end(ptArgument);
+			else
+			{
+				ptV->fnPut(ptV, cChar);
+			}
+		}
+	} while( cChar!=0 );
+}
+
+
+
+static void uprintf_serial_put(UPRINTF_OUTPUT_T *ptV, char cOutput)
+{
+	++ptV->uiCharsPrinted;
+	tSerialVectors.fn.fnPut(cOutput);
+}
+
+
+
+static void uprintf_serial_flush(UPRINTF_OUTPUT_T *ptV __attribute__((unused)))
+{
+	tSerialVectors.fn.fnFlush();
+}
+
+
+
+void uprintf(const char *pcFmt, ...)
+{
+	va_list ptArgs;
+	UPRINTF_OUTPUT_T tOut;
+
+
+	if( (tSerialVectors.fn.fnPut!=NULL) && (tSerialVectors.fn.fnFlush!=NULL)  )
+	{
+		tOut.fnPut = uprintf_serial_put;
+		tOut.fnFlush = uprintf_serial_flush;
+		tOut.pcBufferStart = NULL;
+		tOut.pcBufferCnt = NULL;
+		tOut.pcBufferEnd = NULL;
+		tOut.uiCharsPrinted = 0;
+
+		va_start(ptArgs, pcFmt);
+		uvprintf(pcFmt, &tOut, ptArgs);
+		va_end(ptArgs);
 	}
 }
+
+
+
+static void uprintf_buffer_put(UPRINTF_OUTPUT_T *ptV, char cOutput)
+{
+	/* Count all chars even if they do not fit into the buffer. */
+	++ptV->uiCharsPrinted;
+
+	/* Is space left in the buffer? */
+	if( ptV->pcBufferCnt < ptV->pcBufferEnd )
+	{
+		/* Yes -> put the char in the buffer and increment the counter. */
+		*(ptV->pcBufferCnt++) = cOutput;
+	}
+}
+
+
+
+static void uprintf_buffer_flush(UPRINTF_OUTPUT_T *ptV __attribute((unused)))
+{
+	/* Nothing to do here. */
+}
+
+
+
+unsigned int usnprintf(char *pcBuffer, unsigned int sizBuffer, const char *pcFmt, ...)
+{
+	va_list ptArgs;
+	UPRINTF_OUTPUT_T tOut;
+
+
+	/* Sanitize the parameters. */
+	if( pcBuffer==NULL )
+	{
+		sizBuffer = 0;
+	}
+
+	tOut.fnPut = uprintf_buffer_put;
+	tOut.fnFlush = uprintf_buffer_flush;
+	tOut.pcBufferStart = pcBuffer;
+	tOut.pcBufferCnt = pcBuffer;
+	tOut.pcBufferEnd = pcBuffer + sizBuffer;
+	tOut.uiCharsPrinted = 0;
+
+	va_start(ptArgs, pcFmt);
+	uvprintf(pcFmt, &tOut, ptArgs);
+	va_end(ptArgs);
+
+	/* Add a 0 at the end of the buffer - if there is a buffer. */
+	if( sizBuffer!=0 )
+	{
+		/* Is space left in the buffer? */
+		if( tOut.pcBufferCnt<tOut.pcBufferEnd )
+		{
+			/* Yes -> append a 0. */
+			*(tOut.pcBufferCnt) = '\0';
+		}
+		else
+		{
+			/* No space left -> overwrite the last char with a 0. */
+			*(tOut.pcBufferCnt - 1) = '\0';
+		}
+	}
+
+	return tOut.uiCharsPrinted;
+}
+
 
 
 void hexdump(const unsigned char *pcData, size_t sizData)
