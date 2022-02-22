@@ -20,6 +20,7 @@
 
 
 #include "systime.h"
+#include "netx_io_areas.h"
 
 #if ASIC_TYP==ASIC_TYP_NETIOL
 unsigned long ulSystime_ms = 0;
