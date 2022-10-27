@@ -95,10 +95,10 @@ for _, tBuild in ipairs(atBuild) do
     -- Collect all sources.
     local astrSources = {}
     -- Add the common sources for all platforms.
-    pl.tablex.update(astrSources, astrCommonSources)
+    pl.tablex.insertvalues(astrSources, astrCommonSources)
     -- Add special sources for the build.
     if tBuild.astrExtraSources~=nil then
-      pl.tablex.update(astrSources, tBuild.astrExtraSources)
+      pl.tablex.insertvalues(astrSources, tBuild.astrExtraSources)
     end
 
     -- Set ouput path for all sources.
