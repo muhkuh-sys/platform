@@ -110,8 +110,10 @@ for _, tBuild in ipairs(atBuild) do
     -- Build all sources.
     local atObjects = tEnv:Compile(astrSources)
 
+    -- Set prefix string of static library
+    tEnv:SetLibPrefix("")
+
     -- Build a library from all objects.
-    -- TODO: The output name is generated somehow. Make this more intuitive. Or document how it works. :)
     local tPlatformLib = tEnv:StaticLibrary(
       pl.path.join(
         'targets',
