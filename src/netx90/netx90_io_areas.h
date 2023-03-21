@@ -15,7 +15,8 @@
 #include "netx90_mmio.h"
 
 
-#define NX90_DEF_ptCm4MiscAsicCtrlArea NX90_CM4_MISC_CTRL_AREA_T * const ptCm4MiscAsicCtrlArea = (NX90_CM4_MISC_CTRL_AREA_T * const)Addr_NX90_cm4_misc_ctrl;
+#define NX90_DEF_ptCm4ScsArea NX90_CM4_SCS_AREA_T * const ptCm4ScsArea = (NX90_CM4_SCS_AREA_T * const)Addr_NX90_cm4_scs;
+#define NX90_DEF_ptCm4MiscCtrlArea NX90_CM4_MISC_CTRL_AREA_T * const ptCm4MiscCtrlArea = (NX90_CM4_MISC_CTRL_AREA_T * const)Addr_NX90_cm4_misc_ctrl;
 
 #define NX90_DEF_ptDmacComCh0Area NX90_DMAC_CH_AREA_T * const ptDmacComCh0Area = (NX90_DMAC_CH_AREA_T * const)Addr_NX90_dmac_com_ch0;
 #define NX90_DEF_ptDmacComCh1Area NX90_DMAC_CH_AREA_T * const ptDmacComCh1Area = (NX90_DMAC_CH_AREA_T * const)Addr_NX90_dmac_com_ch1;
