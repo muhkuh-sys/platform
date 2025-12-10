@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Christoph Thelen                                *
+ *   Copyright (C) 2025 by Christoph Thelen                                *
  *   doc_bacardi@users.sourceforge.net                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,8 +21,8 @@
 
 #include "asic_types.h"
 
-#ifndef __NETX_REGDEF_S__
-#define __NETX_REGDEF_S__
+#ifndef __NETX_IO_AREAS_S__
+#define __NETX_IO_AREAS_S__
 
 #define DO_CONCAT(a,b,c) a##_##b##_##c
 #define CONCAT(a,b,c) DO_CONCAT(a,b,c)
@@ -67,6 +67,14 @@
 #       define HOST NIOL
 #       define HOSTNAME "netiol"
 #       include "netiol/netiol_regdef.S"
+#elif ASIC_TYP==ASIC_TYP_NETX9X2_SECENC_MPW
+#       define HOST NX9X2_MPW
+#       define HOSTNAME "netx9x2_MPW"
+#       include "netx9x2_secenc_mpw/netx9x2_mpw_regdef.S"
+#elif ASIC_TYP==ASIC_TYP_NETX9X2_COM_MPW
+#       define HOST NX9X2_MPW
+#       define HOSTNAME "netx9x2_MPW"
+#       include "netx9x2_com_mpw/netx9x2_mpw_regdef.S"
 #else
 #       error "no host define set!"
 #endif
@@ -80,4 +88,4 @@
 #define HOSTBFW(a)  CONCAT(BFW,HOST,a)
 
 
-#endif  /* __NETX_REGDEF_S__ */
+#endif  /* __NETX_IO_AREAS_S__ */

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2016 by Christoph Thelen                                *
+ *   Copyright (C) 2025 by Christoph Thelen                                *
  *   doc_bacardi@users.sourceforge.net                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,17 +23,19 @@
 #define __ASIC_TYPES_H__
 
 
-#define ASIC_TYP_NETX500           1
-#define ASIC_TYP_NETX50            2
-#define ASIC_TYP_NETX10            3
-#define ASIC_TYP_NETX56            4
-#define ASIC_TYP_NETX6             5
-#define ASIC_TYP_NETX4000_RELAXED  6
-#define ASIC_TYP_NETX90_MPW        7
-#define ASIC_TYP_NETX90_MPW_APP    8
-#define ASIC_TYP_NETX4000          9
-#define ASIC_TYP_NETX90           10
-#define ASIC_TYP_NETX90_APP       11
-#define ASIC_TYP_NETIOL           12
+#define ASIC_TYP_NETX500                1
+#define ASIC_TYP_NETX50                 2
+#define ASIC_TYP_NETX10                 3
+#define ASIC_TYP_NETX56                 4
+#define ASIC_TYP_NETX6                  5
+#define ASIC_TYP_NETX4000_RELAXED       6
+#define ASIC_TYP_NETX90_MPW             7
+#define ASIC_TYP_NETX90_MPW_APP         8
+#define ASIC_TYP_NETX4000               9
+#define ASIC_TYP_NETX90                10
+#define ASIC_TYP_NETX90_APP            11
+#define ASIC_TYP_NETIOL                12
+#define ASIC_TYP_NETX9X2_SECENC_MPW    13
+#define ASIC_TYP_NETX9X2_COM_MPW       14
 
 #endif  /* __ASIC_TYPES_H__ */

@@ -118,22 +118,22 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 	/* Set SCL to low. This allows modifications of the SDA line without
 	 * the risk of generating a start condition.
 	 * The signals look like this:
-	 * 
+	 *
 	 * Off:      __     _____
-	 * RDY (SCL) __|___|     
+	 * RDY (SCL) __|___|
 	 *           ____ _______
-	 * RUN (SDA) ____|        
+	 * RUN (SDA) ____|
 	 *
 	 * Green:    __
 	 * RDY (SCL) __|_________
 	 *           ____ _______
 	 * RUN (SDA) ____|
-	 * 
+	 *
 	 * Yellow:   __         _
 	 * RDY (SCL) __|_______|
 	 *           ____
 	 * RUN (SDA) ____|_______
-	 * 
+	 *
 	 */
 	ulValue = MSK_sta_netx_rdy_drv | ulSDAOld;
 	ptNetxControlledGlobalRegisterBlock1Area->ulSta_netx = ulValue;
@@ -279,6 +279,36 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
 	/* TODO: Continue here. */
+}
+#elif ASIC_TYP==ASIC_TYP_NETX9X2_SECENC_MPW || ASIC_TYP==ASIC_TYP_NETX9X2_COM_MPW
+void rdy_run_setLEDs(RDYRUN_T tState)
+{
+	HOSTDEF(ptAsicCtrlArea);
+	unsigned long ulValue;
+
+
+	/* Initialize the new SCL and SDA parts. */
+	ulValue  = HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN_DRV);
+	ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY_DRV);
+
+	/* Add the active LED. */
+	switch(tState)
+	{
+	case RDYRUN_OFF:
+		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY);
+		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN);
+		break;
+
+	case RDYRUN_GREEN:
+		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY);
+		break;
+
+	case RDYRUN_YELLOW:
+		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN);
+		break;
+	}
+
+	ptAsicCtrlArea->ulCom_asic_ctrl_rdy_run_cfg = ulValue;
 }
 #endif
 
