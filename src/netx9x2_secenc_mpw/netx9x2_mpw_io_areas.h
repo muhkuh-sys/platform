@@ -32,6 +32,7 @@
 #define NX9X2_MPW_DEF_ptSecencTimer0 NX9X2_MPW_CMSDK_TIMER_AREA_T * const ptSecencTimer0 = (NX9X2_MPW_CMSDK_TIMER_AREA_T * const)Addr_NX9X2_MPW_secenc_timer0;
 
 #define NX9X2_MPW_DEF_ptAsicCtrlArea NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const)(Addr_NX9X2_MPW_com_asic_ctrl+NX9X2_MPW_HPERI_OFFSET);
+#define NX9X2_MPW_DEF_ptCrgArea NX9X2_MPW_CRG_AREA_T * const ptCrgArea = (NX9X2_MPW_CRG_AREA_T * const)(Addr_NX9X2_MPW_crg+NX9X2_MPW_HPERI_OFFSET);
 
 #define NX9X2_MPW_DEF_ptIntram0RamCtrlArea NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_1_AREA_T * const ptIntram0RamCtrlArea = (NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_1_AREA_T * const)(Addr_NX9X2_MPW_intram0_ram_ctrl+NX9X2_MPW_SMS_OFFSET);
 #define NX9X2_MPW_DEF_ptIntram1RamCtrlArea NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_2_AREA_T * const ptIntram1RamCtrlArea = (NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_2_AREA_T * const)(Addr_NX9X2_MPW_intram1_ram_ctrl+NX9X2_MPW_SMS_OFFSET);
