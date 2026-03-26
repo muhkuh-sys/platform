@@ -37,5 +37,7 @@
 #define ASIC_TYP_NETIOL                12
 #define ASIC_TYP_NETX9X2_SECENC_MPW    13
 #define ASIC_TYP_NETX9X2_COM_MPW       14
+#define ASIC_TYP_NETX9X2_ADA_MPW       15
+
 
 #endif  /* __ASIC_TYPES_H__ */

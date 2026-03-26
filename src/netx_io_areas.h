@@ -78,6 +78,10 @@
 #       define HOST NX9X2_MPW
 #       define HOSTNAME "netx9x2_MPW"
 #       include "netx9x2_com_mpw/netx9x2_mpw_io_areas.h"
+#elif ASIC_TYP==ASIC_TYP_NETX9X2_ADA_MPW
+#       define HOST NX9X2_MPW
+#       define HOSTNAME "netx9x2_MPW"
+#       include "netx9x2_ada_mpw/netx9x2_mpw_io_areas.h"
 #else
 #       error "no host define set!"
 #endif
