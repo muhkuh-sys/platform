@@ -283,32 +283,34 @@ void rdy_run_setLEDs(RDYRUN_T tState)
 #elif ASIC_TYP==ASIC_TYP_NETX9X2_SECENC_MPW || ASIC_TYP==ASIC_TYP_NETX9X2_COM_MPW
 void rdy_run_setLEDs(RDYRUN_T tState)
 {
-	HOSTDEF(ptAsicCtrlArea);
+	HOSTDEF(ptGlobalIoextenderArea);
 	unsigned long ulValue;
 
 
 	/* Initialize the new SCL and SDA parts. */
-	ulValue  = HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN_DRV);
-	ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY_DRV);
+	ulValue  = HOSTMSK(ioextender_pad_out_sel_sck_mosi);
+	ulValue |= HOSTMSK(ioextender_pad_out_mosi_oe);
+	ulValue |= HOSTMSK(ioextender_pad_out_sck_oe);
 
 	/* Add the active LED. */
 	switch(tState)
 	{
 	case RDYRUN_OFF:
-		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY);
-		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN);
+		ulValue |= HOSTMSK(ioextender_pad_out_mosi);
+		ulValue |= HOSTMSK(ioextender_pad_out_sck);
 		break;
 
 	case RDYRUN_GREEN:
-		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RDY);
+		ulValue |= HOSTMSK(ioextender_pad_out_sck);
 		break;
 
 	case RDYRUN_YELLOW:
-		ulValue |= HOSTMSK(com_asic_ctrl_rdy_run_cfg_RUN);
+		ulValue |= HOSTMSK(ioextender_pad_out_mosi);
 		break;
 	}
 
-	ptAsicCtrlArea->ulCom_asic_ctrl_rdy_run_cfg = ulValue;
+	ptGlobalIoextenderArea->ulIoextender_cmd = 0U;
+	ptGlobalIoextenderArea->ulIoextender_pad_out = ulValue;
 }
 #endif
 

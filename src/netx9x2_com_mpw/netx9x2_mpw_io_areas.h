@@ -15,6 +15,7 @@
 
 #define NX9X2_MPW_DEF_ptSqiArea NX9X2_MPW_SQI_AREA_T * const ptSqiArea = (NX9X2_MPW_SQI_AREA_T * const)(Addr_NX9X2_MPW_sqi);
 #define NX9X2_MPW_DEF_ptGlobalAsicCtrlArea NX9X2_MPW_GLOBAL_ASIC_CTRL_AREA_T * const ptGlobalAsicCtrlArea = (NX9X2_MPW_GLOBAL_ASIC_CTRL_AREA_T * const)(Addr_NX9X2_MPW_global_asic_ctrl);
+#define NX9X2_MPW_DEF_ptGlobalIoextenderArea NX9X2_MPW_IOEXTENDER_AREA_T * const ptGlobalIoextenderArea = (NX9X2_MPW_IOEXTENDER_AREA_T * const)(Addr_NX9X2_MPW_global_ioextender);
 #define NX9X2_MPW_DEF_ptCrgArea NX9X2_MPW_CRG_AREA_T * const ptCrgArea = (NX9X2_MPW_CRG_AREA_T * const)(Addr_NX9X2_MPW_crg);
 #define NX9X2_MPW_DEF_ptAsicCtrlArea NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const)(Addr_NX9X2_MPW_com_asic_ctrl);
 
