@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <stdint.h>
 
 #include "systime.h"
 #include "netx_io_areas.h"
@@ -42,8 +43,48 @@ This means that, unless systime_get_ms() is called periodically at least 2 secon
 //#define DEV_FREQUENCY 10000000
 
 #if ASIC_TYP==ASIC_TYP_NETX9X2_COM_MPW
-	/* The netX9x2 COM ADA timer seems to run with 500MHz. */
-#       define TIMER_CLOCK 500000000U
+/* The netX9x2 COM ADA timer seems to run with 500MHz.
+ * To convert a number of ticks to milliseconds a division by 500000 is needed.
+ * This function provides an optimized version without huge GCC division helpers.
+ */
+static inline uint64_t mul64_hi_u64(uint64_t u, uint64_t v)
+{
+	const uint64_t mask = 0xFFFFFFFFULL;
+
+	uint64_t u0 = u & mask;
+	uint64_t u1 = u >> 32;
+	uint64_t v0 = v & mask;
+	uint64_t v1 = v >> 32;
+
+	uint64_t w0 = u0 * v0;
+	uint64_t t  = u1 * v0 + (w0 >> 32);
+	uint64_t w1 = t & mask;
+	uint64_t w2 = t >> 32;
+
+	w1 = u0 * v1 + w1;
+
+	return u1 * v1 + w2 + (w1 >> 32);
+}
+
+
+static inline uint64_t ticks_to_ms(uint64_t x)
+{
+	/* ceil(2^74 / 500000) */
+	const uint64_t M = 0x008637BD05AF6C6AULL;
+
+	/* Näherung: q ist exakt oder um 1 zu groß */
+	uint64_t q = mul64_hi_u64(x, M) >> 10;   /* insgesamt >> 74 */
+
+	/* Do not fix the eventual offset by +1. This would take another 140 bytes and
+	 * it is no problem if the delay is a bit longer.
+	 */
+/*
+    if (q * 500000ULL > x) {
+        q--;
+    }
+*/
+	return q;
+}
 #endif
 
 
@@ -150,7 +191,7 @@ unsigned long systime_get_ms(void)
 	/* Combine the lower and upper timer part to one value. */
 	ullTimerNs = ((uint64_t)ulTimerLo) | ((uint64_t)ulTimerHi)<<32U;
 	/* The timer counts ticks. Divide the value by 1000000 to get miliseconds. */
-	ullTimerMs = ullTimerNs / (TIMER_CLOCK/1000);
+	ullTimerMs = ticks_to_ms(ullTimerNs);
 	/* The result is a 32 bit value. */
 	ulTimerMs = (uint32_t)(ullTimerMs & 0x00000000ffffffffU);
 
