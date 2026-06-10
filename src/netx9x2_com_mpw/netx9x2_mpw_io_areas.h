@@ -2,9 +2,7 @@
 #define __NETX9X2_MPW_COM_IO_AREAS_H__
 
 #include "../netx9x2_common/regdef_netx9x2_mpw.h"
-
-// TODO: Define MMIOs if the chip has some.
-//#include "netx9x2_mmio.h"
+#include "../netx9x2_common/netx9x2_mpw_mmio.h"
 
 
 #define NX9X2_MPW_DEF_ptComUart0Area NX9X2_MPW_UART_AREA_T * const ptComUart0Area = (NX9X2_MPW_UART_AREA_T * const)(Addr_NX9X2_MPW_com_uart0);
