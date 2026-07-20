@@ -13,10 +13,13 @@
 
 #define NX9X2_MPW_DEF_ptSqiArea NX9X2_MPW_SQI_AREA_T * const ptSqiArea = (NX9X2_MPW_SQI_AREA_T * const)(Addr_NX9X2_MPW_sqi);
 #define NX9X2_MPW_DEF_ptGlobalAsicCtrlArea NX9X2_MPW_GLOBAL_ASIC_CTRL_AREA_T * const ptGlobalAsicCtrlArea = (NX9X2_MPW_GLOBAL_ASIC_CTRL_AREA_T * const)(Addr_NX9X2_MPW_global_asic_ctrl);
+#define NX9X2_MPW_DEF_ptGlobalPadCtrl NX9X2_MPW_PAD_CTRL_AREA_T * const ptGlobalPadCtrl = (NX9X2_MPW_PAD_CTRL_AREA_T * const)(Addr_NX9X2_MPW_global_pad_ctrl);
 #define NX9X2_MPW_DEF_ptGlobalIoextenderArea NX9X2_MPW_IOEXTENDER_AREA_T * const ptGlobalIoextenderArea = (NX9X2_MPW_IOEXTENDER_AREA_T * const)(Addr_NX9X2_MPW_global_ioextender);
 #define NX9X2_MPW_DEF_ptCrgArea NX9X2_MPW_CRG_AREA_T * const ptCrgArea = (NX9X2_MPW_CRG_AREA_T * const)(Addr_NX9X2_MPW_crg);
 #define NX9X2_MPW_DEF_ptAsicCtrlArea NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const ptAsicCtrlArea = (NX9X2_MPW_COM_ASIC_CTRL_AREA_T * const)(Addr_NX9X2_MPW_com_asic_ctrl);
 
 #define NX9X2_MPW_DEF_ptDpmRamCtrlArea NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_0_AREA_T * const ptDpmRamCtrlArea = (NX9X2_MPW_GEN_RAM_CTRL_NETX22XX_0_AREA_T * const)(Addr_NX9X2_MPW_dpm_ram_ctrl);
+
+#define NX9X2_MPW_DEF_ptXspiArea NX9X2_MPW_XSPI_AREA_T * const ptXspiArea = (NX9X2_MPW_XSPI_AREA_T * const)(Addr_NX9X2_MPW_com_xspi);
 
 #endif  /* __NETX9X2_MPW_COM_IO_AREAS_H__ */
